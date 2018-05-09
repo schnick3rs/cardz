@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i");
+* {
+  -webkit-print-color-adjust: exact; }
+
+.page {
+  width: 210mm;
+  height: 296.8mm; }
+
+.card {
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-size: 4mm;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px; }
+
+.card {
+  position: relative; }
+
+.card-dimensions-magic {
+  height: 88mm;
+  width: 63mm; }
+
+.card-bg {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .card-bg-mesmer {
+    background-image: url("https://i.pinimg.com/originals/f9/88/5d/f9885d08f0e3810dcf4b6434b28a1fa5.jpg"); }
+  .card-bg-druid {
+    background-image: url("https://wiki.guildwars2.com/images/thumb/8/8c/Spec_image_Druid.jpg/350px-Spec_image_Druid.jpg"); }
+  .card-bg-sorcerer {
+    background-image: url("https://wiki.guildwars2.com/images/thumb/5/5e/Elementalist_04_concept_art.png/250px-Elementalist_04_concept_art.png"); }
+  .card-bg-paladin {
+    background-image: url("https://s-media-cache-ak0.pinimg.com/736x/4e/c1/9b/4ec19b9d9827544f0ece01221e817138.jpg"); }
+
+.card .card-header-title {
+  background-color: rgba(255, 255, 255, 0.75);
+  color: black;
+  box-shadow: 0px 5px 2mm 0mm #4c4c4c;
+  display: inline-block;
+  margin-top: 2mm;
+  margin-bottom: 3mm;
+  width: 100%; }
+  .card .card-header-title span {
+    font-size: 3.5mm;
+    text-align: center;
+    float: right;
+    margin: 0mm;
+    width: 80%; }
+
+.spell-meta {
+  width: 50%;
+  font-size: 2mm;
+  overflow: hidden;
+  margin-bottom: 3mm;
+  box-shadow: 0px 5px 2mm 0mm #4c4c4c;
+  max-width: fit-content; }
+  .spell-meta > div {
+    width: max-content;
+    float: left; }
+  .spell-meta-label {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white; }
+  .spell-meta-value {
+    background-color: rgba(255, 255, 255, 0.75);
+    color: black; }
+  .spell-meta span {
+    margin: 1mm; }
+
+.card-text-container {
+  background-color: rgba(255, 255, 255, 0.75);
+  color: black;
+  box-shadow: 0px 5px 2mm 0mm #4c4c4c; }
+  .card-text-container .card-spell-description {
+    font-size: 3mm;
+    margin: 1mm;
+    display: inline-block; }
+    .card-text-container .card-spell-description p {
+      margin-top: 0;
+      line-height: 3mm; }
+
+.spell-badge-spell-level {
+  position: absolute;
+  left: 5mm;
+  top: 0mm;
+  background: black;
+  color: white; }
+
+.card .footer {
+  position: absolute;
+  bottom: 0mm; }
+
+.card .footer span {
+  font-size: 3mm;
+  vertical-align: center;
+  text-align: center; }

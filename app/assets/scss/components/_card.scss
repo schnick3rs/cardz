@@ -1,0 +1,129 @@
+.card {
+  //font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-size: $font-size-m;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.card {
+  position: relative;
+}
+
+.card-dimensions-magic {
+  height: 88mm;
+  width: 63mm;
+}
+
+.card-bg {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &-mesmer {
+    background-image: url('https://i.pinimg.com/originals/f9/88/5d/f9885d08f0e3810dcf4b6434b28a1fa5.jpg');
+  }
+
+  &-druid{
+    background-image: url("https://wiki.guildwars2.com/images/thumb/8/8c/Spec_image_Druid.jpg/350px-Spec_image_Druid.jpg");
+  }
+
+  &-sorcerer{
+    background-image: url("https://wiki.guildwars2.com/images/thumb/5/5e/Elementalist_04_concept_art.png/250px-Elementalist_04_concept_art.png");
+  }
+  &-paladin{
+    background-image: url("https://s-media-cache-ak0.pinimg.com/736x/4e/c1/9b/4ec19b9d9827544f0ece01221e817138.jpg");
+  }
+
+}
+
+.card{
+
+  & .card-header-title{
+    @include bg-box-white;
+    @include box-shadow-bottom-only;
+    display: inline-block;
+    margin-top: 2mm;
+    margin-bottom: 3mm;
+    width: 100%;
+
+    & span{
+      font-size: $font-size-s;
+      text-align: center;
+      float: right;
+      margin: 0mm;
+      width: 80%;
+    }
+
+  }
+
+}
+
+.spell-meta {
+
+  width: 50%;
+  font-size: $font-size-xxxs;
+  overflow: hidden;
+  margin-bottom: 3mm;
+  @include box-shadow-bottom-only;
+  max-width: fit-content;
+
+  & > div {
+    width: max-content;
+    float: left;
+  }
+
+  &-label {
+    @include bg-box-black;
+  }
+
+  &-value{
+    @include bg-box-white;
+  }
+
+  & span {
+    margin: 1mm;
+  }
+
+}
+
+.card-text-container {
+  @include bg-box-white;
+  @include box-shadow-bottom-only;
+
+  & .card-spell-description {
+    font-size: $font-size-xs;
+    margin: 1mm;
+    display: inline-block;
+
+    & p{
+      margin-top:0;
+      line-height: 3mm;
+    }
+
+  }
+}
+
+.spell-badge{
+
+  &-spell-level{
+    position:absolute;
+    left: 5mm;
+    top:0mm;
+    background: black;
+    color: white;
+  }
+}
+
+.card .footer{
+  position: absolute;
+  bottom:0mm;
+}
+
+.card .footer span{
+  font-size: 3mm;
+  vertical-align: center;
+  text-align: center;
+}
