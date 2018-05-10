@@ -1,0 +1,45 @@
+$ribboncolor: rgba(0,0,0,.75);
+
+@mixin shape-flag-bottom($ribbonwidth, $ribbonheight){
+
+  $ribbonbottom: $ribbonwidth/2;
+
+    & span {
+      padding-top: $ribbonbottom;
+      position: absolute;
+      left: 25%;
+    }
+
+    @include drop-shadow;
+
+    width: $ribbonwidth;
+    height: $ribbonheight;
+    background: $ribboncolor;
+
+    vertical-align: middle;
+    text-align: center;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      bottom: -$ribbonbottom;
+      border-style: solid;
+      @include drop-shadow;
+
+    }
+
+    &::before {
+      left: 0px;
+      border-width: $ribbonwidth/2 $ribbonwidth/2 0 0;
+      border-color: $ribboncolor transparent transparent transparent;
+    }
+
+    &::after {
+      right: 0px;
+      border-width: 0 $ribbonwidth/2 $ribbonwidth/2 0;
+      border-color: transparent $ribboncolor transparent transparent;
+    }
+  }

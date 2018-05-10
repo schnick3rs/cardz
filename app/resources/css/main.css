@@ -6,6 +6,9 @@
   width: 210mm;
   height: 296.8mm; }
 
+@page {
+  size: A4 portrait; }
+
 .card {
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-size: 4mm;
@@ -15,6 +18,10 @@
   line-height: 20px; }
 
 .card {
+  border-color: red;
+  border: 1px;
+  border-style: dashed;
+  overflow: hidden;
   position: relative; }
 
 .card-dimensions-magic {
@@ -82,16 +89,119 @@
 
 .spell-badge-spell-level {
   position: absolute;
-  left: 5mm;
+  left: 3mm;
   top: 0mm;
-  background: black;
-  color: white; }
+  filter: drop-shadow(5px 0px 5px grey);
+  width: 5mm;
+  height: 8mm;
+  background: rgba(0, 0, 0, 0.75);
+  vertical-align: middle;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  filter: drop-shadow(5px 0px 5px grey); }
+  .spell-badge-spell-level span {
+    padding-top: 2.5mm;
+    position: absolute;
+    left: 25%; }
+  .spell-badge-spell-level::before, .spell-badge-spell-level::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -2.5mm;
+    border-style: solid;
+    filter: drop-shadow(5px 0px 5px grey); }
+  .spell-badge-spell-level::before {
+    left: 0px;
+    border-width: 2.5mm 2.5mm 0 0;
+    border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent; }
+  .spell-badge-spell-level::after {
+    right: 0px;
+    border-width: 0 2.5mm 2.5mm 0;
+    border-color: transparent rgba(0, 0, 0, 0.75) transparent transparent; }
+
+.spell-badge-spell-component {
+  position: absolute;
+  bottom: 0mm;
+  transform: rotate(180deg);
+  filter: drop-shadow(5px 0px 5px grey);
+  width: 3mm;
+  height: 6mm;
+  background: rgba(0, 0, 0, 0.75);
+  vertical-align: middle;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  filter: drop-shadow(5px 0px 5px grey); }
+  .spell-badge-spell-component.component-verbal {
+    left: 2mm; }
+  .spell-badge-spell-component.component-sign {
+    left: 7mm; }
+  .spell-badge-spell-component.component-material {
+    left: 12mm; }
+  .spell-badge-spell-component span {
+    font-size: 2mm;
+    transform: rotate(180deg); }
+  .spell-badge-spell-component span {
+    padding-top: 1.5mm;
+    position: absolute;
+    left: 25%; }
+  .spell-badge-spell-component::before, .spell-badge-spell-component::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -1.5mm;
+    border-style: solid;
+    filter: drop-shadow(5px 0px 5px grey); }
+  .spell-badge-spell-component::before {
+    left: 0px;
+    border-width: 1.5mm 1.5mm 0 0;
+    border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent; }
+  .spell-badge-spell-component::after {
+    right: 0px;
+    border-width: 0 1.5mm 1.5mm 0;
+    border-color: transparent rgba(0, 0, 0, 0.75) transparent transparent; }
 
 .card .footer {
   position: absolute;
   bottom: 0mm; }
 
-.card .footer span {
-  font-size: 3mm;
-  vertical-align: center;
-  text-align: center; }
+.shape-flag {
+  clip-path: polygon(20% 0%, 80% 0%, 80% 100%, 50% 75%, 20% 100%);
+  transform: scale(0.75);
+  /* styles for demo */
+  padding: 20px;
+  color: #fff; }
+
+.shape-ribbon {
+  filter: drop-shadow(5px 0px 5px grey);
+  width: 5mm;
+  height: 8mm;
+  background: rgba(0, 0, 0, 0.75);
+  vertical-align: middle;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  filter: drop-shadow(5px 0px 5px grey); }
+  .shape-ribbon span {
+    padding-top: 2.5mm;
+    position: absolute;
+    left: 25%; }
+  .shape-ribbon::before, .shape-ribbon::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -2.5mm;
+    border-style: solid;
+    filter: drop-shadow(5px 0px 5px grey); }
+  .shape-ribbon::before {
+    left: 0px;
+    border-width: 2.5mm 2.5mm 0 0;
+    border-color: rgba(0, 0, 0, 0.75) transparent transparent transparent; }
+  .shape-ribbon::after {
+    right: 0px;
+    border-width: 0 2.5mm 2.5mm 0;
+    border-color: transparent rgba(0, 0, 0, 0.75) transparent transparent; }
