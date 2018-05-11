@@ -1,31 +1,42 @@
 <template>
   <div>
-    <div class="card card-dimensions-magic card-bg card-bg" v-bind:class="bgClass">
+    <div class="theme-config">
+      <div class="input">
+        <label for="school">School</label>
+        <select id="school" v-model="selected">
+          <option v-for="school in schools" v-bind:value="school.value" :key="school.value">
+            {{ school.text }}
+          </option>
+        </select>
+      </div>
+      <div class="input">
+        <label>Spell Level</label>
+        <input v-model.number="level" type="number" value="2"/>
+        <span>{{ level }}</span>
+      </div>
+    </div>
+    <div class="card card-dimensions--magic card-bg" v-bind:class="bgClass">
       <SpellCardTitle></SpellCardTitle>
+      <SpellCardLevel v-bind:level="level"></SpellCardLevel>
       <SpellCardDescription></SpellCardDescription>
       <SpellCardComponents></SpellCardComponents>
     </div>
-    <select v-model="selected">
-      <option v-for="option in options" v-bind:value="option.value" :key="option.value">
-        {{ option.text }}
-      </option>
-    </select>
-    <span>Selected: {{ selected }}</span>
   </div>
 </template>
 
 <script>
 import SpellCardComponents from './SpellCardComponents'
 import SpellCardDescription from './SpellCardDescription'
+import SpellCardLevel from './SpellCardLevel'
 import SpellCardTitle from './SpellCardTitle'
 export default {
   name: 'SpellCard',
-  components: { SpellCardTitle, SpellCardDescription, SpellCardComponents },
+  components: { SpellCardTitle, SpellCardDescription, SpellCardComponents, SpellCardLevel },
   data () {
     return {
       selected: 'mesmer',
-      options: [
-        { text: 'Mesmer', value: 'mesmer' },
+      schools: [
+        { text: 'Warlock', value: 'mesmer' },
         { text: 'Druid', value: 'druid' },
         { text: 'paladin', value: 'paladin' }
       ]
@@ -59,13 +70,14 @@ export default {
   position: relative;
 }
 
-.card-dimensions-magic {
+.card-dimensions--magic {
   height: 88mm;
   width: 63mm;
 }
 .card-bg {
+  background-position: center center;
   background-size: cover;
-  background: no-repeat center center;
+  background-repeat: no-repeat;
 }
 .card-bg-mesmer {
   background-image: url('https://i.pinimg.com/originals/f9/88/5d/f9885d08f0e3810dcf4b6434b28a1fa5.jpg');
@@ -78,5 +90,16 @@ export default {
 }
 .card-bg-paladin{
   background-image: url("https://s-media-cache-ak0.pinimg.com/736x/4e/c1/9b/4ec19b9d9827544f0ece01221e817138.jpg");
+}
+
+.theme-config {
+  border-color: lightgrey;
+  border: 1px;
+  border-style: solid;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.theme-config label:after{
+  content: ":";
 }
 </style>

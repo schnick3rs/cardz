@@ -12,16 +12,18 @@ export default {
 </script>
 
 <style>
-  * {
-    -webkit-print-color-adjust: exact; }
+* {
+  -webkit-print-color-adjust: exact;
+}
 
-  #app {
+#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
-#app img{width: 100px;}
+#app img{
+  width: 32px;
+}
 </style>
