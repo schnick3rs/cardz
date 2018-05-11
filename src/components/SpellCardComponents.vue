@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'SpellComponents',
+  name: 'SpellCardComponents',
   data () {
     return {
     }

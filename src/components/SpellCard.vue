@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="card card-dimensions-magic card-bg card-bg" v-bind:class="bgClass">
-      <Title></Title>
-      <Content></Content>
-      <SpellComponents></SpellComponents>
+      <SpellCardTitle></SpellCardTitle>
+      <SpellCardDescription></SpellCardDescription>
+      <SpellCardComponents></SpellCardComponents>
     </div>
     <select v-model="selected">
       <option v-for="option in options" v-bind:value="option.value" :key="option.value">
@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import Title from './card/Title'
-import Content from './card/Content'
-import SpellComponents from './card/SpellComponents'
+import SpellCardComponents from './SpellCardComponents'
+import SpellCardDescription from './SpellCardDescription'
+import SpellCardTitle from './SpellCardTitle'
 export default {
-  name: 'Card',
-  components: {Title, Content, SpellComponents},
+  name: 'SpellCard',
+  components: { SpellCardTitle, SpellCardDescription, SpellCardComponents },
   data () {
     return {
       selected: 'mesmer',
@@ -42,7 +42,6 @@ export default {
 <style scoped>
 
 .card {
-//font-family: Copperplate, "Copperplate Gothic Light", fantasy;
   font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-size: 2.5mm;
   font-style: normal;
@@ -65,23 +64,19 @@ export default {
   width: 63mm;
 }
 .card-bg {
-  background-position: center center;
   background-size: cover;
-  background-repeat: no-repeat;
+  background: no-repeat center center;
 }
 .card-bg-mesmer {
-   background-image: url('https://i.pinimg.com/originals/f9/88/5d/f9885d08f0e3810dcf4b6434b28a1fa5.jpg');
- }
-
+  background-image: url('https://i.pinimg.com/originals/f9/88/5d/f9885d08f0e3810dcf4b6434b28a1fa5.jpg');
+}
 .card-bg-druid{
-   background-image: url("https://wiki.guildwars2.com/images/thumb/8/8c/Spec_image_Druid.jpg/350px-Spec_image_Druid.jpg");
- }
-
+  background-image: url("https://wiki.guildwars2.com/images/thumb/8/8c/Spec_image_Druid.jpg/350px-Spec_image_Druid.jpg");
+}
 .card-bg-sorcerer{
-   background-image: url("https://wiki.guildwars2.com/images/thumb/5/5e/Elementalist_04_concept_art.png/250px-Elementalist_04_concept_art.png");
- }
-
+  background-image: url("https://wiki.guildwars2.com/images/thumb/5/5e/Elementalist_04_concept_art.png/250px-Elementalist_04_concept_art.png");
+}
 .card-bg-paladin{
-   background-image: url("https://s-media-cache-ak0.pinimg.com/736x/4e/c1/9b/4ec19b9d9827544f0ece01221e817138.jpg");
- }
+  background-image: url("https://s-media-cache-ak0.pinimg.com/736x/4e/c1/9b/4ec19b9d9827544f0ece01221e817138.jpg");
+}
 </style>

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Title',
+  name: 'SpellCardTitle',
   data () {
     return {
       title: 'Shadow Blade'
