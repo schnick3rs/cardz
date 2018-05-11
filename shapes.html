@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+</head>
+<body>
+
+<style type="text/css">
+
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    size: A4 portrait;
+  }
+
+  .page{
+    display: flex;
+    height: 100%;
+  }
+
+  .page {
+    width : 210mm;
+    height : 296.8mm;
+  }
+
+</style>
+
+<div class="page">
+
+  <style type="text/css">
+    #flag-before-after {
+      width: 110px;
+      height: 56px;
+      padding-top: 15px;
+      position: relative;
+      background: red;
+      color: white;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    #flag-before-after:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-bottom: 13px solid #eee;
+      border-left: 55px solid transparent;
+      border-right: 55px solid transparent;
+    }
+  </style>
+
+
+  <div id="flag-before-after" class="shape-container shape-svg">
+  </div>
+
+  <style type="text/css">
+    #flag-before-after-2{
+      position: absolute;
+      left: 3mm;
+      top: 0mm;
+      filter: drop-shadow(5px 0px 5px grey);
+      width: 5mm;
+      height: 8mm;
+      background: rgba(0, 0, 0, 0.75);
+      vertical-align: middle;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.75);
+      color: white;
+      filter: drop-shadow(5px 0px 5px grey);
+    }
+  #flag-before-after-2:before,
+  #flag-before-after-2:after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: -2.5mm;
+    border-style: solid;
+    filter: drop-shadow(5px 0px 5px grey);
+  }
+
+    #flag-before-after-2::after{
+      right: 0px;
+      border-width: 0 2.5mm 2.5mm 0;
+      border-color: transparent rgba(0, 0, 0, 0.75) transparent transparent;
+    }
+    #flag-before-after-2::before{
+      left: 0px;
+      border-width: 2.5mm 2.5mm 0 0;
+      border-color: rgba(0, 0, 0, 0.75)
+    }
+
+  </style>
+
+  <div id="flag-before-after-2" class="shape-container shape-svg">
+  </div>
+
+  <div id="polygon">
+    <svg height="100" width="200">
+      <polygon points="200,10 250,190 160,210" style="fill:lime;stroke:purple;stroke-width:1" />
+    </svg>
+  </div>
+
+
+  <style type="text/css">
+    .box {
+      position: relative;
+      box-shadow: inset 0 0 0 10px #fbfcf7, inset 0 0 0 11px #d3d0c9;
+      -ms-touch-action: none;
+      touch-action: none;
+    }
+
+    .shadowboard {
+      pointer-events: none;
+      opacity: 0;
+      -webkit-transition: opacity .375s;
+      transition: opacity .375s;
+    }
+    .clipboard, .shadowboard {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      background-color: #d3d0c9;
+      background-image: url(pics/pittsburgh.jpg);
+      background-size: cover;
+      background-position: center center;
+    }
+    .clipboard{
+      //-webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      //clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      -webkit-clip-path: polygon(100% 0, 100% 100%, 47% 62%, 0 100%, 0 0);
+      clip-path: polygon(100% 0, 100% 100%, 47% 62%, 0 100%, 0 0);
+    }
+
+  </style>
+
+  <div id="box" class="box" style="width: 300px; height: 300px;">
+    <div class="shadowboard"></div>
+    <div class="clipboard" style=""></div><div class="handles"><div class="handle" data-handle="0" style="top: 0px; left: 140px;"><div class="delete-point"></div></div><div class="handle" data-handle="1" style="top: 280px; left: 0px;"><div class="delete-point"></div></div><div class="handle" data-handle="2" style="top: 280px; left: 280px;"><div class="delete-point"></div></div></div></div>
+
+</div>
+
+</body>
+</html>
