@@ -30,6 +30,7 @@ li {
   float: left;
   margin-left: 2mm;
   background-color: rgba(0, 0, 0, 0.75);
+  color: white;
 }
 li span{
   margin: 0.5mm;
