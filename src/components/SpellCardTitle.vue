@@ -7,10 +7,8 @@
 <script>
 export default {
   name: 'SpellCardTitle',
-  data () {
-    return {
-      title: 'Shadow Blade'
-    }
+  props: {
+    title: { type: String, required: true }
   }
 }
 </script>

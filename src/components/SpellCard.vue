@@ -11,15 +11,34 @@
       </div>
       <div class="input">
         <label>Spell Level</label>
-        <input v-model.number="level" type="number" value="2"/>
-        <span>{{ level }}</span>
+        <input v-model.number="spell.level" type="number" value="2"/>
+      </div>
+      <div class="input">
+        <label>Spell Components</label>
+          <input
+            v-for="spellComponent in spellComponents"
+            v-bind:key="spellComponents.id"
+            v-bind:id="spellComponent"
+            v-bind:value="spellComponent"
+            type="checkbox"
+            v-model="spell.components" />
+        <select v-model="spellComponents" multiple>
+          <option selected>Verbal</option>
+          <option selected>Somatic</option>
+          <option>Material</option>
+        </select>
+        <span>{{ spellComponents }}</span>
       </div>
     </div>
     <div class="card card-dimensions--magic card-bg" v-bind:class="bgClass">
-      <SpellCardTitle></SpellCardTitle>
-      <SpellCardLevel v-bind:level="level"></SpellCardLevel>
+      <SpellCardTitle :title="spell.title"></SpellCardTitle>
+      <SpellCardLevel :level="spell.level"></SpellCardLevel>
       <SpellCardDescription></SpellCardDescription>
-      <SpellCardComponents></SpellCardComponents>
+      <SpellCardComponents
+        v-bind:has-verbal="hasVerbal"
+        v-bind:has-somatic="hasSomatic"
+        v-bind:has-material="hasMaterial"
+      ></SpellCardComponents>
     </div>
   </div>
 </template>
@@ -39,12 +58,32 @@ export default {
         { text: 'Warlock', value: 'mesmer' },
         { text: 'Druid', value: 'druid' },
         { text: 'paladin', value: 'paladin' }
-      ]
+      ],
+      spellComponents: [ 'Verbal', 'Somatic', 'Material' ],
+      spell: {
+        title: 'Shadow Blade',
+        level: 2,
+        components: [ 'Verbal', 'Somatic' ]
+      }
     }
   },
   computed: {
     bgClass: function () {
       return 'card-bg-' + this.selected
+    },
+    hasVerbal: function () {
+      return this.spellComponents.includes('Verbal')
+    },
+    hasSomatic: function () {
+      return this.spellComponents.includes('Somatic')
+    },
+    hasMaterial: function () {
+      return this.spellComponents.includes('Material')
+    },
+    methods: {
+      hasComponent (val) {
+        return this.spellComponents.includes(val)
+      }
     }
   }
 }
