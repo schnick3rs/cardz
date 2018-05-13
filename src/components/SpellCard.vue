@@ -10,34 +10,39 @@
         </select>
       </div>
       <div class="input">
-        <label>Spell Level</label>
-        <input v-model.number="spell.level" type="number" value="2"/>
+        <label>Level</label>
+        <input v-model.number="spell.level" type="number" value="2" v-bind:min="0" v-bind:max="9"/>
+      </div>
+      <div class="input">
+        <label>Name</label>
+        <input v-model="spell.name" />
       </div>
       <div class="input">
         <label>Spell Components</label>
           <input
             v-for="spellComponent in spellComponents"
-            v-bind:key="spellComponents.id"
+            v-bind:key="spellComponent.id"
             v-bind:id="spellComponent"
             v-bind:value="spellComponent"
             type="checkbox"
             v-model="spell.components" />
-        <select v-model="spellComponents" multiple>
-          <option selected>Verbal</option>
-          <option selected>Somatic</option>
-          <option>Material</option>
-        </select>
-        <span>{{ spellComponents }}</span>
+        <span>{{ spell.components }}</span>
+        <div class="input">
+          <label>Name</label>
+          <input v-model="spell.materialText" />
+        </div>
       </div>
     </div>
     <div class="card card-dimensions--magic card-bg" v-bind:class="bgClass">
-      <SpellCardTitle :title="spell.title"></SpellCardTitle>
+      <SpellCardTitle :name="spell.name"></SpellCardTitle>
       <SpellCardLevel :level="spell.level"></SpellCardLevel>
+      <SpellMeta></SpellMeta>
       <SpellCardDescription></SpellCardDescription>
       <SpellCardComponents
         v-bind:has-verbal="hasVerbal"
         v-bind:has-somatic="hasSomatic"
         v-bind:has-material="hasMaterial"
+        v-bind:material-text="spell.materialText"
       ></SpellCardComponents>
     </div>
   </div>
@@ -61,9 +66,10 @@ export default {
       ],
       spellComponents: [ 'Verbal', 'Somatic', 'Material' ],
       spell: {
-        title: 'Shadow Blade',
+        name: 'Shadow Blade',
         level: 2,
-        components: [ 'Verbal', 'Somatic' ]
+        components: [ 'Verbal', 'Somatic' ],
+        materialText: 'The twisted fang of a deadly rose'
       }
     }
   },
@@ -72,17 +78,17 @@ export default {
       return 'card-bg-' + this.selected
     },
     hasVerbal: function () {
-      return this.spellComponents.includes('Verbal')
+      return this.spell.components.includes('Verbal')
     },
     hasSomatic: function () {
-      return this.spellComponents.includes('Somatic')
+      return this.spell.components.includes('Somatic')
     },
     hasMaterial: function () {
-      return this.spellComponents.includes('Material')
+      return this.spell.components.includes('Material')
     },
     methods: {
       hasComponent (val) {
-        return this.spellComponents.includes(val)
+        return this.spell.components.includes(val)
       }
     }
   }

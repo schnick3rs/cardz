@@ -23,13 +23,14 @@ export default {
 <style scoped>
 .spell-level__background {
   background-color: rgba(0, 0, 0, 0.75);
+  display: table;
 }
 .spell-level__background--border {
-  height: 6mm;
-  width: 5mm;
+  height: 7mm;
+  width: 6mm;
   position: absolute;
   top: 0;
-  left: 3mm;
+  left: 2mm;
   border-bottom-right-radius: 2mm;
   border-bottom-left-radius: 2mm;
 }
@@ -49,12 +50,12 @@ export default {
 }
 
 .spell-level__text {
-  position: absolute;
   color: white;
-  top: 10%;
-  left: 0;
   font-weight: bold;
   width: 100%;
   text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  fint-size: 3mm;
 }
 </style>

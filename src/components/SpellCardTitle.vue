@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="card-header-title"><span>{{ title }}</span></div>
+    <div class="card-header-title"><span>{{ name }}</span></div>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'SpellCardTitle',
   props: {
-    title: { type: String, required: true }
+    name: { type: String, required: true }
   }
 }
 </script>
@@ -24,11 +24,11 @@ export default {
   width: 100%;
 }
 .card-header-title span{
-  font-size: 2.5mm;
+  font-size: 3.5mm;
   text-align: center;
   vertical-align: middle;
   display: table-cell;
   margin: 0mm;
-  line-height: 3.0mm;
+  line-height: 4.0mm;
 }
 </style>
