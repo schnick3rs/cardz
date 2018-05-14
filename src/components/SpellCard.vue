@@ -1,43 +1,14 @@
 <template>
   <div>
-    <div class="theme-config">
-      <div class="input">
-        <label for="school">School</label>
-        <select id="school" v-model="selected">
-          <option v-for="school in schools" v-bind:value="school.value" :key="school.value">
-            {{ school.text }}
-          </option>
-        </select>
-      </div>
-      <div class="input">
-        <label>Level</label>
-        <input v-model.number="spell.level" type="number" value="2" v-bind:min="0" v-bind:max="9"/>
-      </div>
-      <div class="input">
-        <label>Name</label>
-        <input v-model="spell.name" />
-      </div>
-      <div class="input">
-        <label>Spell Components</label>
-          <input
-            v-for="spellComponent in spellComponents"
-            v-bind:key="spellComponent.id"
-            v-bind:id="spellComponent"
-            v-bind:value="spellComponent"
-            type="checkbox"
-            v-model="spell.components" />
-        <span>{{ spell.components }}</span>
-        <div class="input">
-          <label>Name</label>
-          <input v-model="spell.materialText" />
-        </div>
-      </div>
-    </div>
     <div class="card card-dimensions--magic card-bg" v-bind:class="bgClass">
       <SpellCardTitle :name="spell.name"></SpellCardTitle>
       <SpellCardLevel :level="spell.level"></SpellCardLevel>
-      <SpellMeta></SpellMeta>
-      <SpellCardDescription></SpellCardDescription>
+      <div>
+        <spell-card-meta :label="'Casting Time'" :value="spell.meta.castingTime" ></spell-card-meta>
+        <spell-card-meta :label="'Duration'" :value="spell.meta.duration" ></spell-card-meta>
+        <spell-card-meta :label="'Range'" :value="spell.meta.range" ></spell-card-meta>
+      </div>
+      <SpellCardDescription :description="spell.description"></SpellCardDescription>
       <SpellCardComponents
         v-bind:has-verbal="hasVerbal"
         v-bind:has-somatic="hasSomatic"
@@ -53,24 +24,17 @@ import SpellCardComponents from './SpellCardComponents'
 import SpellCardDescription from './SpellCardDescription'
 import SpellCardLevel from './SpellCardLevel'
 import SpellCardTitle from './SpellCardTitle'
+import SpellCardMeta from "./SpellCardMeta";
 export default {
   name: 'SpellCard',
-  components: { SpellCardTitle, SpellCardDescription, SpellCardComponents, SpellCardLevel },
+  components: {SpellCardMeta, SpellCardTitle, SpellCardDescription, SpellCardComponents, SpellCardLevel },
+  props: {
+    spell: { type: Object, required: true }
+  },
   data () {
     return {
       selected: 'mesmer',
-      schools: [
-        { text: 'Warlock', value: 'mesmer' },
-        { text: 'Druid', value: 'druid' },
-        { text: 'paladin', value: 'paladin' }
-      ],
-      spellComponents: [ 'Verbal', 'Somatic', 'Material' ],
-      spell: {
-        name: 'Shadow Blade',
-        level: 2,
-        components: [ 'Verbal', 'Somatic' ],
-        materialText: 'The twisted fang of a deadly rose'
-      }
+      spellComponents: [ 'Verbal', 'Somatic', 'Material' ]
     }
   },
   computed: {
