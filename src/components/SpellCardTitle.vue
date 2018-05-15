@@ -24,11 +24,11 @@ export default {
   width: 100%;
 }
 .card-header-title span{
-  font-size: 3.5mm;
+  font-size: 4.5mm;
   text-align: center;
   vertical-align: middle;
   display: table-cell;
   margin: 0mm;
-  line-height: 4.0mm;
+  line-height: 5.0mm;
 }
 </style>

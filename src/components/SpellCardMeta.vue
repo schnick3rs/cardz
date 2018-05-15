@@ -20,7 +20,7 @@ export default {
   width: 50%;
   font-size: 2mm;
   overflow: hidden;
-  margin-bottom: 3mm;
+  margin-bottom: 2mm;
   box-shadow: 0px 5px 2mm 0mm #4c4c4c;
   max-width: fit-content;
 }
