@@ -17,9 +17,9 @@
       </span>
       <div>
         <spell-card-meta style="float: left;" v-if="spell.meta.castingTime" :label="'Casting Time'" :value="spell.meta.castingTime" ></spell-card-meta>
-        <spell-card-meta style="float: right;" v-if="spell.meta.duration" :label="'Duration'" :value="spell.meta.duration" pushRight></spell-card-meta>
-        <spell-card-meta style="clear: both; float: left;" v-if="spell.meta.range" :label="'Range'" :value="spell.meta.range" ></spell-card-meta>
-        <spell-card-meta style="float: right;" v-if="spell.meta.area" :label="'Area'" :value="spell.meta.area" ></spell-card-meta>
+        <spell-card-meta style="float: right;" pushRight v-if="spell.meta.duration" :label="'Duration'" :value="spell.meta.duration" ></spell-card-meta>
+        <spell-card-meta style="clear: both; float: left;" v-if="spell.meta.range" :label="'Range'" :value="spell.meta.range" showSquares></spell-card-meta>
+        <spell-card-meta style="float: right;" pushRight v-if="spell.meta.area" :label="'Area'" :value="spell.meta.area" ></spell-card-meta>
       </div>
       <spell-card-description style="clear: both;" :description="spell.description" />
       <spell-card-components
@@ -127,12 +127,12 @@ export default {
 }
 .spell-meta__ritual {
   position: absolute;
-  left: 23mm;
+  left: 24.5mm;
   top: 8mm;
 }
 .spell-meta__concentration {
   position: absolute;
-  right: 20mm;
+  right: 21.5mm;
   top: 8mm;
 }
 </style>

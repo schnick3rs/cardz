@@ -13,6 +13,11 @@ export default {
     label: { type: String },
     value: { type: String },
     pushRight: { type: Boolean }
+  },
+  computed: {
+    addSquares: function () {
+      return '';
+    }
   }
 }
 </script>
@@ -20,7 +25,8 @@ export default {
 <style scoped>
 .spell-meta {
   width: 50%;
-  font-size: 2mm;
+  font-size: 2.2mm;
+  line-height: 3.2mm;
   overflow: hidden;
   margin-bottom: 2mm;
   box-shadow: 0px 5px 2mm 0mm #4c4c4c;

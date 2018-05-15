@@ -23,13 +23,17 @@ export default {
   margin-top: 1mm;
 }
 .card-text-container .card-text-description {
-  font-size: 3mm;
-  margin: 1mm;
   display: inline-block;
+  font-size: 2.5mm;
+  margin: 1mm;
 }
 .card-text-description >>> p {
+  font-size: 2.5mm;
+  line-height: 3.5mm;
   text-align: justify;
   margin-top: 0;
-  line-height: 3.5mm;
+}
+.card-text-description >>> ul {
+  padding-left: 4mm;
 }
 </style>
