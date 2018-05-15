@@ -1,33 +1,47 @@
 <template>
   <div>
     <div class="card card-dimensions--magic card-bg" v-bind:class="bgClass">
-      <SpellCardTitle :name="spell.name"></SpellCardTitle>
-      <SpellCardLevel :level="spell.level"></SpellCardLevel>
+      <spell-card-title :name="spell.name"></spell-card-title>
+      <spell-card-level :level="spell.level"></spell-card-level>
+      <span v-if="spell.flags.includes('Ritual')" class="spell-meta__ritual">
+        <font-awesome-layers class="fa-2x">
+          <font-awesome-icon icon="square" :transform="{ rotate: 45 }" style="color: black;opacity:0.75;"/>
+          <font-awesome-icon icon="book" transform="shrink-9" style="color: white;" />
+        </font-awesome-layers>
+      </span>
+      <span v-if="spell.flags.includes('Concentration')" class="spell-meta__concentration">
+        <font-awesome-layers class="fa-2x">
+          <font-awesome-icon icon="square" :transform="{ rotate: 45 }" style="color: black;opacity:0.75;"/>
+          <font-awesome-layers-text value="C" transform="shrink-9" style="color: white;" />
+        </font-awesome-layers>
+      </span>
       <div>
-        <spell-card-meta :label="'Casting Time'" :value="spell.meta.castingTime" ></spell-card-meta>
-        <spell-card-meta :label="'Duration'" :value="spell.meta.duration" ></spell-card-meta>
-        <spell-card-meta :label="'Range'" :value="spell.meta.range" ></spell-card-meta>
+        <spell-card-meta style="float: left;" v-if="spell.meta.castingTime" :label="'Casting Time'" :value="spell.meta.castingTime" ></spell-card-meta>
+        <spell-card-meta style="float: right;" v-if="spell.meta.duration" :label="'Duration'" :value="spell.meta.duration" pushRight></spell-card-meta>
+        <spell-card-meta style="clear: both; float: left;" v-if="spell.meta.range" :label="'Range'" :value="spell.meta.range" ></spell-card-meta>
+        <spell-card-meta style="float: right;" v-if="spell.meta.area" :label="'Area'" :value="spell.meta.area" ></spell-card-meta>
       </div>
-      <SpellCardDescription :description="spell.description"></SpellCardDescription>
-      <SpellCardComponents
+      <spell-card-description style="clear: both;" :description="spell.description" />
+      <spell-card-components
         v-bind:has-verbal="hasVerbal"
         v-bind:has-somatic="hasSomatic"
         v-bind:has-material="hasMaterial"
         v-bind:material-text="spell.materialText"
-      ></SpellCardComponents>
+      ></spell-card-components>
     </div>
   </div>
 </template>
 
 <script>
+import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
 import SpellCardComponents from './SpellCardComponents'
 import SpellCardDescription from './SpellCardDescription'
 import SpellCardLevel from './SpellCardLevel'
 import SpellCardTitle from './SpellCardTitle'
-import SpellCardMeta from "./SpellCardMeta";
+import SpellCardMeta from './SpellCardMeta'
 export default {
   name: 'SpellCard',
-  components: {SpellCardMeta, SpellCardTitle, SpellCardDescription, SpellCardComponents, SpellCardLevel },
+  components: { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText, SpellCardMeta, SpellCardTitle, SpellCardDescription, SpellCardComponents, SpellCardLevel },
   props: {
     spell: { type: Object, required: true }
   },
@@ -110,5 +124,15 @@ export default {
 }
 .theme-config label:after{
   content: ":";
+}
+.spell-meta__ritual {
+  position: absolute;
+  left: 23mm;
+  top: 8mm;
+}
+.spell-meta__concentration {
+  position: absolute;
+  right: 20mm;
+  top: 8mm;
 }
 </style>

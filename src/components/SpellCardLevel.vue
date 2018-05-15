@@ -1,14 +1,17 @@
 <template>
   <div class="spell-level">
-    <div class="spell-level__background spell-level__background--border">
-      <span class="spell-level__text">{{ roman[level] }}</span>
-    </div>
+    <font-awesome-layers class="fa-4x">
+      <font-awesome-icon icon="bookmark" style="color: black;opacity:0.75;"/>
+      <font-awesome-layers-text :value="roman[level]" transform="shrink-9" style="color: white;" />
+    </font-awesome-layers>
   </div>
 </template>
 
 <script>
+import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
 export default {
   name: 'SpellCardLevel',
+  components: { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText},
   props: {
     level: { type: Number, required: true }
   },
@@ -21,6 +24,11 @@ export default {
 </script>
 
 <style scoped>
+.spell-level {
+  position: absolute;
+  top: -1.5mm;
+  left: 1mm;
+}
 .spell-level__background {
   background-color: rgba(0, 0, 0, 0.75);
   display: table;

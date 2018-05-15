@@ -1,7 +1,8 @@
 <template>
   <div class="spell-meta">
-    <div class="spell-meta__label"><span>{{ label }}</span></div>
+    <div v-if="!pushRight" class="spell-meta__label"><span>{{ label }}</span></div>
     <div class="spell-meta__value"><span>{{ value }}</span></div>
+    <div v-if="pushRight" class="spell-meta__label"><span>{{ label }}</span></div>
   </div>
 </template>
 
@@ -10,7 +11,8 @@ export default {
   name: 'SpellCardMeta',
   props: {
     label: { type: String },
-    value: { type: String }
+    value: { type: String },
+    pushRight: { type: Boolean }
   }
 }
 </script>
