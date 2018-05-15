@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     addSquares: function () {
-      return '';
+      return ''
     }
   }
 }

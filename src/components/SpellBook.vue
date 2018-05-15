@@ -1,18 +1,21 @@
 <template>
   <div class="spellbook">
-    <div v-for="spell in spellRepository" :key="spell.name" class="spellbock__spell-card">
+    <div v-for="spell in completeSpellRepository" :key="spell.name" class="spellbock__spell-card">
       <spell-card :spell="spell" ></spell-card>
     </div>
   </div>
 </template>
 
 <script>
-import SpellCard from './SpellCard'
-export default {
+  import SpellCard from './SpellCard'
+  import SpellsJson from '../assets/spell-repository.json'
+
+  export default {
   name: 'SpellBook',
   components: { SpellCard },
   data () {
     return {
+      spellDataJson: SpellsJson,
       spellBook: [],
       spellRepository: [
         {
@@ -67,6 +70,36 @@ export default {
           source: 'PHA'
         }
       ]
+    }
+  },
+  computed: {
+    completeSpellRepository: function () {
+      var migrate = []
+      for (var i = 0, len = this.spellDataJson.length; i < len; i++) {
+        var daSpell = this.spellDataJson[i]
+        var newSpell = {}
+
+        newSpell.name = daSpell.name
+        newSpell.level = daSpell.level.substr(0, 1)
+        if (newSpell.level === 'C') {newSpell.level = 0}
+        newSpell.flags = []
+        if (daSpell.ritual === 'yes') { newSpell.flags.push('Ritual') }
+        if (daSpell.concentration === 'yes') { newSpell.flags.push('Concentration') }
+        newSpell.description = daSpell.desc
+        newSpell.meta = {
+          castingTime: daSpell.casting_time,
+          duration: daSpell.duration,
+          range: daSpell.range
+        }
+        newSpell.components = []
+        if (daSpell.components.indexOf('V') >= 0) { newSpell.components.push('Verbal') }
+        if (daSpell.components.indexOf('S') >= 0) { newSpell.components.push('Somatic') }
+        if (daSpell.components.indexOf('M') >= 0) { newSpell.components.push('Material') }
+        if (daSpell.material) { newSpell.materialText = daSpell.material }
+
+        migrate.push(newSpell)
+      }
+      return migrate
     }
   }
 }

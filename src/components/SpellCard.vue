@@ -33,13 +33,14 @@
 </template>
 
 <script>
-import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
-import SpellCardComponents from './SpellCardComponents'
-import SpellCardDescription from './SpellCardDescription'
-import SpellCardLevel from './SpellCardLevel'
-import SpellCardTitle from './SpellCardTitle'
-import SpellCardMeta from './SpellCardMeta'
-export default {
+  import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
+  import SpellCardComponents from './SpellCardComponents'
+  import SpellCardDescription from './SpellCardDescription'
+  import SpellCardLevel from './SpellCardLevel'
+  import SpellCardTitle from './SpellCardTitle'
+  import SpellCardMeta from './SpellCardMeta'
+
+  export default {
   name: 'SpellCard',
   components: { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText, SpellCardMeta, SpellCardTitle, SpellCardDescription, SpellCardComponents, SpellCardLevel },
   props: {
@@ -63,11 +64,6 @@ export default {
     },
     hasMaterial: function () {
       return this.spell.components.includes('Material')
-    },
-    methods: {
-      hasComponent (val) {
-        return this.spell.components.includes(val)
-      }
     }
   }
 }
