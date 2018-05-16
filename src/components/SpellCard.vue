@@ -79,7 +79,6 @@
   font-weight: 400;
 //line-height: 20px;
 }
-
 .card {
   border-color: red;
   border: 0.3mm;
@@ -88,7 +87,6 @@
   overflow: hidden;
   position: relative;
 }
-
 .card-dimensions--magic {
   height: 88mm;
   width: 63mm;
@@ -110,7 +108,6 @@
 .card-bg-paladin{
   background-image: url("https://s-media-cache-ak0.pinimg.com/736x/4e/c1/9b/4ec19b9d9827544f0ece01221e817138.jpg");
 }
-
 .theme-config {
   border-color: lightgrey;
   border: 1px;

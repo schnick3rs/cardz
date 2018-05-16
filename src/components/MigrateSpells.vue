@@ -38,8 +38,8 @@
         newSpell.description = daSpell.desc
         newSpell.meta = {
           castingTime: daSpell.casting_time,
-          duration: daSpell.duration,
-          range: daSpell.range
+          duration: daSpell.duration.replace('up to ', ''),
+          range: daSpell.range.replace(' feet', '\'')
         }
         newSpell.components = []
         if (daSpell.components.indexOf('V') >= 0) {
