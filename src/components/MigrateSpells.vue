@@ -6,7 +6,6 @@
 
 <script>
   import SpellsJson from '../assets/spell-repository.json'
-
   export default {
   name: 'MigrateSpells',
   data () {

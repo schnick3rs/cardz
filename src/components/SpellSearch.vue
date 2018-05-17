@@ -21,6 +21,7 @@
       <section class="search-container__collumn active-spell-book">
         <h3>Spellbook</h3>
         <input v-bind:value="spellHash" />
+        <router-link :to="{ name: 'spellPrinter', params: { spellHash: spellHash } }">print</router-link>
         <ul>
           <li v-for="spell in activeSpellBook" :key="spell.id">{{ spell.name }}</li>
         </ul>
@@ -32,7 +33,6 @@
 <script>
   import SpellRepository from '../assets/cardz-spell-repository.json'
   import SpellCard from './SpellCard'
-
   export default {
   name: 'SpellSearch',
   components: {SpellCard},
@@ -41,7 +41,8 @@
       searchQuery: '',
       selectedSpell: undefined,
       activeSpellBook: [],
-      spellRepository: SpellRepository
+      spellRepository: SpellRepository,
+      filter: {}
     }
   },
   computed: {

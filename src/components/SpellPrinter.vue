@@ -9,7 +9,6 @@
 <script>
   import SpellCard from './SpellCard'
   import SpellRepository from '../assets/cardz-spell-repository.json'
-
   export default {
   name: 'SpellPrinter',
   components: {SpellCard},
