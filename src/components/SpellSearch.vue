@@ -14,6 +14,10 @@
       <select v-model="selectedSource">
         <option v-for="(value, key) in sourceOptions" :key="key" v-bind:value="key" >{{ value }}</option>
       </select>
+      <div>
+        <input v-bind:value="spellHash"/>
+        <router-link :to="{ name: 'spellPrinter', params: { spellHash: spellHash } }">print</router-link>
+      </div>
     </section>
     <section class="search-container">
       <section class="search-container__collumn search-results">
@@ -31,16 +35,22 @@
         </div>
 
       </section>
-      <section class="search-container__collumn spell-preview">
-        <spell-card v-if="selectedSpell" :spell="selectedSpell" :theme="selectedClass"/>
-      </section>
       <section class="search-container__collumn active-spell-book">
         <h3>Spellbook</h3>
-        <input v-bind:value="spellHash" />
-        <router-link :to="{ name: 'spellPrinter', params: { spellHash: spellHash } }">print</router-link>
-        <ul>
-          <li v-for="spell in activeSpellBook" :key="spell.id">{{ spell.name }}</li>
-        </ul>
+        <div class="spell-teaser-table">
+          <div class="spell-teaser-item"
+               v-for="spellz in activeSpellBook"
+               :key="spellz.name"
+               @mouseover="preview(spellz)"
+          >
+            <span class="spell-teaser-item__icon spell-teaser-item__icon--info">{{ spellz.level }}</span>
+            <span class="spell-teaser-item__name" @click="preview(undefined)">{{ spellz.name }}</span>
+            <span class="spell-teaser-item__icon spell-teaser-item__icon--remove" @click="forgetSpell(spellz)">-</span>
+          </div>
+        </div>
+      </section>
+      <section class="search-container__collumn spell-preview">
+        <spell-card v-if="selectedSpell" :spell="selectedSpell" :theme="selectedClass[0]"/>
       </section>
     </section>
   </div>
@@ -77,7 +87,12 @@
         paladin: 'Paladin'
       },
       orderOptions: {level: 'by level', name: "by name", description: "by text"},
-      sourceOptions: { phb: 'Players Handbook'},
+      sourceOptions: {
+        phb: 'Players Handbook',
+        ee: 'Elemental Evil Player\'s Companion',
+        scag: 'Sword Coast Adventure Guide',
+        xge: 'Xanathar\'s guide to everything'
+      },
       levelOptions: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
       filter: {}
     }
@@ -142,6 +157,10 @@
       if (duplicatedSpells.length === 0) {
         this.activeSpellBook.push(spellToLearn)
       }
+    },
+    forgetSpell: function (spellToforget, event) {
+      let i = this.activeSpellBook.map(item => item.id).indexOf(spellToforget.id) // find index of your object
+      this.activeSpellBook.splice(i, 1) // remove it from array
     }
   }
 }
@@ -185,8 +204,21 @@
   border-color: forestgreen;
   float: right;
 }
+
+.spell-teaser-item__icon--remove {
+  content: '-';
+  color: indianred;
+  background-color: white;
+  border-color: indianred;
+  float: right;
+}
+
+.spell-teaser-item__icon--remove:hover {
+  color: white;
+  background-color: indianred;
+  cursor: pointer;
+}
 .spell-teaser-item__icon--add:hover {
-  content: '+';
   color: white;
   background-color: forestgreen;
   cursor: pointer;
