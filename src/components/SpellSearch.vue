@@ -29,7 +29,7 @@
 
       </section>
       <section class="search-container__collumn spell-preview">
-        <spell-card v-if="selectedSpell" :spell="selectedSpell"/>
+        <spell-card v-if="selectedSpell" :spell="selectedSpell" :theme="selectedClass"/>
       </section>
       <section class="search-container__collumn active-spell-book">
         <h3>Spellbook</h3>
@@ -54,12 +54,19 @@
     return {
       searchQuery: '',
       selectedClass: '',
-      selectedOrder: 'levelAsc',
-      selectedSource: '',
+      selectedOrder: 'level',
+      selectedSource: 'phb',
       selectedSpell: undefined,
       activeSpellBook: [],
       spellRepository: SpellRepository,
-      clazzes: { druid: 'Druid', wizard: 'Wizard', sorcerer: 'Sorcerer', warlock: 'Warlock', ranger: 'Ranger', paladin: 'Paladin' },
+      clazzes: {
+        druid: 'Druid',
+        wizard: 'Wizard',
+        sorcerer: 'Sorcerer',
+        warlock: 'Warlock',
+        ranger: 'Ranger',
+        paladin: 'Paladin'
+      },
       orderOptions: { level: 'by level', name: "by name" },
       sourceOptions: { phb: 'Players Handbook'},
       filter: {}

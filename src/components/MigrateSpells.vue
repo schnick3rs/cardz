@@ -53,6 +53,7 @@
         if (daSpell.material) {
           newSpell.materialText = daSpell.material
         }
+        newSpell.descriptionOvercast = daSpell.higher_level
 
         newSpell.class = daSpell.class
         newSpell.source = daSpell.page

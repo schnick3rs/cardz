@@ -21,7 +21,8 @@
         <spell-card-meta style="clear: both; float: left;" v-if="spell.meta.range" :label="'Range'" :value="spell.meta.range" showSquares></spell-card-meta>
         <spell-card-meta style="float: right;" pushRight v-if="spell.meta.area" :label="'Area'" :value="spell.meta.area" ></spell-card-meta>
       </div>
-      <spell-card-description style="clear: both;" :description="spell.description" />
+      <spell-card-description style="clear: both;" :description="spell.description"
+                              :overcast="spell.descriptionOvercast"/>
       <spell-card-components
         v-bind:has-verbal="hasVerbal"
         v-bind:has-somatic="hasSomatic"
@@ -39,22 +40,21 @@
   import SpellCardLevel from './SpellCardLevel'
   import SpellCardTitle from './SpellCardTitle'
   import SpellCardMeta from './SpellCardMeta'
-
   export default {
   name: 'SpellCard',
   components: { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText, SpellCardMeta, SpellCardTitle, SpellCardDescription, SpellCardComponents, SpellCardLevel },
   props: {
-    spell: { type: Object, required: true }
+    spell: {type: Object, required: true},
+    theme: {type: String, required: false, default: 'mesmer'}
   },
   data () {
     return {
-      selected: 'mesmer',
       spellComponents: [ 'Verbal', 'Somatic', 'Material' ]
     }
   },
   computed: {
     bgClass: function () {
-      return 'card-bg-' + this.selected
+      return 'card-bg-' + this.theme
     },
     hasVerbal: function () {
       return this.spell.components.includes('Verbal')
@@ -99,14 +99,28 @@
 .card-bg-mesmer {
   background-image: url('https://i.pinimg.com/originals/f9/88/5d/f9885d08f0e3810dcf4b6434b28a1fa5.jpg');
 }
+
+.card-bg-ranger {
+  background-image: url('https://ih1.redbubble.net/image.431718827.3332/flat,800x800,070,f.jpg');
+/ / background-image: url('https://guildwars2.staticwars.com/wp-content/themes/guildwars2.com-live/img/professions/list-ranger.d28c6467.jpg');
+}
 .card-bg-druid{
   background-image: url("https://wiki.guildwars2.com/images/thumb/8/8c/Spec_image_Druid.jpg/350px-Spec_image_Druid.jpg");
+  background-size: auto;
 }
 .card-bg-sorcerer{
-  background-image: url("https://wiki.guildwars2.com/images/thumb/5/5e/Elementalist_04_concept_art.png/250px-Elementalist_04_concept_art.png");
+/ / background-image: url("https://wiki.guildwars2.com/images/thumb/5/5e/Elementalist_04_concept_art.png/250px-Elementalist_04_concept_art.png");
+/ / background-image: url("https://2static.fjcdn.com/pictures/So_a5d900_5658368.jpg");
+  background-image: url("http://4.bp.blogspot.com/-ujlYUMbjqAw/UVJIpzYIf0I/AAAAAAAAA0Q/GQIKfHumDgY/s1600/Liliana+Vess+full.jpg");
 }
 .card-bg-paladin{
-  background-image: url("https://s-media-cache-ak0.pinimg.com/736x/4e/c1/9b/4ec19b9d9827544f0ece01221e817138.jpg");
+/ / background-image: url("https://s-media-cache-ak0.pinimg.com/736x/4e/c1/9b/4ec19b9d9827544f0ece01221e817138.jpg");
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4nPmA7xL_zWtgjKGrQSserWbG_OyayDnoryo7ZLuGGZwB0jZw");
+}
+
+.card-bg-warrior {
+/ / background-image: url("https://wiki.guildwars2.com/images/thumb/5/56/Warrior_04_concept_art.png/350px-Warrior_04_concept_art.png");
+  background-image: url("https://i.pinimg.com/originals/95/2b/d9/952bd9883e79a9bc7a0fe999c1c89541.jpg");
 }
 .theme-config {
   border-color: lightgrey;

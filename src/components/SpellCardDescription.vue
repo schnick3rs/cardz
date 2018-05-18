@@ -1,7 +1,7 @@
 <template>
   <div style="padding-top: 0.5mm;">
     <div class="card-text-container">
-      <div class="card-text-description" v-html="description"></div>
+      <div class="card-text-description" v-html="mergedDescription"></div>
     </div>
   </div>
 </template>
@@ -10,7 +10,13 @@
 export default {
   name: 'SpellCardDescription',
   props: {
-    description: { type: String }
+    description: {type: String},
+    overcast: {type: String}
+  },
+  computed: {
+    mergedDescription: function () {
+      return this.description;
+    }
   }
 }
 </script>
