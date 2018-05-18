@@ -2,8 +2,11 @@
   <div>
     <section class="search-box">
       <input v-model="searchQuery" placeholder="Enter spell name"/>
-      <select v-model="selectedClass">
+      <select v-model="selectedClass" multiple>
         <option v-for="(value, key) in clazzes" :key="key" v-bind:value="key" >{{ value }}</option>
+      </select>
+      <select v-model="selectedLevel" multiple>
+        <option v-for="(value, key) in levelOptions" :key="key" v-bind:value="key">{{ value }}</option>
       </select>
       <select v-model="selectedOrder">
         <option v-for="(value, key) in orderOptions" :key="key" v-bind:value="key" >{{ value }}</option>
@@ -53,12 +56,18 @@
   data () {
     return {
       searchQuery: '',
-      selectedClass: '',
+      selectedClass: [],
+      selectedLevel: [],
       selectedOrder: 'level',
       selectedSource: 'phb',
       selectedSpell: undefined,
       activeSpellBook: [],
       spellRepository: SpellRepository,
+      fields: [
+        {name: 'level', label: 'Lvl'},
+        {name: 'name', label: 'Name'},
+        {name: 'actions', label: 'Actions'}
+      ],
       clazzes: {
         druid: 'Druid',
         wizard: 'Wizard',
@@ -69,13 +78,13 @@
       },
       orderOptions: {level: 'by level', name: "by name", description: "by text"},
       sourceOptions: { phb: 'Players Handbook'},
+      levelOptions: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
       filter: {}
     }
   },
   computed: {
     searchResults: function () {
       var query = this.searchQuery
-      var clazz = this.selectedClass
       var source = this.selectedSource
       var searchResults = this.spellRepository
 
@@ -84,10 +93,16 @@
           return item.source.toLocaleLowerCase().indexOf(source.toLocaleLowerCase()) >= 0
         })
       }
-
-      if (this.selectedClass.length > 0) {
+      var clazz = this.selectedClass
+      if (clazz.length > 0) {
         searchResults = searchResults.filter(function (item) {
-          return item.class.toLocaleLowerCase().indexOf(clazz.toLocaleLowerCase()) >= 0
+          return clazz.some(v => item.class.toLocaleLowerCase().indexOf(v.toLocaleLowerCase()) >= 0)
+        })
+      }
+      var level = this.selectedLevel
+      if (level.length > 0) {
+        searchResults = searchResults.filter(function (item) {
+          return level.includes(item.level)
         })
       }
 
@@ -99,19 +114,11 @@
 
       var comperatorString = this.selectedOrder
       if (this.selectedOrder.length > 0){
-        if (this.selectedOrder.indexOf('name')) {
-          searchResults.sort(function (a, b) {
-            if (a[comperatorString].length > b[comperatorString].length) return -1
-            if (a[comperatorString].length < b[comperatorString].length) return 1
-            return 0
-          })
-        } else {
           searchResults.sort(function (a, b) {
             if (a[comperatorString] < b[comperatorString]) return -1
             if (a[comperatorString] > b[comperatorString]) return 1
             return 0
           })
-        }
       }
 
       return searchResults
@@ -186,5 +193,21 @@
 }
 .spell-teaser-item__icon--info {
   background-color: dodgerblue;
+}
+
+table {
+  table-layout: auto;
+}
+
+tr {
+  display: table-row;
+  border-bottom: 1px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #4c4c4c;
+}
+
+tr:nth-child(even) {
+  background-color: lightgrey;
 }
 </style>
