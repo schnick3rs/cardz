@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card card-dimensions--magic card-bg" v-bind:class="bgClass">
+    <div class="card card-dimensions--magic card-bg" v-bind:class="bgClass" v-bind:style="customStyle">
       <spell-card-title :name="spell.name"></spell-card-title>
       <spell-card-level :level="spell.level"></spell-card-level>
       <span v-if="spell.flags.includes('Ritual')" class="spell-meta__ritual">
@@ -45,7 +45,8 @@
   components: { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText, SpellCardMeta, SpellCardTitle, SpellCardDescription, SpellCardComponents, SpellCardLevel },
   props: {
     spell: {type: Object, required: true},
-    theme: {type: String, required: false, default: 'mesmer'}
+    theme: {type: String, required: false, default: 'mesmer'},
+    customTheme: {type: String, default: ''}
   },
   data () {
     return {
@@ -53,6 +54,12 @@
     }
   },
   computed: {
+    customStyle: function () {
+      if (this.customTheme.length > 0) {
+        return 'background-image: url("' + this.customTheme + '")'
+      }
+      return ''
+    },
     bgClass: function () {
       return 'card-bg-' + this.theme
     },

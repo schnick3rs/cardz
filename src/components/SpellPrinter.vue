@@ -4,9 +4,10 @@
       <select v-model="selectedTheme">
         <option v-for="(value, key) in themeOptions" :key="key" v-bind:value="key">{{ value }}</option>
       </select>
+      <input v-model="customTheme"/>
     </div>
     <div v-for="spell in spellBook" :key="spell.name" class="spellbock__spell-card">
-      <spell-card :spell="spell" :theme="selectedTheme"></spell-card>
+      <spell-card :spell="spell" :theme="selectedTheme" :customTheme="customTheme"></spell-card>
     </div>
   </div>
 </template>
@@ -23,6 +24,7 @@
   data () {
     return {
       selectedTheme: undefined,
+      customTheme: '',
       themeOptions: {
         druid: 'Druid',
         wizard: 'Wizard',
