@@ -32,6 +32,7 @@ export default {
   line-height: 3.5mm;
   text-align: justify;
   margin-top: 0;
+  margin-bottom: 1mm;
 }
 .card-text-description >>> ul {
   padding-left: 4mm;

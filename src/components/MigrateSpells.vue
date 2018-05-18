@@ -1,6 +1,6 @@
 <template>
   <div>
-    <textarea v-model="migratedSpells"></textarea>
+    <textarea v-model="migratedSpells" cols="100" rows="20"></textarea>
   </div>
 </template>
 
@@ -54,6 +54,9 @@
           newSpell.materialText = daSpell.material
         }
 
+        newSpell.class = daSpell.class
+        newSpell.source = daSpell.page
+
         var id = window.btoa(i)
         newSpell.id = id
 
@@ -66,5 +69,4 @@
 </script>
 
 <style scoped>
-
 </style>

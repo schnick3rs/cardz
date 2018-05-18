@@ -1,5 +1,5 @@
 <template>
-  <div class="spellbook">
+  <div class="page spellbook">
     <div v-for="spell in spellBook" :key="spell.name" class="spellbock__spell-card">
       <spell-card :spell="spell" ></spell-card>
     </div>
