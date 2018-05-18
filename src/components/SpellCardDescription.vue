@@ -1,7 +1,8 @@
 <template>
   <div style="padding-top: 0.5mm;">
     <div class="card-text-container">
-      <div class="card-text-description" v-html="mergedDescription"></div>
+      <div class="card-text-description" v-html="description"></div>
+      <div class="card-text-description" v-if="overcast" v-html="overcast"></div>
     </div>
   </div>
 </template>
@@ -12,11 +13,6 @@ export default {
   props: {
     description: {type: String},
     overcast: {type: String}
-  },
-  computed: {
-    mergedDescription: function () {
-      return this.description;
-    }
   }
 }
 </script>
@@ -38,9 +34,11 @@ export default {
   line-height: 3.5mm;
   text-align: justify;
   margin-top: 0;
-  margin-bottom: 1mm;
+  margin-bottom: 0.5mm;
 }
 .card-text-description >>> ul {
-  padding-left: 4mm;
+  padding-left: 3mm;
+  margin: 0;
+  margin-bottom: 0.5mm;
 }
 </style>

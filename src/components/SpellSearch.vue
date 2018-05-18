@@ -22,7 +22,7 @@
             @mouseover="preview(spellz)"
           >
             <span class="spell-teaser-item__icon spell-teaser-item__icon--info" >{{ spellz.level }}</span>
-            <span class="spell-teaser-item__name">{{ spellz.name }}</span>
+            <span class="spell-teaser-item__name" @click="preview(undefined)">{{ spellz.name }}</span>
             <span class="spell-teaser-item__icon spell-teaser-item__icon--add" @click="learnSpell(spellz)" >+</span>
           </div>
         </div>
@@ -67,7 +67,7 @@
         ranger: 'Ranger',
         paladin: 'Paladin'
       },
-      orderOptions: { level: 'by level', name: "by name" },
+      orderOptions: {level: 'by level', name: "by name", description: "by text"},
       sourceOptions: { phb: 'Players Handbook'},
       filter: {}
     }
@@ -99,11 +99,19 @@
 
       var comperatorString = this.selectedOrder
       if (this.selectedOrder.length > 0){
-        searchResults.sort(function(a, b) {
-          if (a[comperatorString] < b[comperatorString]) return -1
-          if (a[comperatorString] > b[comperatorString]) return 1
-          return 0
-        })
+        if (this.selectedOrder.indexOf('name')) {
+          searchResults.sort(function (a, b) {
+            if (a[comperatorString].length > b[comperatorString].length) return -1
+            if (a[comperatorString].length < b[comperatorString].length) return 1
+            return 0
+          })
+        } else {
+          searchResults.sort(function (a, b) {
+            if (a[comperatorString] < b[comperatorString]) return -1
+            if (a[comperatorString] > b[comperatorString]) return 1
+            return 0
+          })
+        }
       }
 
       return searchResults
@@ -150,7 +158,6 @@
   border-radius: 5px;
   padding: 4px 8px;
   margin-bottom: 2px;
-
 }
 .spell-teaser-item__icon {
   color: white;
