@@ -21,7 +21,8 @@
     </section>
     <section class="search-container">
       <section class="search-container__collumn search-results">
-        <h3>Search results:</h3>
+        <h3>Search results: <span class="spell-teaser-item__icon spell-teaser-item__icon--add"
+                                  @click="learnAllFiltered()">+</span></h3>
         <div class="spell-teaser-table">
           <div class="spell-teaser-item"
             v-for="spellz in searchResults"
@@ -111,7 +112,7 @@
       var clazz = this.selectedClass
       if (clazz.length > 0) {
         searchResults = searchResults.filter(function (item) {
-          return clazz.some(v => item.class.toLocaleLowerCase().indexOf(v.toLocaleLowerCase()) >= 0)
+          return clazz.some(v => item.class.join().toLowerCase().indexOf(v) >= 0)
         })
       }
       var level = this.selectedLevel
@@ -161,6 +162,9 @@
     forgetSpell: function (spellToforget, event) {
       let i = this.activeSpellBook.map(item => item.id).indexOf(spellToforget.id) // find index of your object
       this.activeSpellBook.splice(i, 1) // remove it from array
+    },
+    learnAllFiltered: function () {
+      this.searchResults.forEach(v => this.learnSpell(v))
     }
   }
 }
