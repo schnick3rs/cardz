@@ -6,11 +6,13 @@
 
 <script>
   import SpellsJson from '../assets/spell-repository.json'
+  import SpellsModJson from '../assets/cardz-spell-mod-repository.json'
   export default {
   name: 'MigrateSpells',
   data () {
     return {
-      spellDataJson: SpellsJson
+      spellDataJson: SpellsJson,
+      spellModData: SpellsModJson
     }
   },
   computed: {
@@ -19,6 +21,8 @@
       for (var i = 0, len = this.spellDataJson.length; i < len; i++) {
         var daSpell = this.spellDataJson[i]
         var newSpell = {}
+        var id = window.btoa(i)
+        newSpell.id = id
 
         newSpell.name = daSpell.name
         newSpell.level = daSpell.level.substr(0, 1)
@@ -37,7 +41,7 @@
         newSpell.description = daSpell.desc
         newSpell.meta = {
           castingTime: daSpell.casting_time,
-          duration: daSpell.duration.replace('up to ', ''),
+          duration: daSpell.duration.replace('Up to ', ''),
           range: daSpell.range.replace(' feet', '\'')
         }
         newSpell.components = []
@@ -54,12 +58,12 @@
           newSpell.materialText = daSpell.material
         }
         newSpell.descriptionOvercast = daSpell.higher_level
-
-        newSpell.class = daSpell.class
+        newSpell.class = daSpell.class.split(',').map(v => v.trim())
         newSpell.source = daSpell.page
-
-        var id = window.btoa(i)
-        newSpell.id = id
+        var spellMod = this.spellModData.filter(v => v.name == newSpell.name)
+        if (spellMod.length > 0) {
+          newSpell = Object.assign(newSpell, spellMod[0])
+        }
 
         migrate.push(newSpell)
       }

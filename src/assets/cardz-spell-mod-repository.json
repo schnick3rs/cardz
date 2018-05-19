@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Animal Messenger",
+    "description": "<p>Choose a Tiny beast (e.g. a squirrel or a bat) you can see within range and:<p/><ul><li>specify a once visited location,</li><li>a recipient who matches a general description (e.g. “a man or woman dressed in the uniform of the town guard”),</li><li>speak a 25 world long message,</li></ul><p>The beast travels (50 flying, 24 otherwise miles/day) for the duration of the spell to that location and replicates the casters voice for a creature describing the message.</p>"
+  },
+  {
+    "name": "Druidcraft",
+    "description": "<p>Whispering to the spirits of nature, you create one of the following effects within 'range':</p><ul><li>You create a tiny, harmless sensory effect that predicts what the weather will be at your location for the next 24 hours. The effect might manifest as a golden orb for clear skies, a cloud for rain, falling snowflakes for snow, and so on. This effect persists for 1 round.</li><li>You instantly make a flower bloom, a seed pod open, or a leaf bud bloom.</li><li>You create an instantaneous, harmless sensory effect, such as falling leaves, a puff of wind, the sound of a small animal, or the faint order of skunk. The effect must fit in a 5-foot cube.</li><li>You instantly light or snuff out a candle, a torch, or a small campfire.</li></ul>"
+  },
+  {
+    "name": "Enhance Ability",
+    "description": "<p>You touch a creature and bestow upon it a magical enhancement. Choose one of the following effects; the target gains that effect until the spell ends.</p><p><b>Bear’s Endurance.</b> It also gains 2d6 temporary hit points, which are lost when the spell ends. </p><p><b>Bull’s Strength.</b> The targets carrying capacity doubles.</p><p><b>Cat’s Grace.</b> It also doesn’t take damage from falling 20 feet or less if it isn’t incapacitated.</p><p><b>Eagle’s Charm.</b></p><p><b>Fox’s Cunning.</b></p><p><b>Owl’s Wisdom.</b></p>"
+  },
+  {
+    "name": "Conjure Animals",
+    "description": "<p>You summon <i>fey</i> spirits that take the form of <i>beasts</i> and appear in unoccupied spaces that you can see within range. Summon one or more beasts with a combined challenge rating of 2. Each single beast must have the same challenge rating. Each beast disappears when it drops to 0 hit points or when the spell ends.</p><p>The summoned creatures are friendly to you and your companions. Roll initiative for the summoned creatures as a group, which has its own turns. They obey any verbal commands that you issue to them (no action required by you). If you don’t issue any commands to them, they defend themselves from hostile creatures, but otherwise take no actions.</p>"
+  }
+]
