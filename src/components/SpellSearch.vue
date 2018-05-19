@@ -21,8 +21,12 @@
     </section>
     <section class="search-container">
       <section class="search-container__collumn search-results">
-        <h3>Search results: <span class="spell-teaser-item__icon spell-teaser-item__icon--add"
-                                  @click="learnAllFiltered()">+</span></h3>
+        <h3>Search results:</h3>
+        <div style="margin-bottom: 10px;">
+          <span>{{ searchResults.length }} spells found</span>
+          <span class="spell-teaser-item__icon spell-teaser-item__icon--add spell-teaser-item__icon--all"
+                @click="learnAllFiltered()">add all</span>
+        </div>
         <div class="spell-teaser-table">
           <div class="spell-teaser-item"
             v-for="spellz in searchResults"
@@ -34,10 +38,14 @@
             <span class="spell-teaser-item__icon spell-teaser-item__icon--add" @click="learnSpell(spellz)" >+</span>
           </div>
         </div>
-
       </section>
       <section class="search-container__collumn active-spell-book">
         <h3>Spellbook</h3>
+        <div style="margin-bottom: 10px;">
+          <span>contains {{ activeSpellBook.length }} spells</span>
+          <span class="spell-teaser-item__icon spell-teaser-item__icon--remove spell-teaser-item__icon--all"
+                @click="activeSpellBook = []">erase memory</span>
+        </div>
         <div class="spell-teaser-table">
           <div class="spell-teaser-item"
                v-for="spellz in activeSpellBook"
@@ -209,6 +217,9 @@
   float: right;
 }
 
+.spell-teaser-item__icon--all {
+  width: unset;
+}
 .spell-teaser-item__icon--remove {
   content: '-';
   color: indianred;
