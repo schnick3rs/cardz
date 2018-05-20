@@ -7,14 +7,16 @@
 </template>
 
 <script>
-  import CardRepository from '../assets/projects/rogueTrader/rouge-trader-battle-opportunity-repository'
+  import FutureCardRepository from '../assets/projects/rogueTrader/rouge-trader-battle-opportunity-repository'
+  import DndCardRepository from '../assets/projects/dndAlliesAndMonsters/dnd-allies-and-monsters-repository'
   import SpaceCard from "./SpaceCard/SpaceCard";
   export default {
     name: "ProjectPrinter",
     components: {SpaceCard},
     data() {
       return {
-        cardRepository: CardRepository,
+        repositories: [DndCardRepository, FutureCardRepository],
+        cardRepository: DndCardRepository,
       }
     }
   }

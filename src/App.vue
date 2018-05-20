@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <NavigationSection></NavigationSection>
-    <router-view/>
+    <NavigationSection class="sidebar"></NavigationSection>
+    <router-view class="main"/>
   </div>
 </template>
 
@@ -14,6 +14,19 @@
 </script>
 
 <style>
+  @media print {
+    .main {
+      margin: 0 !important;
+    }
+  }
+
+  .sidebar {
+    width: 150px;
+  }
+
+  .main {
+    margin-left: 150px;
+  }
 * {
   -webkit-print-color-adjust: exact;
 }

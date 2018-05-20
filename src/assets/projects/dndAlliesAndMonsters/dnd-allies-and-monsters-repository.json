@@ -1,0 +1,23 @@
+[
+  {
+    "_flavour": "green",
+    "_theme": "https://i.pinimg.com/originals/14/b8/74/14b874e4f9925eee6cafc266f18257fb.jpg",
+    "title": "Niss",
+    "subtitle": "Gnome Sorcerer",
+    "description": "<p><i>&quot;I can walk on my own... but I would not pass on a ride.&quot;</i></p><p>May assist you on an <i>Attack Roll</i> by adding <b>1d4</b> to that roll.</p>"
+  },
+  {
+    "_flavour": "green",
+    "_theme": "https://i.pinimg.com/originals/fc/21/96/fc2196bee5d85fd82801458e017782ff.jpg",
+    "title": "Selina",
+    "subtitle": "Human Guardian",
+    "description": "<p><i>&quot;I can walk on my own... but I would not pass on a ride.&quot;</i></p><p>May bolster your <i>Armor Class</i> against an attack by adding <b>1d6</b> to that roll.</p>"
+  },
+  {
+    "_flavour": "red",
+    "_theme": "https://i.pinimg.com/originals/b6/7b/7a/b67b7a7cfb69c9f2a5381129144349b0.jpg",
+    "title": "mysterious priest",
+    "subtitle": "Antagonist",
+    "description": "<p><i>Be it an innate and cruel proficiency, the results of a pact with a rotten entity or a plane traveling daemon, this mysterious priest appears as a humble old man. But beneath that mask lingers a dark and sadistic mind.</i></p>"
+  }
+]
