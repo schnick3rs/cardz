@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="card card-dimensions--magic card-bg" v-bind:style="customStyle">
-      <SpaceCardTitle :title="card.title" :subtitle="card.subtitle"></SpaceCardTitle>
-      <SpaceCardDescription :description="card.description"></SpaceCardDescription>
+      <SpaceCardTitle :title="card.title" :subtitle="card.subtitle" v-bind:flavour="flavour"></SpaceCardTitle>
+      <SpaceCardDescription :description="card.description" v-bind:flavour="flavour"></SpaceCardDescription>
     </div>
   </div>
 </template>
@@ -18,10 +18,14 @@
     },
     computed: {
       customStyle: function () {
-        if (this.card.customTheme && this.card.customTheme.length > 0) {
-          return 'background-image: url("' + this.card.customTheme + '")'
+        let theme = this.card['_customTheme']
+        if (theme && theme.length > 0) {
+          return 'background-image: url("' + theme + '")'
         }
         return ''
+      },
+      flavour: function () {
+        return this.card['_flavour']
       }
     }
   }

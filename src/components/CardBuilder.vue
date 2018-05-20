@@ -2,11 +2,24 @@
   <div>
     <section class="card-container card-input-container col-6">
       <div class="input-field">
-        <label class="input-field__label" for="cardBackground">Bustom background Image</label>
-        <input class="input-field__field" id="cardBackground" v-model="card.customTheme"/>
-        <ul>
-
-        </ul>
+        <label class="input-field__label" for="cardBackground">Custom background Image</label>
+        <input class="input-field__field" id="cardBackground" v-model="card._customTheme"/>
+      </div>
+      <div class="input-field input-field--radio">
+        <label class="input-field__label">Color Flavour</label>
+        <label for="flavour-red" style="float:left">red:</label>
+        <input class="input-field__field input-field__field--radio" id="flavour-red" type="radio" value="red"
+               v-model="card._flavour"/>
+        <label for="flavour-green" style="float:left">green:</label>
+        <input class="input-field__field input-field__field--radio" id="flavour-green" type="radio" value="green"
+               v-model="card._flavour"/>
+        <label for="flavour-blue" style="float:left">blue:</label>
+        <input class="input-field__field input-field__field--radio" id="flavour-blue" type="radio" value="blue"
+               v-model="card._flavour"/>
+        <label for="flavour-yellow" style="float:left">yellow:</label>
+        <input class="input-field__field input-field__field--radio" id="flavour-yellow" type="radio" value="yellow"
+               v-model="card._flavour"/>
+        <span>Select a color flavour...</span>
       </div>
       <div class="input-field">
         <label class="input-field__label" for="cardTitle">Title</label>
@@ -69,6 +82,13 @@
     width: 100%;
   }
 
+  .input-field--radio span {
+    display: block;
+    clear: both;
+    font-style: italic;
+    font-size: xx-small;
+  }
+
   .input-field__label {
     display: block;
     font-size: small;
@@ -84,5 +104,9 @@
     resize: vertical;
   }
 
+  .input-field__field--radio {
+    width: unset;
+    float: left;
+  }
 
 </style>
