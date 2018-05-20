@@ -13,8 +13,8 @@ export default {
     return {
       navItems: [
         { text: 'Home', page: { name: 'home' } },
-        { text: 'Search', page: { name: 'spellSearch'} },
-        { text: 'Migrate', page: { name: 'migrateSpells'} },
+        {text: 'Search', page: {name: 'spellSearch'}},
+        {text: 'Migrate', page: {name: 'migrateSpells'}}
       ]
     }
   }

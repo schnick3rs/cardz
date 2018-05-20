@@ -1,7 +1,5 @@
 <template>
-  <div class="header">
-    <div class="card-header-title"><span>{{ name }}</span></div>
-  </div>
+  <div class="card-header-title"><span>{{ name }}</span></div>
 </template>
 
 <script>
