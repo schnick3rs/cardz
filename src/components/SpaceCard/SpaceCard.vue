@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="card card-dimensions--magic card-bg">
-      <SpaceCardTitle :title="card.title"></SpaceCardTitle>
+      <SpaceCardTitle :title="card.title" :subtitle="card.subtitle"></SpaceCardTitle>
       <SpaceCardDescription :description="card.description"></SpaceCardDescription>
     </div>
   </div>
@@ -13,13 +13,8 @@
   export default {
     name: 'SpaceCard',
     components: {SpaceCardTitle, SpaceCardDescription},
-    data() {
-      return {
-        card: {
-          title: "Crush the Sensory",
-          description: "<p>You have positioned youself so that you can decimate the enemies augur telemetry array.</p>"
-        }
-      }
+    props: {
+      card: {type: Object}
     }
   }
 </script>

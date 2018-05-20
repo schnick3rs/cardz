@@ -2,7 +2,6 @@
   <div>
     <div class="card-text-container">
       <div class="card-text-description" v-html="description"></div>
-      <div class="card-text-description" v-if="overcast" v-html="overcast"></div>
     </div>
   </div>
 </template>
