@@ -3,8 +3,8 @@
     <div class="card-title">
       <span class="card-title__text">{{ title }}</span>
     </div>
-    <div class="card-title__subtitle">
-      <span class="card-title__subtitle-text">{{ subtitle }}</span>
+    <div v-if="subtitle" class="card-title__subtitle">
+      <span class="card-title__subtitle-text ">{{ subtitle }}</span>
     </div>
   </div>
 </template>
@@ -52,5 +52,12 @@
     -1px 1px 0 #000,
     1px 1px 0 #000;
     font-style: italic;
+  }
+
+  .card-title__subtitle-text--white-glow {
+    text-shadow: -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
   }
 </style>

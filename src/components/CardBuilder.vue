@@ -3,7 +3,10 @@
     <section class="card-container card-input-container col-6">
       <div class="input-field">
         <label class="input-field__label" for="cardBackground">Bustom background Image</label>
-        <input class="input-field__field" id="cardBackground" v-model="card.customBackground"/>
+        <input class="input-field__field" id="cardBackground" v-model="card.customTheme"/>
+        <ul>
+
+        </ul>
       </div>
       <div class="input-field">
         <label class="input-field__label" for="cardTitle">Title</label>

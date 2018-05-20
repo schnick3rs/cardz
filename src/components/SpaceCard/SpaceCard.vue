@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card card-dimensions--magic card-bg">
+    <div class="card card-dimensions--magic card-bg" v-bind:style="customStyle">
       <SpaceCardTitle :title="card.title" :subtitle="card.subtitle"></SpaceCardTitle>
       <SpaceCardDescription :description="card.description"></SpaceCardDescription>
     </div>
@@ -15,6 +15,14 @@
     components: {SpaceCardTitle, SpaceCardDescription},
     props: {
       card: {type: Object}
+    },
+    computed: {
+      customStyle: function () {
+        if (this.card.customTheme && this.card.customTheme.length > 0) {
+          return 'background-image: url("' + this.card.customTheme + '")'
+        }
+        return ''
+      }
     }
   }
 </script>
@@ -46,7 +54,7 @@
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url('http://www.wallpapers13.com/wp-content/uploads/2015/12/Space-Battle-Wide-Desktop-Background-915x515.jpg');
+    background-image: url('https://vignette.wikia.nocookie.net/warhammer40k/images/4/48/Battleship_Gothic_cover.jpg/revision/latest?cb=20130414015051');
   }
 
   .card-image {
