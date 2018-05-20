@@ -5,21 +5,20 @@
         <label class="input-field__label" for="cardBackground">Custom background Image</label>
         <input class="input-field__field" id="cardBackground" v-model="card._customTheme"/>
       </div>
-      <div class="input-field input-field--radio">
-        <label class="input-field__label">Color Flavour</label>
-        <label for="flavour-red" style="float:left">red:</label>
-        <input class="input-field__field input-field__field--radio" id="flavour-red" type="radio" value="red"
-               v-model="card._flavour"/>
-        <label for="flavour-green" style="float:left">green:</label>
-        <input class="input-field__field input-field__field--radio" id="flavour-green" type="radio" value="green"
-               v-model="card._flavour"/>
-        <label for="flavour-blue" style="float:left">blue:</label>
-        <input class="input-field__field input-field__field--radio" id="flavour-blue" type="radio" value="blue"
-               v-model="card._flavour"/>
-        <label for="flavour-yellow" style="float:left">yellow:</label>
-        <input class="input-field__field input-field__field--radio" id="flavour-yellow" type="radio" value="yellow"
-               v-model="card._flavour"/>
-        <span>Select a color flavour...</span>
+      <div class="input-field input-field-radio">
+        <label class="input-field__label input-field-radio__label">Color Flavour</label>
+        <ul>
+          <li class="input-field-radio__container" v-for="flavour in fields.flavours" v-bind:key="flavour.value">
+            <input
+              class="input-field-radio__input"
+              type="radio"
+              v-bind:key="flavour.id"
+              v-bind:value="flavour.value"
+              v-model="card._flavour"
+            />
+            <span class="input-field-radio__checkbox"/>
+          </li>
+        </ul>
       </div>
       <div class="input-field">
         <label class="input-field__label" for="cardTitle">Title</label>
@@ -56,7 +55,16 @@
         card: {
           title: 'Crush the Sensory',
           subtitle: 'Battle Opportunity',
-          description: "<p>You have positioned youself so that you can decimate the enemies augur telemetry array.</p>"
+          description: "<p>You have positioned youself so that you can decimate the enemies augur telemetry array.</p>",
+          _flavour: 'green'
+        },
+        fields: {
+          flavours: [
+            {label: 'Green', value: 'green', color: 'forestgreen'},
+            {label: 'Red', value: 'red', color: 'orangered'},
+            {label: 'Blue', value: 'blue', color: 'blue'},
+            {label: 'Yellow', value: 'yellow', color: 'yellow'}
+          ]
         }
       }
     }
@@ -82,13 +90,6 @@
     width: 100%;
   }
 
-  .input-field--radio span {
-    display: block;
-    clear: both;
-    font-style: italic;
-    font-size: xx-small;
-  }
-
   .input-field__label {
     display: block;
     font-size: small;
@@ -104,9 +105,66 @@
     resize: vertical;
   }
 
-  .input-field__field--radio {
-    width: unset;
-    float: left;
+  /* INPUT RADIO FLAVOUR COLOR */
+  .input-field-radio ul, .input-field-radio li {
+    list-style-type: none;
+    display: inline;
   }
 
+  .input-field-radio__container { /* The container */
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .input-field-radio__container input { /* Hide the browser's default radio button */
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    z-index: -1;
+  }
+
+  .input-field-radio__checkbox { /* Create a custom radio button */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+
+  .input-field-radio__container:hover input ~ .input-field-radio__checkbox { /* On mouse-over, add a grey background color */
+    background-color: #ccc;
+  }
+
+  .input-field-radio input:checked ~ .input-field-radio__checkbox { /* When the radio button is checked, add a blue background */
+    background-color: #2196F3;
+  }
+
+  .input-field-radio__checkbox:after { /* Create the indicator (the dot/circle - hidden when not checked) */
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .input-field-radio__container input:checked ~ .input-field-radio__checkbox:after { /* Show the indicator (dot/circle) when checked */
+    display: block;
+  }
+
+  .input-field-radio__checkbox:after { /* Style the indicator (dot/circle) */
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
 </style>
