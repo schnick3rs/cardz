@@ -25,7 +25,7 @@
       </div>
       <div class="input-field input-field">
         <label class="input-field__label" for="cardSubtitle">Description</label>
-        <textarea class="input-field__field input-field__field--textarea" v-model="card.description"/>
+        <textarea class="input-field__field input-field__field--textarea" v-bind:value="markdown" @input="update"/>
       </div>
     </section>
     <section class="card-container card-container--preview col-6">
@@ -41,6 +41,7 @@
     components: {SpaceCard},
     data() {
       return {
+        markdown: 'You have positioned yourself so that you can decimate the enemies augur telemetry array.',
         inputs: {
           title: {
             id: 'inputTitle',
@@ -61,6 +62,12 @@
             {label: 'Yellow', value: 'yellow', color: 'yellow'}
           ]
         }
+      }
+    },
+    methods: {
+      update: function (e) {
+        this.markdown = e.target.value
+        this.card.description = marked(this.markdown, {sanatize: false})
       }
     }
   }
