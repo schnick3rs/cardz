@@ -3,7 +3,7 @@
     <section class="card-container card-input-container col-6">
       <div class="input-field">
         <label class="input-field__label" for="cardBackground">Custom background Image</label>
-        <input class="input-field__field" id="cardBackground" v-model="card._customTheme"/>
+        <input class="input-field__field" id="cardBackground" v-model="card._theme"/>
       </div>
       <div class="input-field input-field-radio">
         <label class="input-field__label input-field-radio__label">Color Flavour</label>

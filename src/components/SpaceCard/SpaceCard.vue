@@ -18,7 +18,7 @@
     },
     computed: {
       customStyle: function () {
-        let theme = this.card['_customTheme']
+        let theme = this.card['_theme']
         if (theme && theme.length > 0) {
           return 'background-image: url("' + theme + '")'
         }

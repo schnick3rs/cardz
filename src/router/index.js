@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import CardBuilder from '@/components/CardBuilder'
+import ProjectPrinter from '@/components/ProjectPrinter'
 import SpellBook from '@/components/SpellBook'
 import SpellCard from '@/components/SpellCard'
 import SpellSearch from '@/components/SpellSearch'
@@ -19,6 +20,7 @@ export default new Router({
     { path: '/spellbook/', name: 'spellBook', component: SpellBook },
     {path: '/builder/', name: 'cardBuilder', component: CardBuilder},
     {path: '/template/', name: 'cardTemplate', component: SpaceCard},
+    {path: '/project/rogue-trader/', name: 'projectPrinter', component: ProjectPrinter},
     { path: '/spellbook/print/:spellHash', name: 'spellPrinter', component: SpellPrinter, props: (route) => ({spellsHash: route.params.spellHash}) }
   ]
 })
