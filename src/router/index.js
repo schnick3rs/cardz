@@ -18,7 +18,7 @@ export default new Router({
     { path: '/search/', name: 'spellSearch', component: SpellSearch },
     { path: '/card/', name: 'spellCard', component: SpellCard },
     { path: '/spellbook/', name: 'spellBook', component: SpellBook },
-    {path: '/builder/', name: 'cardBuilder', component: CardBuilder},
+    {path: '/builder/future', name: 'cardBuilder', component: CardBuilder},
     {path: '/template/', name: 'cardTemplate', component: SpaceCard},
     {path: '/project/rogue-trader/', name: 'projectPrinter', component: ProjectPrinter},
     { path: '/spellbook/print/:spellHash', name: 'spellPrinter', component: SpellPrinter, props: (route) => ({spellsHash: route.params.spellHash}) }

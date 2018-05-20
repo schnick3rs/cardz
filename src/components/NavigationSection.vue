@@ -14,7 +14,8 @@ export default {
       navItems: [
         { text: 'Home', page: { name: 'home' } },
         {text: 'Search', page: {name: 'spellSearch'}},
-        {text: 'Migrate', page: {name: 'migrateSpells'}}
+        {text: 'Migrate', page: {name: 'migrateSpells'}},
+        {text: 'Builder (futuristic)', page: {name: 'cardBuilder'}}
       ]
     }
   }

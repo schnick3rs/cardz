@@ -1,13 +1,27 @@
 [
   {
     "_flavour": "green",
-    "_theme": "http://2.bp.blogspot.com/-dvS-WIPR0cA/T3Tp9UtKEII/AAAAAAAAAEE/ow_RilTy2sA/s1600/1328245640585.jpg",
+    "_theme": "https://i.pinimg.com/originals/a1/f2/6b/a1f26b6f667092bf3b6aa299b6e9bb65.jpg",
+    "title": "Stoic Advance",
+    "subtitle": "Salamanders - Chapter Taktik",
+    "description": "<p>Your sensors spotted a weak part of the enemies defence. Now is the time to strike</p>"
+  },
+  {
+    "_flavour": "red",
+    "_theme": "https://i.pinimg.com/736x/15/e3/a2/15e3a277177cb3f10b31078455bc8ac1--space-marine-warhammer-.jpg",
     "title": "Breach the Blockade",
     "subtitle": "Battle Opportunity",
     "description": "<p>Your sensors spotted a weak part of the enemies defence. Now is the time to strike</p>"
   },
   {
-    "_flavour": "red",
+    "_flavour": "blue",
+    "_theme": "https://i.pinimg.com/736x/15/e3/a2/15e3a277177cb3f10b31078455bc8ac1--space-marine-warhammer-.jpg",
+    "title": "Breach the Blockade",
+    "subtitle": "Battle Opportunity",
+    "description": "<p>Your sensors spotted a weak part of the enemies defence. Now is the time to strike</p>"
+  },
+  {
+    "_flavour": "yellow",
     "_theme": "https://i.pinimg.com/736x/15/e3/a2/15e3a277177cb3f10b31078455bc8ac1--space-marine-warhammer-.jpg",
     "title": "Breach the Blockade",
     "subtitle": "Battle Opportunity",
