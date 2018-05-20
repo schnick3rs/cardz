@@ -7,18 +7,13 @@
       </div>
       <div class="input-field input-field-radio">
         <label class="input-field__label input-field-radio__label">Color Flavour</label>
-        <ul>
-          <li class="input-field-radio__container" v-for="flavour in fields.flavours" v-bind:key="flavour.value">
-            <input
-              class="input-field-radio__input"
-              type="radio"
-              v-bind:key="flavour.id"
-              v-bind:value="flavour.value"
-              v-model="card._flavour"
-            />
-            <span class="input-field-radio__checkbox"/>
-          </li>
-        </ul>
+        <div>
+          <div v-for="flavour in fields.flavours" v-bind:key="flavour.id" style="display: inline; margin-left:2mm;">
+            <label style="font-size: xx-small;" v-bind:style="{ color: flavour.color }">{{ flavour.label }}</label>
+            <input type="radio" v-bind:value="flavour.value" v-model="card._flavour"
+                   style="margin: 0;padding: 0;vertical-align: middle;"/>
+          </div>
+        </div>
       </div>
       <div class="input-field">
         <label class="input-field__label" for="cardTitle">Title</label>
