@@ -17,7 +17,7 @@
   import SpellRepository from '../assets/cardz-spell-repository.json'
   export default {
   name: 'SpellPrinter',
-  components: {SpellCard},
+    components: {SpellCard},
   props: {
     spellsHash: { type: String }
   },
@@ -34,7 +34,7 @@
         paladin: 'Paladin',
         warrior: 'Warrior'
       },
-      spellRepository: SpellRepository
+      spellRepository: SpellRepository,
     }
   },
   computed: {
