@@ -9,7 +9,7 @@
 
       <md-app-drawer md-permanent="clipped">
         <md-toolbar class="md-transparent" md-elevation="0">
-          Navigation
+
         </md-toolbar>
 
         <md-list>
@@ -35,7 +35,7 @@
     data() {
       return {
         navItems: [
-          {text: 'Home', page: {name: 'home'}},
+          {text: 'Cartz', page: {name: 'home'}},
           {text: 'Search', page: {name: 'spellSearch'}},
           {text: 'Builder (futuristic)', page: {name: 'cardBuilder'}},
           {text: 'Migrate', page: {name: 'migrateSpells'}},
@@ -80,7 +80,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 10px;
 }
 #app img{
   width: 32px;
