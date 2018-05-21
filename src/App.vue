@@ -1,20 +1,30 @@
 <template>
-  <div id="app" class="page-container">
+  <div>
 
     <md-app>
 
-      <md-app-toolbar md-waterfall md-mode="fixed" class="md-primary">
+      <md-app-toolbar class="md-primary">
+        <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
+          <md-icon>menu</md-icon>
+        </md-button>
         <span class="md-title">Cartz</span>
       </md-app-toolbar>
 
-      <md-app-drawer md-permanent="fixed">
+      <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini">
         <md-toolbar class="md-transparent" md-elevation="0">
+          <span>Navigation</span>
 
+          <div class="md-toolbar-section-end">
+            <md-button class="md-icon-button md-dense" @click="toggleMenu">
+              <md-icon>keyboard_arrow_left</md-icon>
+            </md-button>
+          </div>
         </md-toolbar>
 
         <md-list>
           <md-list-item v-for="routes in navItems" :key="navItems.text" :to="routes.page">
-            {{ routes.text }}
+            <md-icon>{{ routes.icon }}</md-icon>
+            <span class="md-list-item-text">{{ routes.text }}</span>
           </md-list-item>
         </md-list>
       </md-app-drawer>
@@ -28,19 +38,23 @@
 </template>
 
 <script>
-  import NavigationSection from "./components/NavigationSection";
   export default {
   name: 'App',
-    components: {NavigationSection},
     data() {
       return {
+        menuVisible: false,
         navItems: [
-          {text: 'Cartz', page: {name: 'home'}},
-          {text: 'Search', page: {name: 'spellSearch'}},
-          {text: 'Builder (futuristic)', page: {name: 'cardBuilder'}},
-          {text: 'Migrate', page: {name: 'migrateSpells'}},
-          {text: 'Projects', page: {name: 'projectPrinter'}}
+          {text: 'Cartz', page: {name: 'home'}, icon: 'home'},
+          {text: 'Search', page: {name: 'spellSearch'}, icon: 'image_search'},
+          {text: 'Builder (futuristic)', page: {name: 'cardBuilder'}, icon: 'build'},
+          {text: 'Migrate', page: {name: 'migrateSpells'}, icon: 'autorenew'},
+          {text: 'Projects', page: {name: 'projectPrinter'}, icon: 'print'}
         ]
+      }
+    },
+    methods: {
+      toggleMenu() {
+        this.menuVisible = !this.menuVisible
       }
     }
 }
