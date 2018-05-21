@@ -1,10 +1,10 @@
 <template>
   <div>
     <section class="card-container card-input-container col-6">
-      <div class="input-field">
-        <label class="input-field__label" for="cardBackground">Custom background Image</label>
-        <input class="input-field__field" id="cardBackground" v-model="card._theme"/>
-      </div>
+      <md-field>
+        <label>Custom background Image</label>
+        <md-input v-model="card._theme"/>
+      </md-field>
       <div class="input-field input-field-radio">
         <label class="input-field__label input-field-radio__label">Color Flavour</label>
         <div>
@@ -15,16 +15,19 @@
           </div>
         </div>
       </div>
-      <div class="input-field">
-        <label class="input-field__label" for="cardTitle">Title</label>
-        <input class="input-field__field" id="cardTitle" v-model="card.title"/>
-      </div>
-      <div class="input-field">
-        <label class="input-field__label" for="cardSubtitle">Subitle</label>
-        <input class="input-field__field" id="cardSubtitle" v-model="card.subtitle"/>
-      </div>
+      <md-field>
+        <label>Title</label>
+        <md-input v-model="card.title"/>
+      </md-field>
+      <md-field>
+        <label>Subtitle</label>
+        <md-input v-model="card.subtitle"/>
+      </md-field>
+      <md-field>
+        <label>Description (html)</label>
+        <md-textarea v-model="card.description"/>
+      </md-field>
       <div class="input-field input-field">
-        <label class="input-field__label" for="cardSubtitle">Description</label>
         <textarea class="input-field__field input-field__field--textarea" v-bind:value="markdown" @input="update"/>
       </div>
     </section>

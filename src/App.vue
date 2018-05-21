@@ -10,7 +10,7 @@
         <span class="md-title">Cartz</span>
       </md-app-toolbar>
 
-      <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini">
+      <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini" md-fixed>
         <md-toolbar class="md-transparent" md-elevation="0">
           <span>Navigation</span>
 
