@@ -3,11 +3,11 @@
 
     <md-app>
 
-      <md-app-toolbar md-waterfall md-mode="fixed " class="md-primary">
+      <md-app-toolbar md-waterfall md-mode="fixed" class="md-primary">
         <span class="md-title">Cartz</span>
       </md-app-toolbar>
 
-      <md-app-drawer md-permanent="clipped">
+      <md-app-drawer md-permanent="fixed">
         <md-toolbar class="md-transparent" md-elevation="0">
 
         </md-toolbar>
@@ -47,6 +47,7 @@
 </script>
 
 <style>
+  /* MEDIA PRINT */
   @media print {
     .main {
       margin: 0 !important;
@@ -61,17 +62,7 @@
     }
   }
 
-  .md-app {
-  }
-
-  .md-drawer {
-    width: 230px;
-  }
-
-  .sidebar {
-    width: 150px;
-  }
-
+  /* MEDIA SCREEN */
 * {
   -webkit-print-color-adjust: exact;
 }
@@ -81,7 +72,8 @@
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-#app img{
-  width: 32px;
-}
+
+  .md-drawer {
+    max-width: 230px;
+  }
 </style>
