@@ -1,46 +1,56 @@
 <template>
-  <div>
-    <section class="card-container card-input-container col-6">
-      <md-field>
-        <label>Custom background Image</label>
-        <md-input v-model="card._theme"/>
-      </md-field>
-      <div class="input-field input-field-radio">
-        <label class="input-field__label input-field-radio__label">Color Flavour</label>
-        <div>
-          <div v-for="flavour in fields.flavours" v-bind:key="flavour.id" style="display: inline; margin-left:2mm;">
-            <label style="font-size: xx-small;" v-bind:style="{ color: flavour.color }">{{ flavour.label }}</label>
-            <input type="radio" v-bind:value="flavour.value" v-model="card._flavour"
-                   style="margin: 0;padding: 0;vertical-align: middle;"/>
+  <div class="md-layout">
+    <form class="md-layout-item md-size-40" @submit.prevent="addCard(card)">
+      <md-card>
+        <md-card-content>
+          <md-field>
+            <label>Custom background Image</label>
+            <md-input v-model="card._theme"/>
+          </md-field>
+          <div class="input-field input-field-radio">
+            <label class="input-field__label input-field-radio__label">Color Flavour</label>
+            <div>
+              <div v-for="flavour in fields.flavours" v-bind:key="flavour.id" style="display: inline; margin-left:2mm;">
+                <label style="font-size: xx-small;" v-bind:style="{ color: flavour.color }">{{ flavour.label }}</label>
+                <input type="radio" v-bind:value="flavour.value" v-model="card._flavour"
+                       style="margin: 0;padding: 0;vertical-align: middle;"/>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <md-field>
-        <label>Title</label>
-        <md-input v-model="card.title"/>
-      </md-field>
-      <md-field>
-        <label>Subtitle</label>
-        <md-input v-model="card.subtitle"/>
-      </md-field>
-      <md-field>
-        <label>Description (html)</label>
-        <md-textarea v-model="card.description"/>
-      </md-field>
-      <md-field>
-        <label>Export to clipboard</label>
-        <md-input readonly v-model="JSON.stringify(card)"></md-input>
-      </md-field>
-      <md-button class="md-primary" @click="addCard(card)">Add Card</md-button>
-    </section>
+          <md-field>
+            <label>Title</label>
+            <md-input v-model="card.title"/>
+          </md-field>
+          <md-field>
+            <label>Subtitle</label>
+            <md-input v-model="card.subtitle"/>
+          </md-field>
+          <md-field>
+            <label>Description (html)</label>
+            <md-textarea v-model="card.description"/>
+          </md-field>
+          <md-field>
+            <label>Export to clipboard</label>
+            <md-input readonly v-model="JSON.stringify(card)"></md-input>
+          </md-field>
+        </md-card-content>
 
-    <section class="card-container card-container--preview md-size-30">
+        <md-card-actions>
+          <md-button type="submit" class="md-primary">Add Card</md-button>
+        </md-card-actions>
+
+      </md-card>
+    </form>
+
+    <section class="md-layout-item md-size-30 card-holder">
       <SpaceCard :card="card"></SpaceCard>
     </section>
 
-    <section class="md-size-30">
-      <md-list class="md-triple-line">
-        <md-list-item v-for="cardz in draftRepository" v-bind:key="cardz.title">
+    <section class="md-layout-item md-size-30">
+      <md-card>
+        <md-card-content>
+          <md-list class="md-dense md-triple-line">
+            <md-list-item v-for="cardz in draftRepository" v-bind:key="cardz.id">
           <md-avatar>
             <img v-bind:src="cardz._theme" alt="People">
           </md-avatar>
@@ -49,8 +59,14 @@
             <span>{{ cardz.subtitle }}</span>
             <p v-html="cardz.description"></p>
           </div>
+              <md-button class="md-icon-button md-list-action" @click="removeItem">
+                <md-icon class="md-accent">delete</md-icon>
+              </md-button>
         </md-list-item>
       </md-list>
+        </md-card-content>
+
+      </md-card>
     </section>
 
   </div>
@@ -98,24 +114,20 @@
     },
     methods: {
       addCard: function (item) {
-        this.draftRepository.push(item)
+        var newItem = Object.assign({}, item)
+        this.draftRepository.push(newItem)
+      },
+      removeItem: function (item) {
+        this.draftRepository.splice(item, 1)
       }
     }
   }
 </script>
 
 <style scoped>
-  .card-container {
-    float: left;
-    padding: 4mm 2mm;
-  }
 
-  .card-container {
-    width: 65mm;
-  }
-
-  .card-container--preview {
-    width: fit-content;
+  .card-holder {
+    min-width: fit-content;
   }
 
   .input-field {
@@ -129,14 +141,6 @@
     font-weight: bold;
   }
 
-  .input-field__field {
-    width: 100%;
-  }
-
-  .input-field__field--textarea {
-    height: 40mm;
-    resize: vertical;
-  }
 
   /* INPUT RADIO FLAVOUR COLOR */
   .input-field-radio ul, .input-field-radio li {
