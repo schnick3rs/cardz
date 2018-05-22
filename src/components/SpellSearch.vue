@@ -1,15 +1,11 @@
 <template>
   <div>
     <section class="search-box">
-      <input v-model="searchQuery" placeholder="Enter spell name"/>
       <select v-model="selectedClass" multiple>
         <option v-for="(value, key) in clazzes" :key="key" v-bind:value="key" >{{ value }}</option>
       </select>
       <select v-model="selectedLevel" multiple>
         <option v-for="(value, key) in levelOptions" :key="key" v-bind:value="key">{{ value }}</option>
-      </select>
-      <select v-model="selectedOrder">
-        <option v-for="(value, key) in orderOptions" :key="key" v-bind:value="key" >{{ value }}</option>
       </select>
       <select v-model="selectedSource">
         <option v-for="(value, key) in sourceOptions" :key="key" v-bind:value="key" >{{ value }}</option>
@@ -19,26 +15,48 @@
         <router-link :to="{ name: 'spellPrinter', params: { spellHash: spellHash } }">print</router-link>
       </div>
     </section>
-    <section class="search-container">
-      <section class="search-container__collumn search-results">
-        <h3>Search results:</h3>
-        <div style="margin-bottom: 10px;">
-          <span>{{ searchResults.length }} spells found</span>
-          <span class="spell-teaser-item__icon spell-teaser-item__icon--add spell-teaser-item__icon--all"
-                @click="learnAllFiltered()">add all</span>
-        </div>
-        <div class="spell-teaser-table">
-          <div class="spell-teaser-item"
-            v-for="spellz in searchResults"
-            :key="spellz.name"
-            @mouseover="preview(spellz)"
-          >
-            <span class="spell-teaser-item__icon spell-teaser-item__icon--info" >{{ spellz.level }}</span>
-            <span class="spell-teaser-item__name" @click="preview(undefined)">{{ spellz.name }}</span>
-            <span class="spell-teaser-item__icon spell-teaser-item__icon--add" @click="learnSpell(spellz)" >+</span>
+    <section style="width: 50%; float: left;">
+      <h3>Search results:</h3>
+      <div style="margin-bottom: 10px;">
+        <span>{{ searchResults.length }} spells found</span>
+        <span class="spell-teaser-item__icon spell-teaser-item__icon--add spell-teaser-item__icon--all"
+              @click="learnAllFiltered()">add all</span>
+      </div>
+
+      <md-table v-model="searched" md-sort="level" md-sort-order="asc" md-card>
+
+        <md-table-toolbar>
+          <div class="md-toolbar-section-start">
+            <h1 class="md-title">Users</h1>
           </div>
-        </div>
-      </section>
+
+          <md-field md-clearable class="md-toolbar-section-end">
+            <md-input placeholder="Search by name..." v-model="search" @input="searchOnTable"/>
+          </md-field>
+        </md-table-toolbar>
+
+        <md-table-empty-state
+          md-label="No spell found"
+          :md-description="`No spell found, matching '${search}'. Try a different search term.`">
+        </md-table-empty-state>
+
+        <md-table-row slot="md-table-row" slot-scope="{ item }">
+          <md-table-cell md-label="Level" md-sort-by="level" md-numeric>{{ item.level }}</md-table-cell>
+          <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
+          <md-table-cell md-label="Action">
+            <md-button class="md-icon-button md-raised md-dense" @click="preview(item)">
+              <md-icon>search</md-icon>
+            </md-button>
+            <md-button class="md-icon-button md-primary md-raised md-dense" @click="learnSpell(item)">
+              <md-icon>note_add</md-icon>
+            </md-button>
+          </md-table-cell>
+        </md-table-row>
+
+      </md-table>
+
+
+    </section>
       <section class="search-container__collumn active-spell-book">
         <h3>Spellbook</h3>
         <div style="margin-bottom: 10px;">
@@ -61,11 +79,19 @@
       <section class="search-container__collumn spell-preview">
         <spell-card v-if="selectedSpell" :spell="selectedSpell" :theme="selectedClass[0]"/>
       </section>
-    </section>
   </div>
 </template>
 
 <script>
+  const toLower = text => {
+    return text.toString().toLowerCase()
+  }
+  const searchByName = (items, term) => {
+    if (term) {
+      return items.filter(item => toLower(item.name).includes(toLower(term)))
+    }
+    return items
+  }
   import SpellRepository from '../assets/cardz-spell-repository.json'
   import SpellCard from './SpellCard'
   import SpellItemRow from "./SpellItemRow";
@@ -82,6 +108,8 @@
       selectedSpell: undefined,
       activeSpellBook: [],
       spellRepository: SpellRepository,
+      search: null,
+      searched: [],
       fields: [
         {name: 'level', label: 'Lvl'},
         {name: 'name', label: 'Name'},
@@ -136,15 +164,6 @@
         })
       }
 
-      var comperatorString = this.selectedOrder
-      if (this.selectedOrder.length > 0){
-          searchResults.sort(function (a, b) {
-            if (a[comperatorString] < b[comperatorString]) return -1
-            if (a[comperatorString] > b[comperatorString]) return 1
-            return 0
-          })
-      }
-
       return searchResults
     },
     spellHash: function () {
@@ -156,6 +175,9 @@
     }
   },
   methods: {
+    searchOnTable() {
+      this.searched = searchByName(this.spellRepository, this.search)
+    },
     preview: function (item, event) {
       this.selectedSpell = item
     },
@@ -174,7 +196,10 @@
     learnAllFiltered: function () {
       this.searchResults.forEach(v => this.learnSpell(v))
     }
-  }
+  },
+    created() {
+      this.searched = this.spellRepository
+    }
 }
 </script>
 
@@ -226,35 +251,5 @@
   background-color: white;
   border-color: indianred;
   float: right;
-}
-
-.spell-teaser-item__icon--remove:hover {
-  color: white;
-  background-color: indianred;
-  cursor: pointer;
-}
-.spell-teaser-item__icon--add:hover {
-  color: white;
-  background-color: forestgreen;
-  cursor: pointer;
-}
-.spell-teaser-item__icon--info {
-  background-color: dodgerblue;
-}
-
-table {
-  table-layout: auto;
-}
-
-tr {
-  display: table-row;
-  border-bottom: 1px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #4c4c4c;
-}
-
-tr:nth-child(even) {
-  background-color: lightgrey;
 }
 </style>

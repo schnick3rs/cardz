@@ -4,21 +4,13 @@
     <md-app>
 
       <md-app-toolbar class="md-primary">
-        <md-button class="md-icon-button" @click="toggleMenu" v-if="!menuVisible">
-          <md-icon>menu</md-icon>
-        </md-button>
         <span class="md-title">Cartz</span>
       </md-app-toolbar>
 
-      <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" md-persistent="mini" md-fixed>
+      <md-app-drawer md-permanent="clipped" md-fixed>
         <md-toolbar class="md-transparent" md-elevation="0">
           <span>Navigation</span>
 
-          <div class="md-toolbar-section-end">
-            <md-button class="md-icon-button md-dense" @click="toggleMenu">
-              <md-icon>keyboard_arrow_left</md-icon>
-            </md-button>
-          </div>
         </md-toolbar>
 
         <md-list>
