@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/schnick3rs/cardz.svg?branch=master)](https://travis-ci.org/schnick3rs/cardz)
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/16b10def47d153885633/maintainability)](https://codeclimate.com/github/schnick3rs/cardz/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/16b10def47d153885633/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 
@@ -33,3 +31,20 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+/
+> print from JSON | build-in set 
+
+/design
+/design/card
+/design/card/:template
+
+/build
+/build/spellbook
+/build/custom/
+
+/print
+/print/project/
+/print/project/:slug
+/print/custom/
+> input JSON

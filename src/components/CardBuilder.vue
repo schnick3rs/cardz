@@ -27,13 +27,32 @@
         <label>Description (html)</label>
         <md-textarea v-model="card.description"/>
       </md-field>
-      <div class="input-field input-field">
-        <textarea class="input-field__field input-field__field--textarea" v-bind:value="markdown" @input="update"/>
-      </div>
+      <md-field>
+        <label>Export to clipboard</label>
+        <md-input readonly v-model="JSON.stringify(card)"></md-input>
+      </md-field>
+      <md-button class="md-primary" @click="addCard(card)">Add Card</md-button>
     </section>
-    <section class="card-container card-container--preview col-6">
+
+    <section class="card-container card-container--preview md-size-30">
       <SpaceCard :card="card"></SpaceCard>
     </section>
+
+    <section class="md-size-30">
+      <md-list class="md-triple-line">
+        <md-list-item v-for="cardz in draftRepository" v-bind:key="cardz.title">
+          <md-avatar>
+            <img v-bind:src="cardz._theme" alt="People">
+          </md-avatar>
+          <div class="md-list-item-text">
+            <span>{{ cardz.title }}</span>
+            <span>{{ cardz.subtitle }}</span>
+            <p v-html="cardz.description"></p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </section>
+
   </div>
 </template>
 
@@ -57,6 +76,7 @@
           description: "<p>You have positioned youself so that you can decimate the enemies augur telemetry array.</p>",
           _flavour: 'green'
         },
+        draftRepository: [],
         fields: {
           flavours: [
             {label: 'Green', value: 'green', color: 'forestgreen'},
@@ -71,6 +91,14 @@
       update: function (e) {
         this.markdown = e.target.value
         this.card.description = marked(this.markdown, {sanatize: false})
+      },
+      copyToClipboard: function (e) {
+        navigator.clipboard.writeText(JSON.stringify(this.card));
+      }
+    },
+    methods: {
+      addCard: function (item) {
+        this.draftRepository.push(item)
       }
     }
   }
