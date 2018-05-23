@@ -86,7 +86,7 @@
     components: {SpaceCard},
     data() {
       return {
-        markdown: 'You have positioned yourself so that you can decimate the enemies augur telemetry array.',
+        markdown: 'Oh Boy',
         inputs: {
           title: {
             id: 'inputTitle',
@@ -94,10 +94,11 @@
           }
         },
         card: {
-          title: 'Crush the Sensory',
-          subtitle: 'Battle Opportunity',
-          description: "<p>You have positioned youself so that you can decimate the enemies augur telemetry array.</p>",
-          _flavour: 'green'
+          title: 'Monstreous Ambush',
+          subtitle: 'Event',
+          description: "<p>Oh boy.</p>",
+          _flavour: 'red',
+          _theme: 'https://i.pinimg.com/736x/68/86/c9/6886c95a96ce40c0dce9c49f034c0c60--fantasy-concept-art-fantasy-art.jpg'
         },
         draftRepository: [],
         fields: {
