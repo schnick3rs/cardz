@@ -35,7 +35,6 @@
     </div>
   </div>
 </template>
-
 <script>
   import FutureCardRepository from '../assets/projects/rogueTrader/rouge-trader-battle-opportunity-repository'
   import DndCardRepository from '../assets/projects/dndAlliesAndMonsters/dnd-allies-and-monsters-repository'
@@ -56,9 +55,17 @@
       loadFromJson: function (e) {
         this.currentRepository = JSON.parse(this.jsonString)
       }
+    },
+    created: function () {
+      let repo = this.$route.params.payload
+      if (repo) {
+        this.currentRepository = repo
+        this.jsonString = JSON.stringify(repo)
+      }
     }
   }
 </script>
+
 
 <style scoped>
   @media print {

@@ -46,8 +46,15 @@
       <SpaceCard :card="card"></SpaceCard>
     </section>
 
-    <section class="md-layout-item md-size-30">
+    <form class="md-layout-item md-size-30">
       <md-card>
+        <md-card-actions>
+          <md-button class="md-primary" :to="{ name: 'projectPrinter', params: { payload: draftRepository } }">
+            <md-icon>print</md-icon>
+            Print
+          </md-button>
+        </md-card-actions>
+
         <md-card-content>
           <md-list class="md-dense md-triple-line">
             <md-list-item v-for="cardz in draftRepository" v-bind:key="cardz.id">
@@ -67,7 +74,7 @@
         </md-card-content>
 
       </md-card>
-    </section>
+    </form>
 
   </div>
 </template>
@@ -114,8 +121,7 @@
     },
     methods: {
       addCard: function (item) {
-        var newItem = Object.assign({}, item)
-        this.draftRepository.push(newItem)
+        this.draftRepository.push(JSON.parse(JSON.stringify(item)))
       },
       removeItem: function (item) {
         this.draftRepository.splice(item, 1)
