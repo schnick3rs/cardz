@@ -40,10 +40,10 @@
           :md-description="`No spell found, matching '${search}'. Try a different search term.`">
         </md-table-empty-state>
 
-        <md-table-row slot="md-table-row" slot-scope="{ item }">
+        <md-table-row slot="md-table-row" slot-scope="{ item }" @click="learnSpell(item)">
           <md-table-cell md-label="Level" md-sort-by="level" md-numeric>{{ item.level }}</md-table-cell>
           <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
-          <md-table-cell md-label="Action">
+          <md-table-cell md-label="Action" v-if="false">
             <md-button class="md-icon-button md-raised md-dense" @click="preview(item)">
               <md-icon>search</md-icon>
             </md-button>

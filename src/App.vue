@@ -7,7 +7,7 @@
         <span class="md-title">Cartz</span>
       </md-app-toolbar>
 
-      <md-app-drawer md-permanent="clipped" md-fixed>
+      <md-app-drawer style="max-width: 230px;" md-permanent="clipped" md-fixed>
         <md-toolbar class="md-transparent" md-elevation="0">
           <span>Navigation</span>
 
@@ -26,6 +26,7 @@
       </md-app-content>
 
     </md-app>
+
   </div>
 </template>
 
@@ -39,6 +40,7 @@
           {text: 'Cartz', page: {name: 'home'}, icon: 'home'},
           {text: 'Search', page: {name: 'spellSearch'}, icon: 'image_search'},
           {text: 'Builder (futuristic)', page: {name: 'cardBuilder'}, icon: 'build'},
+          {text: 'Builder (character A5)', page: {name: 'characterSheetBuilder'}, icon: 'build'},
           {text: 'Migrate', page: {name: 'migrateSpells'}, icon: 'autorenew'},
           {text: 'Projects', page: {name: 'projectPrinter'}, icon: 'print'}
         ]
@@ -78,8 +80,4 @@
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-
-  .md-drawer {
-    max-width: 230px;
-  }
 </style>

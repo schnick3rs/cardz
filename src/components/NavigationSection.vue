@@ -16,7 +16,9 @@ export default {
         {text: 'Search', page: {name: 'spellSearch'}},
         {text: 'Builder (futuristic)', page: {name: 'cardBuilder'}},
         {text: 'Migrate', page: {name: 'migrateSpells'}},
-        {text: 'Projects', page: {name: 'projectPrinter'}}
+        {text: 'Projects', page: {name: 'projectPrinter'}},
+        {text: 'Template - SpaceCard', page: {name: 'spaceCardTemplate'}},
+        {text: 'Template - SpaceCard', page: {name: 'characterSheetTemplate'}}
       ]
     }
   }
