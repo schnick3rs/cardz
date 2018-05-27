@@ -28,10 +28,9 @@
       </form>
 
     </div>
-    <div class="page spellbook">
-      <div v-for="card in currentRepository" :key="card.id" class="page__card">
-        <SpaceCard :card="card"></SpaceCard>
-      </div>
+    <div class="page">
+      <SpaceCard v-for="card in currentRepository" :key="card.id" class="page__card" :card="card">
+      </SpaceCard>
     </div>
   </div>
 </template>
@@ -72,7 +71,6 @@
     .toolbar {
       display: none;
     }
-
     .page .page__card {
       display: block;
       page-break-inside: avoid;

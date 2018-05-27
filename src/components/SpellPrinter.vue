@@ -1,13 +1,16 @@
 <template>
-  <div class="page spellbook">
-    <div>
+  <div>
+    <div class="toolbar">
       <select v-model="selectedTheme">
         <option v-for="(value, key) in themeOptions" :key="key" v-bind:value="key">{{ value }}</option>
       </select>
       <input v-model="customTheme"/>
     </div>
-    <div v-for="spell in spellBook" :key="spell.name" class="spellbock__spell-card">
-      <spell-card :spell="spell" :theme="selectedTheme" :customTheme="customTheme"></spell-card>
+    <div class="page">
+      <spell-card class="page__card"
+                  v-for="spell in spellBook" :key="spell.name"
+                  :spell="spell" :theme="selectedTheme" :customTheme="customTheme"
+      />
     </div>
   </div>
 </template>
@@ -49,10 +52,18 @@
 </script>
 
 <style scoped>
-.spellbock__spell-card {
+  @media print {
+    .toolbar {
+      display: none;
+    }
+  }
+
+  .page {
+    page-break-inside: avoid;
+  }
+
+  .page__card {
   float: left;
-}
-.spellbock__spell-card {
   display: block;
   page-break-inside: avoid;
 }

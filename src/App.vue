@@ -1,16 +1,18 @@
 <template>
-  <div>
-
+  <div class="page-container">
     <md-app>
 
       <md-app-toolbar class="md-primary">
+
         <span class="md-title">Cartz</span>
       </md-app-toolbar>
 
-      <md-app-drawer style="max-width: 230px;" md-permanent="clipped" md-fixed>
+      <md-app-drawer style="max-width: 230px;" md-permanent="clipped">
         <md-toolbar class="md-transparent" md-elevation="0">
           <span>Navigation</span>
+          <div class="md-toolbar-section-end">
 
+          </div>
         </md-toolbar>
 
         <md-list>
@@ -71,9 +73,10 @@
   }
 
   /* MEDIA SCREEN */
-* {
-  -webkit-print-color-adjust: exact;
-}
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

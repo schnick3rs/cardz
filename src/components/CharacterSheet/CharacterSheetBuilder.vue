@@ -10,10 +10,11 @@
 
           <md-field>
             <label>Character Image</label>
-            <md-input v-model="character._theme"/>
+            <md-input v-model="character.portrait"/>
           </md-field>
+
           <div class="input-field input-field-radio">
-            <label class="input-field__label input-field-radio__label">Color Flavour</label>
+            <label class="input-field__label input-field-radio__label">Faction Flavour</label>
             <div>
               <div v-for="flavour in fields.flavours" v-bind:key="flavour.id" style="display: inline; margin-left:2mm;">
                 <label style="font-size: xx-small;" v-bind:style="{ color: flavour.color }">{{ flavour.label }}</label>
@@ -22,18 +23,18 @@
               </div>
             </div>
           </div>
+
           <md-field>
-            <label>Title</label>
-            <md-input v-model="character.title"/>
+            <label>Name</label>
+            <md-input v-model="character.name"/>
           </md-field>
+
           <md-field>
-            <label>Subtitle</label>
-            <md-input v-model="character.subtitle"/>
+            <label>Profession</label>
+            <md-input v-model="character.profession "/>
           </md-field>
-          <md-field>
-            <label>Description (html)</label>
-            <md-textarea v-model="character.description"/>
-          </md-field>
+
+
         </md-card-content>
 
 
@@ -78,7 +79,7 @@
 </template>
 
 <script>
-  import CharacterSheet from "./CharacterSheet/CharacterSheet";
+  import CharacterSheet from "./CharacterSheet";
   export default {
     name: "CardBuilder",
     components: {CharacterSheet},
@@ -92,19 +93,34 @@
           }
         },
         character: {
-          title: 'Monstreous Ambush',
-          subtitle: 'Event',
-          description: "<p>Oh boy.</p>",
-          _flavour: 'red',
-          _theme: 'https://i.pinimg.com/736x/68/86/c9/6886c95a96ce40c0dce9c49f034c0c60--fantasy-concept-art-fantasy-art.jpg'
+          _flavour: 'imperial-guard',
+          _theme: '40k',
+          portrait: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
+          name: 'Tailo \'der Grimmige\' Huskins',
+          profession: 'Captain des 4ten Untertogen Regiments',
+          quote: "Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.",
+          attributes: [
+            {label: 'Kampfgeschick', value: 34},
+            {label: 'Ballistische Fähigkeit', value: 43},
+            {label: 'Stärke', value: 23, skills: [{label: 'Athletik', value: '+10'}]},
+            {label: 'Widerstand', value: 35},
+            {label: 'Geschick', value: 41, skills: [{label: 'Ausweichen', value: '+0'}]},
+            {
+              label: 'Intelligenz',
+              value: 45,
+              skills: [{label: 'Wissen: Krieg', value: '+10'}, {label: 'Taktik', value: '+20'}]
+            },
+            {label: 'Willenskraft', value: 45, skills: [{label: 'Verhöhr', value: '+10'}]},
+            {label: 'Charisma', value: 45, skills: [{label: 'Befehligen', value: '+20'}]}
+          ]
         },
         draftRepository: [],
         fields: {
           flavours: [
-            {label: 'Green', value: 'green', color: 'forestgreen'},
-            {label: 'Red', value: 'red', color: 'orangered'},
-            {label: 'Blue', value: 'blue', color: 'blue'},
-            {label: 'Yellow', value: 'yellow', color: 'yellow'}
+            {label: 'Imperial Guard', value: 'imperial-guard', color: 'forestgreen'},
+            {label: 'Mechanicus', value: 'adeptus-mechanicus', color: 'orangered'},
+            {label: 'Adeptus Astartes', value: 'adeptus-astartes', color: 'blue'},
+            {label: 'Inquisition', value: 'inquisition', color: 'black'}
           ]
         }
       }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cz-print">
     <div class="card card-dimensions--magic card-bg" v-bind:style="customStyle">
       <SpaceCardTitle :title="card.title" :subtitle="card.subtitle" v-bind:flavour="flavour"></SpaceCardTitle>
       <SpaceCardDescription :description="card.description" v-bind:flavour="flavour"></SpaceCardDescription>

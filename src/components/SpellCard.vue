@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cz-print">
     <div class="card card-dimensions--magic card-bg" v-bind:class="bgClass" v-bind:style="customStyle">
       <spell-card-title :name="spell.name"></spell-card-title>
       <spell-card-level :level="spell.level"></spell-card-level>
