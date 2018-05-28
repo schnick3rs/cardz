@@ -131,6 +131,7 @@
         fields: {
           flavours: [
             {label: 'Imperial Guard', value: 'imperial-guard', color: 'forestgreen'},
+            {label: 'Doom', value: 'doom', color: 'forestgreen'},
             {label: 'Navis Nobilite', value: 'navis-nobilite', color: 'blue'},
             {label: 'Mechanicus', value: 'adeptus-mechanicus', color: 'orangered'},
             {label: 'Adeptus Astartes', value: 'adeptus-astartes', color: 'blue'},

@@ -7,8 +7,10 @@
 
       <div>
         <CharacterSheetName :name="character.name" :profession="character.profession"></CharacterSheetName>
-        <CharacterSheetPortrait class="character-sheet__portrait"
-                                :portrait="character.portrait"></CharacterSheetPortrait>
+        <CharacterSheetPortrait
+          class="character-sheet__portrait"
+          :portrait="character.portrait"
+        />
       </div>
 
       <div class="characteristic-section">
@@ -28,12 +30,9 @@
           </table>
         </div>
 
-        <div class="skill-holder">
-          <div style="" v-for="skill in character.skills" v-bind:key="skill.label">
-            <span class="skill-holder__label">{{ skill.label }}</span>
-            <span>{{ skill.value }}</span>
-          </div>
-        </div>
+        <CharacterSheetSkillHolder
+          :skills="character.skills"
+        />
 
       </div>
 
@@ -51,9 +50,10 @@
   import CharacterSheetPortrait from "./CharacterSheetPortrait";
   import CharacterSheetName from "./CharacterSheetName";
   import CharacterSheetDescription from "./CharacterSheetDescription";
+  import CharacterSheetSkillHolder from "./CharacterSheetSkillHolder";
   export default {
     name: "CharacterSheet",
-    components: {CharacterSheetDescription, CharacterSheetName, CharacterSheetPortrait},
+    components: {CharacterSheetSkillHolder, CharacterSheetDescription, CharacterSheetName, CharacterSheetPortrait},
     props: {
       character: {type: Object, required: true}
     },
@@ -127,13 +127,18 @@
     -webkit-filter: sepia(100%);
   }
 
-  .character-sheet__background--war {
-    background-image: url('https://78.media.tumblr.com/82938fb0efc7203f68e6c6d3237bbdd1/tumblr_oh3fwsc9Hg1vjjcaco1_1280.jpg');
+  .character-sheet__background.navis-nobilite {
+    background-image: url('https://vignette.wikia.nocookie.net/warhammer40k/images/d/d9/Iron_Hands_Fleet_Arrives.png/revision/latest?cb=20140415161335');
     opacity: 0.5;
   }
 
-  .character-sheet__background.navis-nobilite {
-    background-image: url('https://vignette.wikia.nocookie.net/warhammer40k/images/d/d9/Iron_Hands_Fleet_Arrives.png/revision/latest?cb=20140415161335');
+  .character-sheet__background.doom {
+    background-image: url('https://pre00.deviantart.net/af57/th/pre/i/2014/266/9/6/doctor_doom_splat_colors_by_slypstream-d809r5v.png');
+    opacity: 0.3;
+  }
+
+  .character-sheet__background--war {
+    background-image: url('https://78.media.tumblr.com/82938fb0efc7203f68e6c6d3237bbdd1/tumblr_oh3fwsc9Hg1vjjcaco1_1280.jpg');
     opacity: 0.5;
   }
 
@@ -166,22 +171,17 @@
     color: black;
   }
 
-  .skill-holder {
-    column-count: 2;
-    padding: 4mm 2mm;
-  }
-
-  .skill-holder__label {
-    width: 5mm;
-  }
-
   .character-sheet__portrait {
+    position: absolute;
+    left: 0mm;
+    bottom: 10mm;
+    width: 33%;
     z-index: 2;
   }
 
   .character-sheet__description {
     position: absolute;
-    bottom: 15%;
+    bottom: 15mm;
     width: 100%;
     z-index: 1;
     min-height: 20%;

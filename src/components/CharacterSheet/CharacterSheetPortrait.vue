@@ -29,10 +29,6 @@
   }
 
   .portrait-container--fixed {
-    position: absolute;
-    left: 0mm;
-    top: 15mm;
-    width: 33%;
   }
 
   .card__portrait-container {
