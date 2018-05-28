@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div class="cz-printable-item">
     <div class="printable-item printable-item--sci-fi printable-item--a5-landscape character-sheet">
       <div>
         <div class="character-sheet__background character-sheet__background--war" v-bind:class="character._flavour"/>
       </div>
+
       <div>
         <CharacterSheetName :name="character.name" :profession="character.profession"></CharacterSheetName>
-        <CharacterSheetPortrait :portrait="character.portrait"></CharacterSheetPortrait>
+        <CharacterSheetPortrait class="character-sheet__portrait"
+                                :portrait="character.portrait"></CharacterSheetPortrait>
       </div>
 
       <div class="characteristic-section">
@@ -34,6 +36,13 @@
         </div>
 
       </div>
+
+      <CharacterSheetDescription
+        :description="character.description"
+        :flavour="character._flavour"
+        class="character-sheet__description"
+      />
+
     </div>
   </div>
 </template>
@@ -41,9 +50,10 @@
 <script>
   import CharacterSheetPortrait from "./CharacterSheetPortrait";
   import CharacterSheetName from "./CharacterSheetName";
+  import CharacterSheetDescription from "./CharacterSheetDescription";
   export default {
     name: "CharacterSheet",
-    components: {CharacterSheetName, CharacterSheetPortrait},
+    components: {CharacterSheetDescription, CharacterSheetName, CharacterSheetPortrait},
     props: {
       character: {type: Object, required: true}
     },
@@ -79,7 +89,8 @@
   }
 
   .printable-item--a5-landscape {
-    height: 148.5mm;
+    /*height: 148.5mm;*/
+    height: 148mm; /* fits on a single page*/
     width: 210mm;
     font-size: 3.5mm;
   }
@@ -121,6 +132,11 @@
     opacity: 0.5;
   }
 
+  .character-sheet__background.navis-nobilite {
+    background-image: url('https://vignette.wikia.nocookie.net/warhammer40k/images/d/d9/Iron_Hands_Fleet_Arrives.png/revision/latest?cb=20140415161335');
+    opacity: 0.5;
+  }
+
   .characteristic-section {
     position: absolute;
     right: 5mm;
@@ -157,5 +173,19 @@
 
   .skill-holder__label {
     width: 5mm;
+  }
+
+  .character-sheet__portrait {
+    z-index: 2;
+  }
+
+  .character-sheet__description {
+    position: absolute;
+    bottom: 15%;
+    width: 100%;
+    z-index: 1;
+    min-height: 20%;
+    padding-left: 35%;
+    padding-right: 5mm;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="md-layout">
-    <form class="md-layout-item md-size-40" @submit.prevent="addCard(card)">
+    <form class="md-layout-item md-size-30 cz--hide-for-print" @submit.prevent="addCard(character)">
       <md-card>
         <md-card-content class="input-form">
 
@@ -58,14 +58,14 @@
       </md-card>
     </form>
 
-    <section class="md-layout-item card-holder">
+    <section class="md-layout-item md-size-50 card-holder">
       <CharacterSheet :character="character"></CharacterSheet>
     </section>
 
-    <form class="md-layout-item md-size-20" hidden>
+    <form class="md-layout-item md-size-10">
       <md-card>
         <md-card-actions>
-          <md-button class="md-primary" :to="{ name: 'projectPrinter', params: { payload: draftRepository } }">
+          <md-button class="md-primary" :to="{ name: 'characterSheetPrinter', params: { payload: draftRepository } }">
             <md-icon>print</md-icon>
             Print
           </md-button>
@@ -75,12 +75,11 @@
           <md-list class="md-dense md-triple-line">
             <md-list-item v-for="item in draftRepository" v-bind:key="item.id">
               <md-avatar>
-                <img v-bind:src="item._theme" alt="People">
+                <img v-bind:src="item.portrait" alt="People" @click="removeItem">
               </md-avatar>
               <div class="md-list-item-text">
-                <span>{{ item.title }}</span>
-                <span>{{ item.subtitle }}</span>
-                <p v-html="item.description"></p>
+                <span>{{ item.name }}</span>
+                <span>{{ item.profession }}</span>
               </div>
               <md-button class="md-icon-button md-list-action" @click="removeItem">
                 <md-icon class="md-accent">delete</md-icon>
@@ -117,28 +116,22 @@
           profession: 'Captain des 4ten Untertogen Regiments',
           quote: "Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.",
           attributes: [
-            {code: 'Kg', label: 'Kampfgeschick', value: 34},
-            {code: 'Bf', label: 'Ballistische Fähigkeit', value: 43},
-            {code: 'Str', label: 'Stärke', value: 23},
-            {code: 'Wid', label: 'Widerstand', value: 35},
-            {code: 'Ges', label: 'Geschick', value: 41},
-            {code: 'Int', label: 'Intelligenz', value: 45},
-            {code: 'Wil', label: 'Willenskraft', value: 45},
-            {code: 'Cha', label: 'Charisma', value: 45}
+            {code: 'Kg', label: 'Kampfgeschick', value: ''},
+            {code: 'Bf', label: 'Ballistische Fähigkeit', value: ''},
+            {code: 'Str', label: 'Stärke', value: ''},
+            {code: 'Wid', label: 'Widerstand', value: ''},
+            {code: 'Ges', label: 'Geschick', value: ''},
+            {code: 'Int', label: 'Intelligenz', value: ''},
+            {code: 'Wil', label: 'Willenskraft', value: ''},
+            {code: 'Cha', label: 'Charisma', value: ''}
           ],
-          skills: [
-            {label: 'Athletik', value: '+10'},
-            {label: 'Ausweichen', value: '+0'},
-            {label: 'Wissen: Krieg', value: '+10'},
-            {label: 'Taktik', value: '+20'},
-            {label: 'Verhöhr', value: '+10'},
-            {label: 'Befehligen', value: '+20'}
-          ]
+          skills: []
         },
         draftRepository: [],
         fields: {
           flavours: [
             {label: 'Imperial Guard', value: 'imperial-guard', color: 'forestgreen'},
+            {label: 'Navis Nobilite', value: 'navis-nobilite', color: 'blue'},
             {label: 'Mechanicus', value: 'adeptus-mechanicus', color: 'orangered'},
             {label: 'Adeptus Astartes', value: 'adeptus-astartes', color: 'blue'},
             {label: 'Inquisition', value: 'inquisition', color: 'black'}
@@ -154,9 +147,6 @@
         this.markdown = e.target.value
         this.character.description = marked(this.markdown, {sanatize: false})
       },
-      copyToClipboard: function (e) {
-        navigator.clipboard.writeText(JSON.stringify(this.card));
-      },
       addCard: function (item) {
         this.draftRepository.push(JSON.parse(JSON.stringify(item)))
       },
@@ -168,7 +158,6 @@
 </script>
 
 <style scoped>
-
   .card-holder {
     min-width: fit-content;
   }

@@ -58,6 +58,20 @@
       margin: 0 !important;
     }
 
+    .cz--hide-for-print {
+      display: none;
+    }
+
+    .cz-printable-item {
+      margin: 0;
+      padding: 0;
+    }
+
+    .md-content {
+      margin: 0;
+      padding: 0;
+    }
+
     .md-app-toolbar {
       display: none;
     }

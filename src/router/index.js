@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import CardBuilder from '@/components/CardBuilder'
 import CharacterSheetBuilder from '@/components/CharacterSheet/CharacterSheetBuilder'
+import CharacterSheetPrinter from '@/components/CharacterSheet/CharacterSheetPrinter'
 import ProjectPrinter from '@/components/ProjectPrinter'
 import SpellBook from '@/components/SpellBook'
 import SpellCard from '@/components/SpellCard'
@@ -21,6 +22,7 @@ export default new Router({
     {path: '/builder/future', name: 'cardBuilder', component: CardBuilder},
     {path: '/builder/char-a5', name: 'characterSheetBuilder', component: CharacterSheetBuilder},
     {path: '/printer/', name: 'projectPrinter', component: ProjectPrinter},
+    {path: '/printer/char-a5', name: 'characterSheetPrinter', component: CharacterSheetPrinter},
     { path: '/spellbook/print/:spellHash', name: 'spellPrinter', component: SpellPrinter, props: (route) => ({spellsHash: route.params.spellHash}) }
   ]
 })

@@ -14,7 +14,8 @@
     name: "CharacterSheetName",
     props: {
       name: {type: String},
-      profession: {type: String}
+      profession: {type: String},
+      flavour: {type: String, default: ''}
     }
   }
 </script>
