@@ -116,14 +116,15 @@
           profession: 'Captain des 4ten Untertogen Regiments',
           quote: "Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.",
           attributes: [
-            {code: 'Kg', label: 'Kampfgeschick', value: ''},
-            {code: 'Bf', label: 'Ballistische Fähigkeit', value: ''},
-            {code: 'Str', label: 'Stärke', value: ''},
-            {code: 'Wid', label: 'Widerstand', value: ''},
-            {code: 'Ges', label: 'Geschick', value: ''},
-            {code: 'Int', label: 'Intelligenz', value: ''},
-            {code: 'Wil', label: 'Willenskraft', value: ''},
-            {code: 'Cha', label: 'Charisma', value: ''}
+            {code: 'KG', label: 'Kampfgeschick', value: ''},
+            {code: 'BF', label: 'Ballistische Fertigkeit', value: ''},
+            {code: 'ST', label: 'Stärke', value: ''},
+            {code: 'WI', label: 'Widerstand', value: ''},
+            {code: 'GE', label: 'Gewandheit', value: ''},
+            {code: 'IN', label: 'Intelligenz', value: ''},
+            {code: 'WA', label: 'Wahrnehmung', value: ''},
+            {code: 'WK', label: 'Willenskraft', value: ''},
+            {code: 'CH', label: 'Charisma', value: ''}
           ],
           skills: []
         },

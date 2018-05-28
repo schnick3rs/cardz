@@ -43,7 +43,7 @@
   }
 
   .skill__name--placeholder {
-    width: 70%;
+    width: 74%;
   }
 
   .skill__value--placeholder {
