@@ -1,8 +1,8 @@
 <template>
   <div class="md-layout">
-    <form class="md-layout-item md-size-30" @submit.prevent="addCard(card)">
+    <form class="md-layout-item md-size-40" @submit.prevent="addCard(card)">
       <md-card>
-        <md-card-content>
+        <md-card-content class="input-form">
 
           <md-card-actions>
             <md-button type="submit" class="md-primary">Add Character</md-button>
@@ -34,6 +34,23 @@
             <md-input v-model="character.profession "/>
           </md-field>
 
+          <md-field>
+            <label>Description (html)</label>
+            <md-textarea v-model="character.description"/>
+          </md-field>
+
+          <div>
+            <table class="input-form__table">
+              <tr class="input-form__table-row">
+                <td v-for="(item, index) in character.attributes">
+                  <md-field>
+                    <label>{{ item.code }}</label>
+                    <md-input style="width: 35px;" v-model="character.attributes[index].value"></md-input>
+                  </md-field>
+                </td>
+              </tr>
+            </table>
+          </div>
 
         </md-card-content>
 
@@ -41,7 +58,7 @@
       </md-card>
     </form>
 
-    <section class="md-layout-item md-size-70 card-holder">
+    <section class="md-layout-item card-holder">
       <CharacterSheet :character="character"></CharacterSheet>
     </section>
 
@@ -79,9 +96,9 @@
 </template>
 
 <script>
-  import CharacterSheet from "./CharacterSheet";
+  import CharacterSheet from './CharacterSheet';
   export default {
-    name: "CardBuilder",
+    name: 'CardBuilder',
     components: {CharacterSheet},
     data() {
       return {
@@ -100,18 +117,22 @@
           profession: 'Captain des 4ten Untertogen Regiments',
           quote: "Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.",
           attributes: [
-            {label: 'Kampfgeschick', value: 34},
-            {label: 'Ballistische Fähigkeit', value: 43},
-            {label: 'Stärke', value: 23, skills: [{label: 'Athletik', value: '+10'}]},
-            {label: 'Widerstand', value: 35},
-            {label: 'Geschick', value: 41, skills: [{label: 'Ausweichen', value: '+0'}]},
-            {
-              label: 'Intelligenz',
-              value: 45,
-              skills: [{label: 'Wissen: Krieg', value: '+10'}, {label: 'Taktik', value: '+20'}]
-            },
-            {label: 'Willenskraft', value: 45, skills: [{label: 'Verhöhr', value: '+10'}]},
-            {label: 'Charisma', value: 45, skills: [{label: 'Befehligen', value: '+20'}]}
+            {code: 'Kg', label: 'Kampfgeschick', value: 34},
+            {code: 'Bf', label: 'Ballistische Fähigkeit', value: 43},
+            {code: 'Str', label: 'Stärke', value: 23},
+            {code: 'Wid', label: 'Widerstand', value: 35},
+            {code: 'Ges', label: 'Geschick', value: 41},
+            {code: 'Int', label: 'Intelligenz', value: 45},
+            {code: 'Wil', label: 'Willenskraft', value: 45},
+            {code: 'Cha', label: 'Charisma', value: 45}
+          ],
+          skills: [
+            {label: 'Athletik', value: '+10'},
+            {label: 'Ausweichen', value: '+0'},
+            {label: 'Wissen: Krieg', value: '+10'},
+            {label: 'Taktik', value: '+20'},
+            {label: 'Verhöhr', value: '+10'},
+            {label: 'Befehligen', value: '+20'}
           ]
         },
         draftRepository: [],
@@ -121,6 +142,9 @@
             {label: 'Mechanicus', value: 'adeptus-mechanicus', color: 'orangered'},
             {label: 'Adeptus Astartes', value: 'adeptus-astartes', color: 'blue'},
             {label: 'Inquisition', value: 'inquisition', color: 'black'}
+          ],
+          attributes: [
+            {code: 'Kg', label: 'Kampfgeschick', value: '',}
           ]
         }
       }
@@ -132,9 +156,7 @@
       },
       copyToClipboard: function (e) {
         navigator.clipboard.writeText(JSON.stringify(this.card));
-      }
-    },
-    methods: {
+      },
       addCard: function (item) {
         this.draftRepository.push(JSON.parse(JSON.stringify(item)))
       },
@@ -223,5 +245,9 @@
     height: 8px;
     border-radius: 50%;
     background: white;
+  }
+
+  .input-form__table-row {
+
   }
 </style>

@@ -8,6 +8,29 @@
         <CharacterSheetName :name="character.name" :profession="character.profession"></CharacterSheetName>
         <CharacterSheetPortrait :portrait="character.portrait"></CharacterSheetPortrait>
       </div>
+      <div class="characteristic-section">
+        <div class="attribute-holder attribute-holder--table">
+          <table>
+            <tr>
+              <th class="table-cell table-header" v-for="attribute in character.attributes"
+                  v-bind:key="attribute.label">{{ attribute.code }}
+              </th>
+            </tr>
+            <tr>
+              <td class="table-cell table-value" v-for="attribute in character.attributes" v-bind:key="attribute.label">
+                &nbsp;{{ attribute.value }}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="skill-holder">
+          <div style="" v-for="skill in character.skills" v-bind:key="skill.label">
+            <span class="skill-holder__label">{{ skill.label }}</span>
+            <span>{{ skill.value }}</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </template>
@@ -55,6 +78,7 @@
   .printable-item--a5-landscape {
     height: 148.5mm;
     width: 210mm;
+    font-size: 3.5mm;
   }
 
   .character-sheet__background {
@@ -94,4 +118,41 @@
     opacity: 0.5;
   }
 
+  .characteristic-section {
+    position: absolute;
+    right: 5mm;
+    top: 5mm;
+  }
+
+  .attribute-holder {
+
+  }
+
+  .table-cell {
+    width: 12mm;
+    vertical-align: middle;
+    text-align: center;
+    display: table-cell;
+    font-size: 5mm;
+    line-height: 8mm;
+  }
+
+  .table-header {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+  }
+
+  .table-value {
+    background-color: rgba(255, 255, 255, 0.75);
+    color: black;
+  }
+
+  .skill-holder {
+    column-count: 2;
+    padding: 4mm 2mm;
+  }
+
+  .skill-holder__label {
+    width: 5mm;
+  }
 </style>

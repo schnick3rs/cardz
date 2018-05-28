@@ -5,7 +5,6 @@
     />
     <div class="portrait-container__image portrait-container__image--mask"
          v-bind:style="{ 'background-image': 'url(' + portrait + ')' }">
-
     </div>
   </div>
 </template>

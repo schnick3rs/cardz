@@ -2,26 +2,14 @@
   <div class="page-container">
     <md-app>
 
-      <md-app-toolbar class="md-primary">
-
+      <md-app-toolbar class="md-primary md-dense">
         <span class="md-title">Cartz</span>
+
+        <md-button class="md-raised" v-for="item in toolbarItems" :key="item.text" :to="item.page">
+          {{ item.text }}
+        </md-button>
+
       </md-app-toolbar>
-
-      <md-app-drawer style="max-width: 230px;" md-permanent="clipped">
-        <md-toolbar class="md-transparent" md-elevation="0">
-          <span>Navigation</span>
-          <div class="md-toolbar-section-end">
-
-          </div>
-        </md-toolbar>
-
-        <md-list>
-          <md-list-item v-for="routes in navItems" :key="navItems.text" :to="routes.page">
-            <md-icon>{{ routes.icon }}</md-icon>
-            <span class="md-list-item-text">{{ routes.text }}</span>
-          </md-list-item>
-        </md-list>
-      </md-app-drawer>
 
       <md-app-content>
         <router-view class="main"/>
@@ -45,6 +33,13 @@
           {text: 'Builder (character A5)', page: {name: 'characterSheetBuilder'}, icon: 'build'},
           {text: 'Migrate', page: {name: 'migrateSpells'}, icon: 'autorenew'},
           {text: 'Projects', page: {name: 'projectPrinter'}, icon: 'print'}
+        ],
+        toolbarItems: [
+          {text: 'Build Deck', page: {name: 'spellSearch'}, icon: 'image_search'},
+          {text: 'Create Card', page: {name: 'cardBuilder'}, icon: 'build'},
+          {text: 'Create NSC', page: {name: 'characterSheetBuilder'}, icon: 'build'},
+          {text: 'Print Project', page: {name: 'projectPrinter'}, icon: 'print'},
+          {text: 'Migrate Repository', page: {name: 'migrateSpells'}, icon: 'autorenew'}
         ]
       }
     },

@@ -65,7 +65,6 @@
   }
 </script>
 
-
 <style scoped>
   @media print {
     .toolbar {

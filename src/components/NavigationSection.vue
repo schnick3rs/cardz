@@ -1,7 +1,11 @@
 <template>
   <nav>
-    <router-link class="menu__item" v-for="routes in navItems" :key="navItems.text" :to="routes.page">{{ routes.text
-      }}
+    <router-link
+      class="menu__item"
+      v-for="routes in navItems"
+      :key="routes.text"
+      :to="routes.page">
+      {{ routes.text }}
     </router-link>
   </nav>
 </template>

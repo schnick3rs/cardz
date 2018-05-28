@@ -29,10 +29,6 @@
             <label>Description (html)</label>
             <md-textarea v-model="card.description"/>
           </md-field>
-          <md-field>
-            <label>Export to clipboard</label>
-            <md-input readonly v-model="JSON.stringify(card)"></md-input>
-          </md-field>
         </md-card-content>
 
         <md-card-actions>
@@ -147,8 +143,6 @@
     font-size: small;
     font-weight: bold;
   }
-
-
   /* INPUT RADIO FLAVOUR COLOR */
   .input-field-radio ul, .input-field-radio li {
     list-style-type: none;
