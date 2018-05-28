@@ -8,7 +8,9 @@
         <CharacterSheetName :name="character.name" :profession="character.profession"></CharacterSheetName>
         <CharacterSheetPortrait :portrait="character.portrait"></CharacterSheetPortrait>
       </div>
+
       <div class="characteristic-section">
+
         <div class="attribute-holder attribute-holder--table">
           <table>
             <tr>
@@ -23,6 +25,7 @@
             </tr>
           </table>
         </div>
+
         <div class="skill-holder">
           <div style="" v-for="skill in character.skills" v-bind:key="skill.label">
             <span class="skill-holder__label">{{ skill.label }}</span>
