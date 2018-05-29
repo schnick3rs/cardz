@@ -3,11 +3,22 @@
     <md-app>
 
       <md-app-toolbar class="md-primary md-dense">
-        <span class="md-title">Cartz</span>
 
-        <md-button class="md-raised" v-for="item in toolbarItems" :key="item.text" :to="item.page">
-          {{ item.text }}
-        </md-button>
+        <div class="md-toolbar-row">
+
+          <div>
+            <span class="md-title">Cartz</span>
+          </div>
+
+          <div class="md-toolbar-offset">
+            <md-button class="md-dense" v-for="item in toolbarItems" :key="item.text" :to="item.page">
+              <md-icon>{{ item.icon }}</md-icon>
+              {{ item.text }}
+            </md-button>
+          </div>
+
+        </div>
+
 
       </md-app-toolbar>
 
@@ -35,11 +46,11 @@
           {text: 'Projects', page: {name: 'projectPrinter'}, icon: 'print'}
         ],
         toolbarItems: [
-          {text: 'Build Deck', page: {name: 'spellSearch'}, icon: 'image_search'},
-          {text: 'Create Card', page: {name: 'cardBuilder'}, icon: 'build'},
-          {text: 'Create NSC', page: {name: 'characterSheetBuilder'}, icon: 'build'},
-          {text: 'Print Project', page: {name: 'projectPrinter'}, icon: 'print'},
-          {text: 'Migrate Repository', page: {name: 'migrateSpells'}, icon: 'autorenew'}
+          {text: 'Deck', page: {name: 'spellSearch'}, icon: 'image_search'},
+          {text: 'Card', page: {name: 'cardBuilder'}, icon: 'build'},
+          {text: 'NSC', page: {name: 'characterSheetBuilder'}, icon: 'build'},
+          {text: 'Project', page: {name: 'projectPrinter'}, icon: 'print'},
+          {text: 'Repository', page: {name: 'migrateSpells'}, icon: 'autorenew'}
         ]
       }
     },

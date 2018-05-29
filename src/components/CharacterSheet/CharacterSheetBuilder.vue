@@ -1,11 +1,37 @@
 <template>
   <div class="md-layout">
+
+    <md-dialog :md-active.sync="exportJsonDialog" style="min-width: 80%;">
+      <md-dialog-title>Copy JSON</md-dialog-title>
+      <md-dialog-content>
+        <md-field>
+          <label>JSON</label>
+          <md-textarea v-model="itemJson" readonly></md-textarea>
+        </md-field>
+      </md-dialog-content>
+      <md-dialog-actions>
+        <md-button class="md-raised md-accent">
+          Copy to clipboard
+        </md-button>
+      </md-dialog-actions>
+    </md-dialog>
+
     <form class="md-layout-item md-size-30 cz--hide-for-print" @submit.prevent="addCard(character)">
-      <md-card>
+      <md-card class="md-elevation-6">
         <md-card-content class="input-form">
 
           <md-card-actions>
-            <md-button type="submit" class="md-primary">Add Character</md-button>
+
+            <md-button type="submit" class="md-raised" @click="exportJsonDialog = true">
+              <md-icon>file_copy</md-icon>
+              Export
+            </md-button>
+
+            <md-button type="submit" class="md-raised md-primary">
+              <md-icon>note_add</md-icon>
+              Add
+            </md-button>
+
           </md-card-actions>
 
           <md-field>
@@ -35,8 +61,15 @@
           </md-field>
 
           <md-field>
-            <label>Description (html)</label>
-            <md-textarea v-model="character.description"/>
+            <label>Description (markdown)</label>
+            <md-textarea v-model="markdown" @input="update"/>
+            <span class="md-helper-text">
+              <md-icon>
+                help
+              </md-icon>
+              Use <a target="_blank"
+                     href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> to style text blocks
+            </span>
           </md-field>
 
           <div>
@@ -54,7 +87,6 @@
 
         </md-card-content>
 
-
       </md-card>
     </form>
 
@@ -65,7 +97,8 @@
     <form class="md-layout-item md-size-10">
       <md-card>
         <md-card-actions>
-          <md-button class="md-primary" :to="{ name: 'characterSheetPrinter', params: { payload: draftRepository } }">
+          <md-button class="md-primary md-raised"
+                     :to="{ name: 'characterSheetPrinter', params: { payload: draftRepository } }">
             <md-icon>print</md-icon>
             Print
           </md-button>
@@ -101,6 +134,7 @@
     components: {CharacterSheet},
     data() {
       return {
+        exportJsonDialog: false,
         markdown: 'Oh Boy',
         inputs: {
           title: {
@@ -144,9 +178,13 @@
         }
       }
     },
+    computed: {
+      itemJson: function () {
+        return JSON.stringify(this.character)
+      }
+    },
     methods: {
-      update: function (e) {
-        this.markdown = e.target.value
+      update: function (event) {
         this.character.description = marked(this.markdown, {sanatize: false})
       },
       addCard: function (item) {

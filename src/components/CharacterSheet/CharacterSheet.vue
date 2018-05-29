@@ -153,7 +153,7 @@
   }
 
   .table-cell {
-    width: 15mm;
+    width: 13mm;
     vertical-align: middle;
     text-align: center;
     display: table-cell;

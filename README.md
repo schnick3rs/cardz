@@ -32,6 +32,23 @@ npm test
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
+
+## Terms
+
+A *Project*
+
+A *Repository* is a fixed set of defined/filled cartz.
+
+A *Deck* is a (selected) subset of cartz used for printing. 
+
+Cartz have a **, defining the object structure and therefore may be very specific
+
+Cartz have a *theme*, they use the same underlying object structure but may impose major changes to the element arrangement and what flavours are availible.
+> Examples would be futuristic, medival, cyberpunk, steam
+
+Cartz can have a *flavour*, those are adjustments that mostly change the colors or background images used. They only rearange elements sligthly. 
+
+## routes
 /
 > print from JSON | build-in set 
 
