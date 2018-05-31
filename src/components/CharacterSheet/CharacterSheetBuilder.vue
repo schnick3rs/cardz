@@ -64,9 +64,6 @@
             <label>Description (markdown)</label>
             <md-textarea v-model="markdown" @input="update"/>
             <span class="md-helper-text">
-              <md-icon>
-                help
-              </md-icon>
               Use <a target="_blank"
                      href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> to style text blocks
             </span>
@@ -135,7 +132,7 @@
     data() {
       return {
         exportJsonDialog: false,
-        markdown: 'Oh Boy',
+        markdown: 'Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.',
         inputs: {
           title: {
             id: 'inputTitle',
@@ -148,7 +145,7 @@
           portrait: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
           name: 'Tailo \'der Grimmige\' Huskins',
           profession: 'Captain des 4ten Untertogen Regiments',
-          quote: "Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.",
+          description: '<p>Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.</p>',
           attributes: [
             {code: 'KG', label: 'Kampfgeschick', value: ''},
             {code: 'BF', label: 'Ballistische Fertigkeit', value: ''},

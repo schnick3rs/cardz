@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
-import CardBuilder from '@/components/CardBuilder'
+import SpaceCardBuilder from '@/components/SpaceCard/SpaceCardBuilder'
 import CharacterSheetBuilder from '@/components/CharacterSheet/CharacterSheetBuilder'
 import CharacterSheetPrinter from '@/components/CharacterSheet/CharacterSheetPrinter'
 import ProjectPrinter from '@/components/ProjectPrinter'
 import SpellBook from '@/components/SpellBook'
-import SpellCard from '@/components/SpellCard'
 import SpellSearch from '@/components/SpellSearch'
 import SpellPrinter from '@/components/SpellPrinter'
 import MigrateSpells from '@/components/MigrateSpells'
@@ -17,9 +16,8 @@ export default new Router({
     { path: '/', name: 'home', component: Dashboard },
     { path: '/migrate-spells/', name: 'migrateSpells', component: MigrateSpells },
     { path: '/search/', name: 'spellSearch', component: SpellSearch },
-    { path: '/card/', name: 'spellCard', component: SpellCard },
     { path: '/spellbook/', name: 'spellBook', component: SpellBook },
-    {path: '/builder/future', name: 'cardBuilder', component: CardBuilder},
+    {path: '/builder/future', name: 'spaceCardBuilder', component: SpaceCardBuilder},
     {path: '/builder/char-a5', name: 'characterSheetBuilder', component: CharacterSheetBuilder},
     {path: '/printer/', name: 'projectPrinter', component: ProjectPrinter},
     {path: '/printer/char-a5', name: 'characterSheetPrinter', component: CharacterSheetPrinter},

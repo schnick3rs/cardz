@@ -24,11 +24,11 @@
   .card {
     position: absolute;
     top: 2mm;
-
   }
 
   .card-title {
-  / / background-color: rgba(0, 0, 0, 0.75);
+    /*background-color: rgba(0, 0, 0, 0.75);*/
+    /*font-family: 'Roboto', sans-serif;*/
     color: black;
     display: table;
     margin-bottom: 1mm;
@@ -41,7 +41,7 @@
 
     border-bottom: 2px solid forestgreen;
     border-radius: 0px;
-  / / box-shadow: 0 0 px 10 px 0 px forestgreen;
+    /*box-shadow: 0 0 px 10 px 0 px forestgreen;*/
   }
 
   .card-title__subtitle {

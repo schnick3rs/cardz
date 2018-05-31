@@ -107,7 +107,7 @@
   }
 
   .character-sheet__background.inquisition {
-    background-image: url('https://i.ytimg.com/vi/1qwOUcqhwSI/maxresdefault.jpg');
+    background-image: url('https://spikeybits.com/wp-content/uploads/2016/07/female-inquisitor-sisters.jpg');
     opacity: 0.5;
   }
 

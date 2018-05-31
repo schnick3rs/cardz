@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
-export default {
+  import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+  export default {
   name: 'SpellCardComponents',
   components: { FontAwesomeIcon },
   props: {

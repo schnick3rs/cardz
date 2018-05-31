@@ -25,10 +25,16 @@
             <label>Subtitle</label>
             <md-input v-model="card.subtitle"/>
           </md-field>
+
           <md-field>
-            <label>Description (html)</label>
-            <md-textarea v-model="card.description"/>
+            <label>Description (markdown)</label>
+            <md-textarea v-model="markdown" @input="update"/>
+            <span class="md-helper-text">
+              Use <a target="_blank"
+                     href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> to style text blocks
+            </span>
           </md-field>
+
         </md-card-content>
 
         <md-card-actions>
@@ -54,19 +60,19 @@
         <md-card-content>
           <md-list class="md-dense md-triple-line">
             <md-list-item v-for="cardz in draftRepository" v-bind:key="cardz.id">
-          <md-avatar>
-            <img v-bind:src="cardz._theme" alt="People">
-          </md-avatar>
-          <div class="md-list-item-text">
-            <span>{{ cardz.title }}</span>
-            <span>{{ cardz.subtitle }}</span>
-            <p v-html="cardz.description"></p>
-          </div>
+              <md-avatar>
+                <img v-bind:src="cardz._theme" alt="People">
+              </md-avatar>
+              <div class="md-list-item-text">
+                <span>{{ cardz.title }}</span>
+                <span>{{ cardz.subtitle }}</span>
+                <p v-html="cardz.description"></p>
+              </div>
               <md-button class="md-icon-button md-list-action" @click="removeItem">
                 <md-icon class="md-accent">delete</md-icon>
               </md-button>
-        </md-list-item>
-      </md-list>
+            </md-list-item>
+          </md-list>
         </md-card-content>
 
       </md-card>
@@ -76,7 +82,7 @@
 </template>
 
 <script>
-  import SpaceCard from "./SpaceCard/SpaceCard";
+  import SpaceCard from "./SpaceCard";
   export default {
     name: "CardBuilder",
     components: {SpaceCard},
@@ -99,9 +105,9 @@
         draftRepository: [],
         fields: {
           flavours: [
-            {label: 'Green', value: 'green', color: 'forestgreen'},
-            {label: 'Red', value: 'red', color: 'orangered'},
-            {label: 'Blue', value: 'blue', color: 'blue'},
+            {label: 'Green', value: 'forestgreen', color: 'forestgreen'},
+            {label: 'Red', value: 'orangered', color: 'orangered'},
+            {label: 'Blue', value: 'dodgerblue', color: 'blue'},
             {label: 'Yellow', value: 'yellow', color: 'yellow'}
           ]
         }
@@ -117,6 +123,9 @@
       }
     },
     methods: {
+      update: function (event) {
+        this.card.description = marked(this.markdown, {sanatize: false})
+      },
       addCard: function (item) {
         this.draftRepository.push(JSON.parse(JSON.stringify(item)))
       },

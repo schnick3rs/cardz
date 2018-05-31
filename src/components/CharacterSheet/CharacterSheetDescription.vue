@@ -17,6 +17,7 @@
 </script>
 
 <style scoped>
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
   .container {
     background-color: rgba(0, 0, 0, 0.75);
     color: white;
@@ -57,10 +58,11 @@
   }
 
   .container__text {
-    font-family: "sans serif";
+    /*font-family: "sans serif";*/
+    font-family: 'Roboto', sans-serif;
     display: inline-block;
-    font-size: 3.5mm;
-    line-height: 4.5mm;
+    font-size: 3mm;
+    line-height: 4mm;
     margin: 1mm;
   }
 

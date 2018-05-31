@@ -15,7 +15,7 @@
   export default {
     name: "CharacterSheetSkillHolder",
     props: {
-      skills: {type: Array, default: []},
+      skills: {type: Array, default: ''},
       slots: {type: Number, default: 6}
     }
   }
