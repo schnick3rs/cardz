@@ -35,7 +35,7 @@
   </div>
 </template>
 <script>
-  import CharacterSheet from "./CharacterSheet";
+  import CharacterSheet from "../templates/CharacterSheet/CharacterSheet";
   export default {
     name: "ProjectPrinter",
     components: {CharacterSheet},

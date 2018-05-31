@@ -1,7 +1,7 @@
 <template>
   <div class="portrait-container portrait-container--fixed">
     <img class="card-bg "
-         src="../../assets/template-frame-green-portrait.png"
+         src="../../../assets/template-frame-green-portrait.png"
     />
     <div class="portrait-container__image portrait-container__image--mask"
          v-bind:style="{ 'background-image': 'url(' + portrait + ')' }">

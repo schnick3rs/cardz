@@ -1,18 +1,26 @@
 <template>
   <div class="spell-meta">
     <div v-if="!pushRight" class="spell-meta__label"><span>{{ label }}</span></div>
+    <div v-if="concentration" class="spell-meta__label"><span>C</span></div>
     <div class="spell-meta__value"><span>{{ value }}</span></div>
+    <div v-if="ritual" class="spell-meta__label"><span>
+      <font-awesome-icon icon="book" style="color: white;"/>
+    </span></div>
     <div v-if="pushRight" class="spell-meta__label"><span>{{ label }}</span></div>
   </div>
 </template>
 
 <script>
-export default {
+  import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+  export default {
+    components: {FontAwesomeIcon},
   name: 'SpellCardMeta',
   props: {
     label: { type: String },
     value: { type: String },
-    pushRight: { type: Boolean }
+    pushRight: {type: Boolean},
+    ritual: {type: Boolean, default: false},
+    concentration: {type: Boolean, default: false}
   },
   computed: {
     addSquares: function () {
@@ -23,9 +31,12 @@ export default {
 </script>
 
 <style scoped>
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+
 .spell-meta {
+  font-family: 'Roboto', sans-serif;
   width: 50%;
-  font-size: 2.2mm;
+  font-size: 2.1mm;
   line-height: 3.2mm;
   overflow: hidden;
   margin-bottom: 2mm;

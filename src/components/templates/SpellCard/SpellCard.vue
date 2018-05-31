@@ -1,28 +1,39 @@
 <template>
   <div class="cz-print">
-    <div class="card card-dimensions--magic card-bg" v-bind:class="bgClass" v-bind:style="customStyle">
+    <div class="card card-bg" v-bind:class="bgClass" v-bind:style="customStyle">
       <spell-card-title :name="spell.name"></spell-card-title>
       <spell-card-level :level="spell.level"></spell-card-level>
-      <span v-if="spell.flags.includes('Ritual')" class="spell-meta__ritual">
+      <span v-if="spell.flags.includes('Ritual')" class="spell-meta__ritual" hidden>
         <font-awesome-layers class="fa-2x">
           <font-awesome-icon icon="square" :transform="{ rotate: 45 }" style="color: black;opacity:0.75;"/>
           <font-awesome-icon icon="book" transform="shrink-9" style="color: white;" />
         </font-awesome-layers>
       </span>
-      <span v-if="spell.flags.includes('Concentration')" class="spell-meta__concentration">
+      <span v-if="spell.flags.includes('Concentration')" class="spell-meta__concentration" hidden>
         <font-awesome-layers class="fa-2x">
           <font-awesome-icon icon="square" :transform="{ rotate: 45 }" style="color: black;opacity:0.75;"/>
           <font-awesome-layers-text value="C" transform="shrink-9" style="color: white;" />
         </font-awesome-layers>
       </span>
       <div>
-        <spell-card-meta style="float: left;" v-if="spell.meta.castingTime" :label="'Casting Time'" :value="spell.meta.castingTime" ></spell-card-meta>
-        <spell-card-meta style="float: right;" pushRight v-if="spell.meta.duration" :label="'Duration'" :value="spell.meta.duration" ></spell-card-meta>
+        <spell-card-meta
+          style="float: left;"
+          v-if="spell.meta.castingTime"
+          :label="'Casting Time'"
+          :value="spell.meta.castingTime"
+          :ritual="spell.flags.includes('Ritual')"
+        />
+        <spell-card-meta style="float: right;" pushRight v-if="spell.meta.duration" :label="'Duration'"
+                         :value="spell.meta.duration"
+                         :concentration="spell.flags.includes('Concentration')"></spell-card-meta>
         <spell-card-meta style="clear: both; float: left;" v-if="spell.meta.range" :label="'Range'" :value="spell.meta.range" showSquares></spell-card-meta>
         <spell-card-meta style="float: right;" pushRight v-if="spell.meta.area" :label="'Area'" :value="spell.meta.area" ></spell-card-meta>
       </div>
-      <spell-card-description style="clear: both;" :description="spell.description"
-                              :overcast="spell.descriptionOvercast"/>
+      <spell-card-description
+        style="clear: both; margin-top: 1mm; padding-top: 0.5mm; max-height: 58mm; overflow: hidden;"
+        :description="spell.description"
+        :overcast="spell.descriptionOvercast"
+      />
       <spell-card-components
         v-bind:has-verbal="hasVerbal"
         v-bind:has-somatic="hasSomatic"
@@ -46,7 +57,8 @@
   props: {
     spell: {type: Object, required: true},
     theme: {type: String, required: false, default: 'mesmer'},
-    customTheme: {type: String, default: ''}
+    customTheme: {type: String, default: ''},
+    customDimension: {type: String, default: 'magic'}
   },
   data () {
     return {
@@ -61,7 +73,10 @@
       return ''
     },
     bgClass: function () {
-      return 'card-bg-' + this.theme
+      return [
+        'card-bg-' + this.theme,
+        'card-dimensions--' + this.customDimension
+      ]
     },
     hasVerbal: function () {
       return this.spell.components.includes('Verbal')
@@ -84,7 +99,6 @@
   font-style: normal;
   font-variant: normal;
   font-weight: 400;
-//line-height: 20px;
 }
 .card {
   border-color: red;
@@ -98,6 +112,17 @@
   height: 88mm;
   width: 63mm;
 }
+
+.card-dimensions--dragonsleevesfit {
+  height: 90mm;
+  width: 63mm;
+}
+
+.card-dimensions--dragonsleeves {
+  height: 91mm;
+  width: 63mm;
+}
+
 .card-bg {
   background-position: center center;
   background-size: cover;
@@ -144,12 +169,12 @@
 }
 .spell-meta__ritual {
   position: absolute;
-  left: 24.5mm;
+  left: 27.0mm;
   top: 8mm;
 }
 .spell-meta__concentration {
   position: absolute;
-  right: 21.5mm;
+  right: 21mm;
   top: 8mm;
 }
 </style>

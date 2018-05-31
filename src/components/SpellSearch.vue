@@ -1,7 +1,7 @@
 <template>
   <div class="md-layout">
 
-    <div class="md-layout-item md-size-60">
+    <div class="md-layout-item md-size-50">
 
       <md-card>
 
@@ -47,6 +47,16 @@
 
         </md-card-content>
 
+        <md-card-actions>
+
+          <md-button class="md-primary md-raised" @click="learnAllFiltered">
+            <md-icon>library_add</md-icon>
+            Learn all
+          </md-button>
+
+        </md-card-actions>
+
+
       </md-card>
 
       <md-table v-model="filteredRepository" md-sort="level" md-sort-order="asc" md-card>
@@ -75,7 +85,7 @@
 
           <md-table-cell md-label="Casting Time" md-sort-by="meta.castingTime">
             {{ item.meta.castingTime }}
-            <md-icon v-if="item.flags.includes('Concentration')">book</md-icon>
+            <md-icon v-if="item.flags.includes('Ritual')">book</md-icon>
           </md-table-cell>
 
           <md-table-cell md-label="Range" md-sort-by="meta.range">{{ item.meta.range }}</md-table-cell>
@@ -99,6 +109,19 @@
       </md-table>
     </div>
 
+    <div class="md-layout-item md-size-20">
+      <md-card>
+
+        <md-card-header>
+          <div class="md-title">Preview</div>
+        </md-card-header>
+
+        <md-card-content>
+          <spell-card v-if="selectedSpell" :spell="selectedSpell" :theme="selectedFilters.clazz.selection[0]"/>
+        </md-card-content>
+      </md-card>
+    </div>
+
     <div class="md-layout-item md-size-30">
       <md-card>
 
@@ -117,7 +140,7 @@
           </md-button>
 
           <md-button class="md-primary md-raised"
-                     :to="{ name: 'projectPrinter', params: { payload: activeSpellBook } }">
+                     :to="{ name: 'spellBookPrinter', params: { payload: activeSpellBook } }">
             <md-icon>print</md-icon>
             Print
           </md-button>
@@ -153,9 +176,6 @@
 
     </div>
 
-    <section class="md-layout-item md-size-10" hidden>
-      <spell-card v-if="selectedSpell" :spell="selectedSpell" :theme="selectedClass[0]"/>
-    </section>
 
   </div>
 </template>
@@ -171,7 +191,7 @@
     return items
   }
   import SpellRepository from '../assets/cardz-spell-repository.json'
-  import SpellCard from './SpellCard/SpellCard'
+  import SpellCard from './templates/SpellCard/SpellCard'
   import SpellItemRow from "./SpellItemRow";
   export default {
   name: 'SpellSearch',
@@ -250,13 +270,6 @@
         results = searchByName(results, query)
       }
       return results;
-    },
-    spellHash: function () {
-      var hash = ""
-      for(var i = 0, len = this.activeSpellBook.length; i < len; i++) {
-        hash += this.activeSpellBook[i].id
-      }
-      return hash
     }
   },
   methods: {
@@ -276,7 +289,7 @@
       this.activeSpellBook.splice(i, 1) // remove it from array
     },
     learnAllFiltered: function () {
-      this.searchResults.forEach(v => this.learnSpell(v))
+      this.filteredRepository.forEach(v => this.learnSpell(v))
     }
   },
     created() {

@@ -1,12 +1,22 @@
 <template>
-  <div class="spell-components">
-    <ul class="spell-components__list">
-      <li class="spell-components__list-item spell-components__list-item--verbal" v-bind:class="{ collapsed : !hasVerbal }"><span><font-awesome-icon icon="comment-dots" /></span></li>
-      <li class="spell-components__list-item spell-components__list-item--somatic" v-bind:class="{ collapsed : !hasSomatic }"><span><font-awesome-icon icon="hand-paper" /></span></li>
-      <li class="spell-components__list-item spell-components__list-item--material" v-bind:class="{ collapsed : !hasMaterial }"><span><font-awesome-icon icon="cogs" /></span></li>
+  <div class="container">
+    <ul class="container__list">
+
+      <li class="list-item spell-component--verbal" v-bind:class="{ collapsed : !hasVerbal }">
+        <span><font-awesome-icon icon="comment-dots"/></span>
+      </li>
+
+      <li class="list-item spell-component--somatic" v-bind:class="{ collapsed : !hasSomatic }">
+        <span><font-awesome-icon icon="hand-paper"/></span>
+      </li>
+
+      <li class="list-item spell-component--material" v-bind:class="{ collapsed : !hasMaterial }">
+        <span><font-awesome-icon icon="cogs"/></span>
+      </li>
+
     </ul>
-    <div v-if="materialText" class="spell-components__material-detail">
-      <span class="spell-components__material-text">{{ materialText }}</span>
+    <div v-if="materialText" class="material-text-container">
+      <span class="material-text-container__text">{{ materialText }}</span>
     </div>
   </div>
 </template>
@@ -31,21 +41,26 @@
 </script>
 
 <style scoped>
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-.spell-components{
-}
-ul,li{
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+  .container {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.spell-components__list {
+
+  .container__list {
   z-index: 2;
   position: absolute;
   bottom: 0;
   width: 100%;
 }
-.spell-components__list-item {
+
+  .list-item {
   float: left;
   margin-left: 1mm;
   background-color: rgba(0, 0, 0, 0.75);
@@ -56,23 +71,23 @@ ul,li{
   height: 6.5mm;
   display: table;
 }
-.spell-components__list-item--shadow{
-  filter: drop-shadow(5px 0px 5px grey);
-//  box-shadow: 0px 5px 2mm 0mm #4c4c4c;
-}
-.spell-components__list-item span {
+
+  .list-item span {
   width: 100%;
   text-align: center;
   vertical-align: middle;
   display: table-cell;
 }
-.collapsed{
+
+  .collapsed {
   height: 1mm;
+    display: none;
 }
 .collapsed span {
   display: none;
 }
-.spell-components__material-detail {
+
+  .material-text-container {
   background-color: rgba(255, 255, 255, 0.75);
   color: black;
   box-shadow: 0px 5px 2mm 0mm #4c4c4c;
@@ -83,17 +98,25 @@ ul,li{
   position: absolute;
   margin-bottom: 2mm;
 }
-.spell-components__material-detail--two-rows {
-  margin-bottom: 1.5mm;
-}
-.spell-components__material-text {
+
+  .material-text-container__text {
   padding-left: 16mm;
   display: table-cell;
-  font-size: 2mm;
+    font-size: 2.0mm;
   line-height: 2.5mm;
-}
-.spell-components__material-detail--two-rows .spell-components__material-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+  }
+
+  .spell-components__material-detail--two-rows .material-text-container__text {
   font-size: 1.5mm;
   line-height: 2.0mm;
 }
+
+  .spell-components__material-detail--two-rows {
+    margin-bottom: 1.5mm;
+  }
 </style>

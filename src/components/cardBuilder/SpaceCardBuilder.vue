@@ -82,7 +82,7 @@
 </template>
 
 <script>
-  import SpaceCard from "./SpaceCard";
+  import SpaceCard from "../templates/SpaceCard/SpaceCard";
   export default {
     name: "CardBuilder",
     components: {SpaceCard},

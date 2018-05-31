@@ -35,10 +35,10 @@
   </div>
 </template>
 <script>
-  import FutureCardRepository from '../assets/projects/rogueTrader/rouge-trader-battle-opportunity-repository'
-  import DndCardRepository from '../assets/projects/dndAlliesAndMonsters/dnd-allies-and-monsters-repository'
-  import SandboxRepository from '../assets/projects/sandbox-repository'
-  import SpaceCard from "./SpaceCard/SpaceCard";
+  import FutureCardRepository from '../../assets/projects/rogueTrader/rouge-trader-battle-opportunity-repository'
+  import DndCardRepository from '../../assets/projects/dndAlliesAndMonsters/dnd-allies-and-monsters-repository'
+  import SandboxRepository from '../../assets/projects/sandbox-repository'
+  import SpaceCard from "../templates/SpaceCard/SpaceCard";
   export default {
     name: "ProjectPrinter",
     components: {SpaceCard},

@@ -16,7 +16,7 @@
       </md-dialog-actions>
     </md-dialog>
 
-    <form class="md-layout-item md-size-30 cz--hide-for-print" @submit.prevent="addCard(character)">
+    <form class="md-layout-item md-size-25 cz--hide-for-print" @submit.prevent="addCard(character)">
       <md-card class="md-elevation-6">
         <md-card-content class="input-form">
 
@@ -87,11 +87,11 @@
       </md-card>
     </form>
 
-    <section class="md-layout-item md-size-50 card-holder">
+    <section class="md-layout-item card-holder">
       <CharacterSheet :character="character"></CharacterSheet>
     </section>
 
-    <form class="md-layout-item md-size-10">
+    <form class="md-layout-item md-size-15">
       <md-card>
         <md-card-actions>
           <md-button class="md-primary md-raised"
@@ -102,7 +102,7 @@
         </md-card-actions>
 
         <md-card-content>
-          <md-list class="md-dense md-triple-line">
+          <md-list class="md-dense md-double-line">
             <md-list-item v-for="item in draftRepository" v-bind:key="item.id">
               <md-avatar>
                 <img v-bind:src="item.portrait" alt="People" @click="removeItem">
@@ -125,7 +125,7 @@
 </template>
 
 <script>
-  import CharacterSheet from './CharacterSheet';
+  import CharacterSheet from '../templates/CharacterSheet/CharacterSheet';
   export default {
     name: 'CardBuilder',
     components: {CharacterSheet},
