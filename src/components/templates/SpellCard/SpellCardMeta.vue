@@ -1,7 +1,7 @@
 <template>
   <div class="spell-meta">
     <div v-if="!pushRight" class="spell-meta__label"><span>{{ label }}</span></div>
-    <div v-if="concentration" class="spell-meta__label"><span>C</span></div>
+    <div v-if="concentration" class="spell-meta__label"><span style="font-weight: bolder;">C</span></div>
     <div class="spell-meta__value"><span>{{ value }}</span></div>
     <div v-if="ritual" class="spell-meta__label"><span>
       <font-awesome-icon icon="book" style="color: white;"/>

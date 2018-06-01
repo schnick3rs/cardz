@@ -39,10 +39,10 @@ export default {
 }
 
   .container-text >>> p {
-  font-size: 2.5mm;
-  line-height: 3.5mm;
-  text-align: justify;
-  margin-top: 0;
+    font-size: 2.5mm;
+    line-height: 3.5mm;
+    text-align: justify;
+    margin-top: 0;
     margin-bottom: 0.8mm;
   }
 

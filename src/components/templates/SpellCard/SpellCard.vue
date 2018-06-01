@@ -30,7 +30,8 @@
         <spell-card-meta style="float: right;" pushRight v-if="spell.meta.area" :label="'Area'" :value="spell.meta.area" ></spell-card-meta>
       </div>
       <spell-card-description
-        style="clear: both; margin-top: 1mm; padding-top: 0.5mm; max-height: 58mm; overflow: hidden;"
+        class="description-container description-container--fixed"
+        :class="descriptionStyle"
         :description="spell.description"
         :overcast="spell.descriptionOvercast"
       />
@@ -66,6 +67,9 @@
     }
   },
   computed: {
+    descriptionStyle: function () {
+      return 'description-container--' + this.customDimension
+    },
     customStyle: function () {
       if (this.customTheme.length > 0) {
         return 'background-image: url("' + this.customTheme + '")'
@@ -132,8 +136,12 @@
   background-image: url('https://i.pinimg.com/originals/f9/88/5d/f9885d08f0e3810dcf4b6434b28a1fa5.jpg');
 }
 
+.card-bg-warlock {
+  background-image: url('https://i.pinimg.com/originals/14/4c/c4/144cc4074580b737d7d28afff126564a.jpg');
+}
+
 .card-bg-ranger {
-  background-image: url('https://ih1.redbubble.net/image.431718827.3332/flat,800x800,070,f.jpg');
+  background-image: url('http://www.toptiertactics.com/wp-content/uploads/2012/08/guild-wars-2-ranger.jpg');
 / / background-image: url('https://guildwars2.staticwars.com/wp-content/themes/guildwars2.com-live/img/professions/list-ranger.d28c6467.jpg');
 }
 .card-bg-druid{
@@ -166,6 +174,28 @@
 }
 .theme-config label:after{
   content: ":";
+}
+
+.description-container {
+  clear: both;
+  margin-top: 1mm;
+  padding-top: 0.5mm;
+  max-height: 58mm;
+  overflow: hidden;
+}
+
+.description-container--bottom {
+  position: absolute;
+  bottom: 10mm;
+}
+
+.description-container--dragonsleevesfit {
+  max-height: 60mm !important;
+  min-height: 60mm !important;
+}
+
+.description-container--fixed {
+  min-height: 58mm;
 }
 .spell-meta__ritual {
   position: absolute;

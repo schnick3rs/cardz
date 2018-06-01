@@ -6,7 +6,6 @@
       <form novalidate class="md-layout" @submit.prevent="loadFromJson">
 
         <md-card class="md-layout-item md-size-100">
-
           <md-card-content>
 
             <div class="md-layout md-gutter">
