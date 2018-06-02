@@ -106,7 +106,9 @@
 }
 .card {
   border-color: red;
-  border: 0.3mm;
+  border-width: 0;
+  border-bottom-width: 0.3mm;
+  border-right-width: 0.3mm;
   border-style: dashed;
 
   overflow: hidden;
@@ -131,39 +133,6 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-}
-.card-bg-mesmer {
-  background-image: url('https://i.pinimg.com/originals/f9/88/5d/f9885d08f0e3810dcf4b6434b28a1fa5.jpg');
-}
-
-.card-bg-warlock {
-  background-image: url('https://i.pinimg.com/originals/14/4c/c4/144cc4074580b737d7d28afff126564a.jpg');
-}
-
-.card-bg-ranger {
-  background-image: url('http://www.toptiertactics.com/wp-content/uploads/2012/08/guild-wars-2-ranger.jpg');
-/ / background-image: url('https://guildwars2.staticwars.com/wp-content/themes/guildwars2.com-live/img/professions/list-ranger.d28c6467.jpg');
-}
-.card-bg-druid{
-/ / background-image: url("https://wiki.guildwars2.com/images/thumb/8/8c/Spec_image_Druid.jpg/350px-Spec_image_Druid.jpg");
-/ / background-size: auto;
-  background-image: url("https://i.pinimg.com/originals/14/0d/c9/140dc9c8525cdce19580a30896a09202.jpg");
-}
-.card-bg-sorcerer{
-/ / background-image: url("https://wiki.guildwars2.com/images/thumb/5/5e/Elementalist_04_concept_art.png/250px-Elementalist_04_concept_art.png");
-/ / background-image: url("https://2static.fjcdn.com/pictures/So_a5d900_5658368.jpg");
-  background-image: url("http://4.bp.blogspot.com/-ujlYUMbjqAw/UVJIpzYIf0I/AAAAAAAAA0Q/GQIKfHumDgY/s1600/Liliana+Vess+full.jpg");
-/ / background-image: url("https://media-waterdeep.cursecdn.com/avatars/thumbnails/6/485/420/618/636274643818663058.png");
-}
-.card-bg-paladin{
-/ / background-image: url("https://s-media-cache-ak0.pinimg.com/736x/4e/c1/9b/4ec19b9d9827544f0ece01221e817138.jpg");
-/ / background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4nPmA7xL_zWtgjKGrQSserWbG_OyayDnoryo7ZLuGGZwB0jZw");
-  background-image: url("https://i.pinimg.com/originals/df/39/01/df3901418561b5cf3a8c909185bf8daf.jpg");
-}
-
-.card-bg-warrior {
-/ / background-image: url("https://wiki.guildwars2.com/images/thumb/5/56/Warrior_04_concept_art.png/350px-Warrior_04_concept_art.png");
-  background-image: url("https://i.pinimg.com/originals/95/2b/d9/952bd9883e79a9bc7a0fe999c1c89541.jpg");
 }
 .theme-config {
   border-color: lightgrey;

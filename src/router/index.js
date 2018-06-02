@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import SpaceCardBuilder from '@/components/cardBuilder/SpaceCardBuilder'
+import SpaceCardPrinter from '@/components/cardPrinter/SpaceCardPrinter'
 import CharacterSheetBuilder from '@/components/cardBuilder/CharacterSheetBuilder'
 import CharacterSheetPrinter from '@/components/cardPrinter/CharacterSheetPrinter'
 import SpellSearch from '@/components/SpellSearch'
@@ -18,6 +19,7 @@ export default new Router({
     { path: '/spellbook/', name: 'spellBook', component: SpellBook },
     {path: '/builder/future', name: 'spaceCardBuilder', component: SpaceCardBuilder},
     {path: '/builder/char-a5', name: 'characterSheetBuilder', component: CharacterSheetBuilder},
+    {path: '/printer/future', name: 'spaceCardPrinter', component: SpaceCardPrinter},
     {path: '/printer/char-a5', name: 'characterSheetPrinter', component: CharacterSheetPrinter},
     {path: '/printer/spellbook', name: 'spellBookPrinter', component: SpellCardPrinter},
     {

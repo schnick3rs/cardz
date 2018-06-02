@@ -51,7 +51,7 @@
     <form class="md-layout-item md-size-30">
       <md-card>
         <md-card-actions>
-          <md-button class="md-primary" :to="{ name: 'projectPrinter', params: { payload: draftRepository } }">
+          <md-button class="md-primary" :to="{ name: 'spaceCardPrinter', params: { payload: draftRepository } }">
             <md-icon>print</md-icon>
             Print
           </md-button>

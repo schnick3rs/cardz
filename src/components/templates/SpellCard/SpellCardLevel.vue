@@ -27,7 +27,7 @@
 .spell-level {
   position: absolute;
   top: -1.5mm;
-  left: 1mm;
+  left: 0.0mm;
 }
 .spell-level__background {
   background-color: rgba(0, 0, 0, 0.75);

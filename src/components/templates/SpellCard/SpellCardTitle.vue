@@ -22,7 +22,7 @@ export default {
   width: 100%;
 }
 .card-header-title span{
-  font-size: 4.5mm;
+  font-size: 3.5mm;
   text-align: center;
   vertical-align: middle;
   display: table-cell;

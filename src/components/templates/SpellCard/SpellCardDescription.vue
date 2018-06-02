@@ -1,6 +1,7 @@
 <template>
   <div class="container container--light container--shadow">
     <div class="container-text" v-html="description"></div>
+    <hr v-if="overcast" class="sexy_line"/>
     <div class="container-text container-text--overcast" v-if="overcast" v-html="overcast"></div>
   </div>
 </template>
@@ -32,6 +33,11 @@ export default {
   box-shadow: 0px 5px 2mm 0mm #4c4c4c;
 }
 
+  hr.sexy_line {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
   .container-text {
     font-family: 'Roboto', sans-serif;
   display: inline-block;
@@ -49,7 +55,6 @@ export default {
   .container-text >>> li {
     line-height: 3.5mm;
   }
-
   .container-text >>> ul {
   padding-left: 3mm;
     margin: 0 0 0.5mm;

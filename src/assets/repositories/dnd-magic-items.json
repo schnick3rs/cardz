@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Amulet of Health",
+    "type": "Wonderous item",
+    "occurrence": "rare",
+    "attunement": true,
+    "description": "Your Constitution score is 19 while you wear this amulet. It has no effect on you if your Constitution is 19 or higher without it."
+  },
+  {
+    "name": "Glaive of Fire",
+    "type": "Weapon",
+    "occurrence": "uncommon",
+    "attunement": false,
+    "description": "<p></p>",
+    "weapon": {
+      "name": "Glaive",
+      "damage": {
+        "string": "1d10 slashing",
+        "dice": "1d10",
+        "type": "slashing"
+      },
+      "weight": {
+        "value": 6,
+        "unit": "lb."
+      },
+      "properties": [
+        "heavy",
+        "reach",
+        "two-handed"
+      ]
+    },
+    "effects": [
+      {
+        "cost": "As part of an melee weapon attack.",
+        "description": "<p></p>",
+        "rest": "long"
+      }
+    ]
+  },
+  {
+    "name": "Shifting Plate",
+    "type": "Armor",
+    "occurrence": "uncommon",
+    "attunement": true,
+    "description": "<p></p>",
+    "armor": {
+      "name": "Plate",
+      "ac": 19,
+      "weight": {
+        "value": 65,
+        "unit": "lb."
+      },
+      "properties": [
+        "heavy",
+        "loud",
+        "streng"
+      ]
+    },
+    "effects": [
+      {
+        "cost": "As a bonus action.",
+        "description": "<p>As a <b>bonus action</b>, you can activate the <i>Arcane Momentum</i>.</p><p>Until the start of your next turn, you have: <ul><li>increase damage from all melee attacks by +X</li><li>decrease your AC by X</li></ul></p><p>You may not lower your AC below 10.</p>",
+        "rest": "long"
+      }
+    ]
+  }
+]

@@ -229,12 +229,13 @@
         },
         source: {
           label: 'Source',
-          selection: ['phb'],
+          selection: ['br'],
           options: {
             phb: 'Players Handbook',
             ee: 'Elemental Evil Player\'s Companion',
             scag: 'Sword Coast Adventure Guide',
-            xge: 'Xanathar\'s guide to everything'
+            xge: 'Xanathar\'s guide to everything',
+            br: 'Basic Rules'
           }
         }
       },
