@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Banshee",
+    "size": "medium",
+    "type": "undead",
+    "alignment": "chaotic evil",
+    "armorClass": 12,
+    "hitPoints": {
+      "static": 58,
+      "dynamic": "13d8"
+    },
+    "speed": [
+      "0 ft.",
+      "fly 40 ft. (hover)"
+    ],
+    "abilityScores": {
+      "str": 1,
+      "dex": 14,
+      "con": 10,
+      "int": 12,
+      "wis": 11,
+      "cha": 17
+    },
+    "savingThrows": ""
+  }
+]

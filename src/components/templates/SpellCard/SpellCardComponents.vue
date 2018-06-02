@@ -2,15 +2,15 @@
   <div class="container">
     <ul class="container__list">
 
-      <li class="list-item spell-component--verbal" v-bind:class="{ collapsed : !hasVerbal }">
+      <li class="list-item verbal" v-bind:class="{ collapsed : !hasVerbal }">
         <span><font-awesome-icon icon="comment-dots"/></span>
       </li>
 
-      <li class="list-item spell-component--somatic" v-bind:class="{ collapsed : !hasSomatic }">
+      <li class="list-item somatic" v-bind:class="{ collapsed : !hasSomatic }">
         <span><font-awesome-icon icon="hand-paper"/></span>
       </li>
 
-      <li class="list-item spell-component--material" v-bind:class="{ collapsed : !hasMaterial }">
+      <li class="list-item material" v-bind:class="{ collapsed : !hasMaterial }">
         <span><font-awesome-icon icon="cogs"/></span>
       </li>
 
@@ -72,6 +72,23 @@
   display: table;
 }
 
+  .list-item:nth-child(1) {
+    position: absolute;
+    left: 1mm;
+    bottom: 0;
+  }
+
+  .list-item:nth-child(2) {
+    position: absolute;
+    left: 6mm;
+    bottom: 0;
+  }
+
+  .list-item:nth-child(3) {
+    position: absolute;
+    left: 11mm;
+    bottom: 0;
+  }
   .list-item span {
   width: 100%;
   text-align: center;
@@ -100,7 +117,7 @@
 }
 
   .material-text-container__text {
-  padding-left: 16mm;
+    padding-left: 16.5mm;
   display: table-cell;
     font-size: 2.0mm;
   line-height: 2.5mm;
@@ -120,3 +137,4 @@
     margin-bottom: 1.5mm;
   }
 </style>
+
