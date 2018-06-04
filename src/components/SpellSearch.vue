@@ -229,7 +229,7 @@
         },
         source: {
           label: 'Source',
-          selection: ['br'],
+          selection: ['br', 'phb'],
           options: {
             phb: 'Players Handbook',
             ee: 'Elemental Evil Player\'s Companion',

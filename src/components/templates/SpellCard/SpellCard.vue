@@ -41,6 +41,7 @@
         v-bind:has-material="hasMaterial"
         v-bind:material-text="spell.materialText"
       ></spell-card-components>
+      <card-copyright v-if="image && image.artist" position="bottom" theme="light">{{ image.artist }}</card-copyright>
     </div>
   </div>
 </template>
@@ -52,11 +53,27 @@
   import SpellCardLevel from './SpellCardLevel'
   import SpellCardTitle from './SpellCardTitle'
   import SpellCardMeta from './SpellCardMeta'
+  import CardCopyright from "../CardElements/CardCopyright";
   export default {
   name: 'SpellCard',
-  components: { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText, SpellCardMeta, SpellCardTitle, SpellCardDescription, SpellCardComponents, SpellCardLevel },
+    components: {
+      CardCopyright,
+      FontAwesomeIcon,
+      FontAwesomeLayers,
+      FontAwesomeLayersText,
+      SpellCardMeta,
+      SpellCardTitle,
+      SpellCardDescription,
+      SpellCardComponents,
+      SpellCardLevel
+    },
   props: {
     spell: {type: Object, required: true},
+    image: {
+      type: Object, default: function () {
+        return {}
+      }
+    },
     theme: {type: String, required: false, default: 'mesmer'},
     customTheme: {type: String, default: ''},
     customDimension: {type: String, default: 'magic'}
@@ -71,8 +88,8 @@
       return 'description-container--' + this.customDimension
     },
     customStyle: function () {
-      if (this.customTheme.length > 0) {
-        return 'background-image: url("' + this.customTheme + '")'
+      if (this.image && this.image.src) {
+        return 'background-image: url("' + this.image.src + '")'
       }
       return ''
     },
@@ -159,8 +176,8 @@
 }
 
 .description-container--dragonsleevesfit {
-  max-height: 60mm !important;
-  min-height: 60mm !important;
+  max-height: 61mm !important;
+  min-height: 61mm !important;
 }
 
 .description-container--fixed {

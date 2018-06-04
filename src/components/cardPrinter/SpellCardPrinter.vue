@@ -8,7 +8,7 @@
       <md-dialog-content>
         <div
           v-for="theme in themes.options"
-          :key="theme.label"
+          :key="theme.value"
           class="theme-teaser__list-item"
           :class="{ selected:  themes.selected == theme }"
           @click="themes.selected = theme"
@@ -90,6 +90,7 @@
         v-for="item in currentRepository"
         :key="item.name"
         :spell="item"
+        :image="themes.selected.image"
         :theme="selectedTheme"
         :customTheme="themes.selected.src"
         :customDimension="dimensions.selected"
@@ -113,7 +114,7 @@
       customTheme: '',
       jsonString: '',
       dimensions: {
-        selected: 'magic',
+        selected: 'dragonsleevesfit',
         options: {
           magic: 'Magic (63x88mm)',
           dragonsleevesfit: 'Dragonsleeves MOD (63x90mm)',
@@ -123,26 +124,72 @@
       themes: {
         selected: {label: 'Druid', value: 'druid', src: require('../../assets/img/artworks/artwork-druid.jpg')},
         options: [
-          {label: 'Druid', value: 'druid', src: require('../../assets/img/artworks/artwork-druid.jpg')},
+          {
+            label: 'Druid',
+            value: 'druid',
+            image: {
+              src: 'https://cdna.artstation.com/p/assets/images/images/004/362/054/large/ivona-denovic-isaralightoverhaul1.jpg?1482949470',
+              artist: 'Ivona Denovic',
+              url: 'https://www.artstation.com/artwork/9XKeW'
+            },
+            src: require('../../assets/img/artworks/artwork-druid.jpg'),
+          },
           {label: 'Druid (gw2)', value: 'druid-gw2', src: require('../../assets/img/artworks/artwork-druid--gw2.jpg')},
           {
             label: 'Druid (Moon)',
             value: 'druid-moon',
             src: require('../../assets/img/artworks/artwork-druid--circle-of-the-moon.jpg')
           },
-          {label: 'Sorceres', value: 'sorcerer', src: require('../../assets/img/artworks/artwork-sorceress.jpg')},
+          {
+            label: 'Sorceres',
+            value: 'sorcerer',
+            image: {
+              src: 'https://www.wallpaperup.com/uploads/wallpapers/2015/05/12/685062/ac44cf2775adf9b4620d98ab5a97190c-1400.jpg',
+              artist: '',
+              url: ''
+            }
+          },
           {label: 'Wizard', value: 'wizard', src: require('../../assets/img/artworks/artwork-wizard.jpg')},
-          {label: 'Wizard', value: 'wizard', src: require('../../assets/img/artworks/artwork-wizard--necromancer.jpg')},
           {
             label: 'Wizard',
-            value: 'wizard',
+            value: 'wizard-necromancer',
+            src: require('../../assets/img/artworks/artwork-wizard--necromancer.jpg')
+          },
+          {
+            label: 'Wizard',
+            value: 'wizard-necromancer-2',
             src: require('../../assets/img/artworks/artwork-wizard--necromancer-2.jpg')
           },
           {label: 'Fighter', value: 'fighter', src: require('../../assets/img/artworks/artwork-fighter.jpg')},
           {
             label: 'Warlock (Tome)',
             value: 'tomelock',
+            image: {
+              src: 'https://cdnb.artstation.com/p/assets/images/images/004/340/705/large/bigball-gao-witch.jpg?1482674203',
+              artist: 'Bigball Gao',
+              url: 'https://www.artstation.com/artwork/ren6e'
+            },
             src: require('../../assets/img/artworks/artwork-warlock--sinister-tome.jpg')
+          },
+          {
+            label: 'Tiefling',
+            value: 'tiefling',
+            image: {
+              src: 'https://i.pinimg.com/originals/44/69/a9/4469a986f64955c8c3870637aa214244.jpg',
+              artist: 'John-Paul Balmet?',
+              url: ''
+            },
+            src: 'https://i.pinimg.com/originals/44/69/a9/4469a986f64955c8c3870637aa214244.jpg'
+          },
+          {
+            label: 'Tiefling',
+            value: 'tiefling-2',
+            image: {
+              src: 'http://pro.bols.netdna-cdn.com/wp-content/uploads/2018/05/HpbKSsX2-720.jpg',
+              artist: '',
+              url: ''
+            },
+            src: 'http://pro.bols.netdna-cdn.com/wp-content/uploads/2018/05/HpbKSsX2-720.jpg'
           },
           {
             label: 'Paladin (Ancient)',
@@ -152,6 +199,11 @@
           {
             label: 'Trickster',
             value: 'trickster',
+            image: {
+              src: require('../../assets/img/artworks/artwork-arcane-trickster.jpg'),
+              artist: '',
+              url: '',
+            },
             src: require('../../assets/img/artworks/artwork-arcane-trickster.jpg')
           }
         ]

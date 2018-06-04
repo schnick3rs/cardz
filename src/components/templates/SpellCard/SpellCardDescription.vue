@@ -37,6 +37,8 @@ export default {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    margin-top: -0.5mm;
+    margin-bottom: -0.5mm;
   }
   .container-text {
     font-family: 'Roboto', sans-serif;
@@ -46,7 +48,7 @@ export default {
 
   .container-text >>> p {
     font-size: 2.5mm;
-    line-height: 3.5mm;
+    line-height: 3.3mm;
     text-align: justify;
     margin-top: 0;
     margin-bottom: 0.8mm;

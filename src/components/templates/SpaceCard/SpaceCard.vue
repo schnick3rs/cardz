@@ -2,6 +2,12 @@
   <div class="cz-print">
     <div class="card card-dimensions--magic card-bg" v-bind:style="customStyle">
       <SpaceCardTitle :title="card.title" :subtitle="card.subtitle" v-bind:flavour="flavour"></SpaceCardTitle>
+      <cartz-value-container
+        v-if="card.value"
+        icon="mailed-fist"
+        position="center"
+      >{{ card.value }}
+      </cartz-value-container>
       <CzGlowingTextBand
         class="card__text-band"
         :html="card.description"
@@ -14,19 +20,21 @@
 <script>
   import SpaceCardTitle from './SpaceCardTitle';
   import CzGlowingTextBand from "../CardElements/CzGlowingTextBand";
+  import CartzValueContainer from "../CardElements/CartzValueContainer";
   export default {
     name: 'SpaceCard',
-    components: {CzGlowingTextBand, SpaceCardTitle},
+    components: {CartzValueContainer, CzGlowingTextBand, SpaceCardTitle},
     props: {
       card: {type: Object}
     },
     computed: {
       customStyle: function () {
+        let style = {};
         let theme = this.card['_theme']
         if (theme && theme.length > 0) {
-          return 'background-image: url("' + theme + '")'
+          style['background-image'] = 'url("' + theme + '")';
         }
-        return ''
+        return style;
       },
       flavour: function () {
         return this.card['_flavour']

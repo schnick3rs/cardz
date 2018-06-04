@@ -7,6 +7,7 @@
             <label>Custom background Image</label>
             <md-input v-model="card._theme"/>
           </md-field>
+
           <div class="input-field input-field-radio">
             <label class="input-field__label input-field-radio__label">Color Flavour</label>
             <div>
@@ -17,14 +18,22 @@
               </div>
             </div>
           </div>
+
           <md-field>
             <label>Title</label>
             <md-input v-model="card.title"/>
           </md-field>
+
           <md-field>
             <label>Subtitle</label>
             <md-input v-model="card.subtitle"/>
           </md-field>
+
+          <md-field>
+            <label>Card value</label>
+            <md-input v-model="card.value"/>
+          </md-field>
+
 
           <md-field>
             <label>Description (markdown)</label>
@@ -99,6 +108,11 @@
           title: 'Monstreous Ambush',
           subtitle: 'Event',
           description: "<p>Oh boy.</p>",
+          value: '',
+          valueMeta: {
+            icon: 'mailed-fist',
+            position: 'center'
+          },
           _flavour: 'red',
           _theme: 'https://i.pinimg.com/736x/68/86/c9/6886c95a96ce40c0dce9c49f034c0c60--fantasy-concept-art-fantasy-art.jpg'
         },
