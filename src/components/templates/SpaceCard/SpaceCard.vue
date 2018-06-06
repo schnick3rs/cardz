@@ -1,20 +1,33 @@
 <template>
+
   <div class="cz-print">
-    <div class="card card-dimensions--magic card-bg" v-bind:style="customStyle">
-      <SpaceCardTitle :title="card.title" :subtitle="card.subtitle" v-bind:flavour="flavour"></SpaceCardTitle>
+
+    <div class="card card-dimensions--magic card-bg"
+         :class="[ card._dimension ]"
+         :style="backgroundImage"
+    >
+
+      <SpaceCardTitle v-if="card.title" :title="card.title" :subtitle="card.subtitle" v-bind:flavour="flavour"/>
+
       <cartz-value-container
         v-if="card.value"
+        :value="card.value"
+        :flavour="card._flavour"
         icon="mailed-fist"
         position="center"
-      >{{ card.value }}
-      </cartz-value-container>
+      />
+
       <CzGlowingTextBand
         class="card__text-band"
+        v-if="card.description"
         :html="card.description"
         :glowColor="card._flavour"
       ></CzGlowingTextBand>
+
     </div>
+
   </div>
+
 </template>
 
 <script>
@@ -28,7 +41,7 @@
       card: {type: Object}
     },
     computed: {
-      customStyle: function () {
+      backgroundImage: function () {
         let style = {};
         let theme = this.card['_theme']
         if (theme && theme.length > 0) {
@@ -64,6 +77,26 @@
   .card-dimensions--magic {
     height: 88mm;
     width: 63mm;
+  }
+
+  .card.zombicide-item {
+    height: 63mm;
+    width: 41mm;
+  }
+
+  .card.dragonsleeve {
+    height: 91mm;
+    width: 63mm;
+  }
+
+  .card.magic {
+    height: 88mm;
+    width: 63mm;
+  }
+
+  .card.magic-landscape {
+    height: 63mm;
+    width: 88mm;
   }
 
   .card-bg {

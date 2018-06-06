@@ -2,20 +2,20 @@
   <div class="container">
     <ul class="container__list">
 
-      <li class="list-item verbal" v-bind:class="{ collapsed : !hasVerbal }">
+      <li class="list-item verbal light" :class="{ collapsed: !hasVerbal }">
         <span><font-awesome-icon icon="comment-dots"/></span>
       </li>
 
-      <li class="list-item somatic" v-bind:class="{ collapsed : !hasSomatic }">
+      <li class="list-item somatic" v-bind:class="{ collapsed: !hasSomatic, flavour: true }">
         <span><font-awesome-icon icon="hand-paper"/></span>
       </li>
 
-      <li class="list-item material" v-bind:class="{ collapsed : !hasMaterial }">
+      <li class="list-item material" v-bind:class="{ collapsed: !hasMaterial, flavour: true }">
         <span><font-awesome-icon icon="cogs"/></span>
       </li>
 
     </ul>
-    <div v-if="materialText" class="material-text-container">
+    <div v-if="materialText" class="material-text-container shadow" :class="[ flavour ]">
       <span class="material-text-container__text">{{ materialText }}</span>
     </div>
   </div>
@@ -31,7 +31,8 @@
     hasSomatic: { type: Boolean, required: true },
     hasMaterial: { type: Boolean, required: true },
     materialText: { type: String, required: false },
-    materialCost: { type: String, required: false }
+    materialCost: {type: String, required: false},
+    flavour: {type: String, default: 'light'}
   },
   data () {
     return {
@@ -62,15 +63,31 @@
 
   .list-item {
   float: left;
-  margin-left: 1mm;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
   border-top-left-radius: 0mm;
   border-top-right-radius: 0mm;
   width: 4mm;
   height: 6.5mm;
   display: table;
 }
+
+  .list-item.collapsed {
+    height: 1mm;
+    display: none;
+  }
+
+  .list-item.collapsed span {
+    display: none;
+  }
+
+  .list-item.dark {
+    background-color: rgba(255, 255, 255, 0.75);
+    color: black;
+  }
+
+  .list-item.light {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+  }
 
   .list-item:nth-child(1) {
     position: absolute;
@@ -96,18 +113,7 @@
   display: table-cell;
 }
 
-  .collapsed {
-  height: 1mm;
-    display: none;
-}
-.collapsed span {
-  display: none;
-}
-
   .material-text-container {
-  background-color: rgba(255, 255, 255, 0.75);
-  color: black;
-  box-shadow: 0px 5px 2mm 0mm #4c4c4c;
   z-index: 1;
   bottom: 0;
   width: 100%;
@@ -115,6 +121,21 @@
   position: absolute;
   margin-bottom: 2mm;
 }
+
+  .material-text-container.dark {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+  }
+
+  .material-text-container.light {
+    background-color: rgba(255, 255, 255, 0.75);
+    color: black;
+  }
+
+  .material-text-container.shadow {
+    box-shadow: 0px 5px 2mm 0mm #4c4c4c;
+  }
+
 
   .material-text-container__text {
     padding-left: 16.5mm;

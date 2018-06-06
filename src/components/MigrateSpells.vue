@@ -6,7 +6,7 @@
 
 <script>
   import SpellsJson from '../assets/spell-repository.json'
-  import SpellsModJson from '../assets/cardz-spell-mod-repository.json'
+  import SpellsModJson from '../assets/repositories/dnd-spells--mods.json'
   export default {
   name: 'MigrateSpells',
   data () {

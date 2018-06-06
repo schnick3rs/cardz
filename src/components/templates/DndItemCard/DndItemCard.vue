@@ -69,7 +69,7 @@
       spell: {type: Object, required: true},
       theme: {type: String, required: false, default: 'mesmer'},
       customTheme: {type: String, default: ''},
-      customDimension: {type: String, default: 'magic'}
+      dimensions: {type: String, default: 'magic'}
     },
     data() {
       return {
@@ -78,9 +78,9 @@
     },
     computed: {
       descriptionStyle: function () {
-        return 'description-container--' + this.customDimension
+        return 'description-container--' + this.dimensions
       },
-      customStyle: function () {
+      backgroundImage: function () {
         if (this.customTheme.length > 0) {
           return 'background-image: url("' + this.customTheme + '")'
         }
@@ -89,7 +89,7 @@
       bgClass: function () {
         return [
           'card-bg-' + this.theme,
-          'card-dimensions--' + this.customDimension
+          'card-dimensions--' + this.dimensions
         ]
       },
       hasVerbal: function () {

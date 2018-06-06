@@ -14,5 +14,9 @@
   {
     "name": "Conjure Animals",
     "description": "<p>You summon <i>fey</i> spirits that take the form of <i>beasts</i> and appear in unoccupied spaces that you can see within range. Summon one or more beasts with a combined challenge rating of 2. Each single beast must have the same challenge rating. Each beast disappears when it drops to 0 hit points or when the spell ends.</p><p>The summoned creatures are friendly to you and your companions. Roll initiative for the summoned creatures as a group, which has its own turns. They obey any verbal commands that you issue to them (no action required by you). If you don’t issue any commands to them, they defend themselves from hostile creatures, but otherwise take no actions.</p>"
+  },
+  {
+    "name": "Animate Dead",
+    "description": "<p>Choose a pile of bones (skeleton) or a corpse (zombie) of a Medium or Small humanoid, raising them as an undead servant.</p>\n<p>As a <strong>bonus action</strong>, you can mentally command any (or all, using the same command) creature you made with this spell if it&#39;s within 60&#39; of you. You decide what action the creature will take and where it will move during their next turn, or you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.</p>\n<p>The creature is under your control for 24 hours, after which it stops obeying any command you’ve given it. To maintain control of the creature for another 24 hours, you must cast this spell on the creature again before the current 24-hour period ends. This use of the spell reasserts your control over up to four creatures you have animated with this spell, rather than animating a new one.</p>"
   }
 ]

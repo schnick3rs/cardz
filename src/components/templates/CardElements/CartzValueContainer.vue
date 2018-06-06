@@ -1,7 +1,7 @@
 <template>
   <div class="container" :class="[ position ]">
     <img class="icon" :src="mailedFist"/>
-    <span class="value"><slot></slot></span>
+    <span class="value" :style="textShadow">{{ value }}</span>
   </div>
 </template>
 
@@ -9,6 +9,8 @@
   export default {
     name: "CartzValueContainer",
     props: {
+      value: Number,
+      flavour: String,
       icon: String,
       position: {type: String, default: 'center'}
     },
@@ -24,6 +26,13 @@
           return 'background-image: url("' + this.mailedFist + '")'
         }
         return ''
+      },
+      textShadow: function () {
+        let color = this.flavour;
+        let s = 3;
+        return {
+          textShadow: '-' + s + 'px -' + s + 'px 0 ' + color + ', ' + s + 'px -' + s + 'px 0 ' + color + ', -' + s + 'px ' + s + 'px 0 ' + color + ', ' + s + 'px ' + s + 'px 0 ' + color
+        }
       }
     }
   }
@@ -36,8 +45,8 @@
 
   .container.center {
     position: absolute;
-    width: 50%;
-    left: 25%;
+    width: 70%;
+    left: 15%;
     top: 25%;
   }
 
@@ -56,6 +65,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 10mm;
+    font-size: 20mm;
   }
 </style>

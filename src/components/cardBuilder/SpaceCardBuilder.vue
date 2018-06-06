@@ -1,48 +1,97 @@
 <template>
+
   <div class="md-layout">
+
     <form class="md-layout-item md-size-40 md-small-size-100" @submit.prevent="addCard(card)">
+
       <md-card>
+
         <md-card-content>
-          <md-field>
-            <label>Custom background Image</label>
-            <md-input v-model="card._theme"/>
-          </md-field>
 
-          <div class="input-field input-field-radio">
-            <label class="input-field__label input-field-radio__label">Color Flavour</label>
-            <div>
-              <div v-for="flavour in fields.flavours" v-bind:key="flavour.id" style="display: inline; margin-left:2mm;">
-                <label style="font-size: xx-small;" v-bind:style="{ color: flavour.color }">{{ flavour.label }}</label>
-                <input type="radio" v-bind:value="flavour.value" v-model="card._flavour"
-                       style="margin: 0;padding: 0;vertical-align: middle;"/>
-              </div>
+          <div class="md-layout md-gutter">
+
+            <div class="md-layout-item md-size-100">
+
+              <md-field>
+                <label>Custom background Image</label>
+                <md-input v-model="card._theme"/>
+              </md-field>
+
             </div>
+
+            <div class="md-layout-item md-size-50">
+
+              <div class="input-field input-field-radio">
+                <label class="input-field__label input-field-radio__label">Color Flavour</label>
+                <div>
+                  <div v-for="flavour in fields.flavours" v-bind:key="flavour.id"
+                       style="display: inline; margin-left:2mm;">
+                    <label style="font-size: xx-small;" v-bind:style="{ color: flavour.color }">{{ flavour.label
+                      }}</label>
+                    <input type="radio" v-bind:value="flavour.value" v-model="card._flavour"
+                           style="margin: 0;padding: 0;vertical-align: middle;"/>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="md-layout-item md-size-50">
+
+              <md-field>
+                <label>{{ dimensions.label }}</label>
+                <md-select v-model="card._dimension">
+                  <md-option v-for="item in dimensions.options" :key="item.key" v-bind:value="item.value">{{ item.label
+                    }}
+                  </md-option>
+                </md-select>
+              </md-field>
+
+            </div>
+
+            <div class="md-layout-item md-size-100">
+
+              <md-field>
+                <label>Title</label>
+                <md-input v-model="card.title"/>
+              </md-field>
+
+            </div>
+
+            <div class="md-layout-item md-size-100">
+
+
+              <md-field>
+                <label>Subtitle</label>
+                <md-input v-model="card.subtitle"/>
+              </md-field>
+
+            </div>
+
+            <div class="md-layout-item md-size-100">
+
+
+              <md-field>
+                <label>Card value</label>
+                <md-input v-model="card.value"/>
+              </md-field>
+
+            </div>
+
+            <div class="md-layout-item md-size-100">
+
+              <md-field>
+                <label>Description (markdown)</label>
+                <md-textarea v-model="markdown" @input="update"/>
+                <span class="md-helper-text">
+                  Use <a target="_blank"
+                         href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> to style text blocks
+                </span>
+              </md-field>
+
+            </div>
+
           </div>
-
-          <md-field>
-            <label>Title</label>
-            <md-input v-model="card.title"/>
-          </md-field>
-
-          <md-field>
-            <label>Subtitle</label>
-            <md-input v-model="card.subtitle"/>
-          </md-field>
-
-          <md-field>
-            <label>Card value</label>
-            <md-input v-model="card.value"/>
-          </md-field>
-
-
-          <md-field>
-            <label>Description (markdown)</label>
-            <md-textarea v-model="markdown" @input="update"/>
-            <span class="md-helper-text">
-              Use <a target="_blank"
-                     href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> to style text blocks
-            </span>
-          </md-field>
 
         </md-card-content>
 
@@ -54,7 +103,7 @@
     </form>
 
     <section class="md-layout-item md-size-30 card-holder">
-      <SpaceCard :card="card"></SpaceCard>
+      <SpaceCard :card="card" :dimension="card._dimension"></SpaceCard>
     </section>
 
     <form class="md-layout-item md-size-30">
@@ -113,10 +162,21 @@
             icon: 'mailed-fist',
             position: 'center'
           },
+          _dimension: 'dragonsleeve',
           _flavour: 'red',
           _theme: 'https://i.pinimg.com/736x/68/86/c9/6886c95a96ce40c0dce9c49f034c0c60--fantasy-concept-art-fantasy-art.jpg'
         },
         draftRepository: [],
+        dimensions: {
+          label: 'Dimension',
+          selected: 'dragonsleeve',
+          options: {
+            magic: {label: 'Magic', value: 'magic'},
+            dragonsleeve: {label: 'Magic (Dragonsleeve)', value: 'dragonsleeve'},
+            magicLandscape: {label: 'Magic (Landscape)', value: 'magic-landscape'},
+            zombicideItem: {label: 'Zimbicide ', value: 'zombicide-item'}
+          }
+        },
         fields: {
           flavours: [
             {label: 'Green', value: 'forestgreen', color: 'forestgreen'},

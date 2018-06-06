@@ -1,5 +1,5 @@
 <template>
-  <div class="container container--light container--shadow">
+  <div class="container shadow" v-bind:class="[ flavour ]">
     <div class="container-text" v-html="description"></div>
     <hr v-if="overcast" class="sexy_line"/>
     <div class="container-text container-text--overcast" v-if="overcast" v-html="overcast"></div>
@@ -11,7 +11,8 @@ export default {
   name: 'SpellCardDescription',
   props: {
     description: {type: String},
-    overcast: {type: String}
+    overcast: {type: String},
+    flavour: {type: String, default: 'light'}
   }
 }
 </script>
@@ -19,17 +20,17 @@ export default {
 <style scoped>
   @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-  .container--dark {
+  .container.dark {
     background-color: rgba(0, 0, 0, 0.75);
     color: white;
   }
 
-  .container--light {
+  .container.light {
   background-color: rgba(255, 255, 255, 0.75);
   color: black;
   }
 
-  .container--shadow {
+  .container.shadow {
   box-shadow: 0px 5px 2mm 0mm #4c4c4c;
 }
 

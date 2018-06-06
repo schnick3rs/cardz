@@ -1,8 +1,8 @@
 <template>
   <div class="spell-level">
     <font-awesome-layers class="fa-4x">
-      <font-awesome-icon icon="bookmark" style="color: black;opacity:0.75;"/>
-      <font-awesome-layers-text :value="roman[level]" transform="shrink-9" style="color: white;" />
+      <font-awesome-icon icon="bookmark" class="background" :class="[ flavour ]"/>
+      <font-awesome-layers-text :value="roman[level]" transform="shrink-9" class="value" :class="[ flavour ]"/>
     </font-awesome-layers>
   </div>
 </template>
@@ -13,7 +13,8 @@
   name: 'SpellCardLevel',
   components: { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText },
   props: {
-    level: { type: Number, required: true }
+    level: {type: Number, required: true},
+    flavour: {type: String, String: 'light'}
   },
   data () {
     return {
@@ -29,41 +30,22 @@
   top: -1.5mm;
   left: 0.0mm;
 }
-.spell-level__background {
-  background-color: rgba(0, 0, 0, 0.75);
-  display: table;
-}
-.spell-level__background--border {
-  height: 7mm;
-  width: 6mm;
-  position: absolute;
-  top: 0;
-  left: 2mm;
-  border-bottom-right-radius: 2mm;
-  border-bottom-left-radius: 2mm;
+
+.background.light {
+  color: black;
+  opacity: 0.75;
 }
 
-.spell-level__background--polygon {
-  -webkit-clip-path: polygon(100% 0, 100% 100%, 50% 50%, 0 100%, 0 0);
-  clip-path: polygon(100% 0, 100% 100%, 50% 75%, 0 100%, 0 0);
-  width: 6mm;
-  height: 8mm;
-  position: absolute;
-  top: 0;
-  left: 3mm;
-}
-.spell-level__background--shadow{
-//  box-shadow: 0px 5px 2mm 0mm #4c4c4c;
-  filter: drop-shadow(5px 0px 5px grey);
-}
-
-.spell-level__text {
+.value.light {
   color: white;
-  font-weight: bold;
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  display: table-cell;
-  fint-size: 3mm;
+}
+
+.background.dark {
+  color: white;
+  opacity: 0.75;
+}
+
+.value.dark {
+  color: black;
 }
 </style>

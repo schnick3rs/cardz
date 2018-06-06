@@ -93,7 +93,7 @@
         :image="themes.selected.image"
         :theme="selectedTheme"
         :customTheme="themes.selected.src"
-        :customDimension="dimensions.selected"
+        dimensions="dimensions.selected"
       />
     </div>
 

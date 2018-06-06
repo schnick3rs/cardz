@@ -58,4 +58,12 @@
     padding-left: 3mm;
     margin: 0 0 0.5mm;
   }
+
+  .content >>> hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+    margin-top: 1mm;
+    margin-bottom: 1mm;
+  }
 </style>

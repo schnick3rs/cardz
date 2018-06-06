@@ -40,6 +40,7 @@
         navItems: [
           {text: 'Cartz', page: {name: 'home'}, icon: 'home'},
           {text: 'Search', page: {name: 'spellSearch'}, icon: 'image_search'},
+          {text: 'Builder (dnd)', page: {name: 'spellCardBuilder'}, icon: 'build'},
           {text: 'Builder (futuristic)', page: {name: 'spaceCardBuilder'}, icon: 'build'},
           {text: 'Builder (character A5)', page: {name: 'characterSheetBuilder'}, icon: 'build'},
           {text: 'Migrate', page: {name: 'migrateSpells'}, icon: 'autorenew'},
@@ -47,6 +48,7 @@
         ],
         toolbarItems: [
           {text: 'Deck', page: {name: 'spellSearch'}, icon: 'image_search'},
+          {text: 'DnD', page: {name: 'spellCardBuilder'}, icon: 'build'},
           {text: 'Card', page: {name: 'spaceCardBuilder'}, icon: 'build'},
           {text: 'NSC', page: {name: 'characterSheetBuilder'}, icon: 'build'},
           {text: 'Project', page: {name: 'projectPrinter'}, icon: 'print'},

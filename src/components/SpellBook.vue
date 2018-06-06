@@ -8,7 +8,7 @@
 
 <script>
   import SpellCard from './templates/SpellCard/SpellCard'
-  import SpellRepository from '../assets/cardz-spell-repository.json'
+  import SpellRepository from '../assets/repositories/dnd-spells-migrated.json'
   export default {
   name: 'SpellBook',
   components: {SpellCard},

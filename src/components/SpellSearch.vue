@@ -1,6 +1,21 @@
 <template>
   <div class="md-layout">
 
+    <md-dialog :md-active.sync="exportSpellModificationDialog" style="min-width: 80%;">
+      <md-dialog-title>Copy JSON</md-dialog-title>
+      <md-dialog-content>
+        <md-field>
+          <label>JSON</label>
+          <md-textarea v-model="spellModificationJson" readonly></md-textarea>
+        </md-field>
+      </md-dialog-content>
+      <md-dialog-actions>
+        <md-button class="md-raised md-accent">
+          Copy to clipboard
+        </md-button>
+      </md-dialog-actions>
+    </md-dialog>
+
     <div class="md-layout-item md-size-50">
 
       <md-card>
@@ -77,7 +92,12 @@
           :md-description="`No spell found, matching '${search}'. Try a different search term.`">
         </md-table-empty-state>
 
-        <md-table-row slot="md-table-row" slot-scope="{ item }" @click="learnSpell(item)">
+        <md-table-row
+          slot="md-table-row"
+          slot-scope="{ item }"
+          @click="preview(item)"
+          @dblclick="learnSpell(item)"
+        >
 
           <md-table-cell md-label="Level" md-sort-by="level" md-numeric>{{ item.level }}</md-table-cell>
 
@@ -109,20 +129,44 @@
       </md-table>
     </div>
 
-    <div class="md-layout-item md-size-20">
+    <div class="md-layout-item " v-bind:class="{ 'md-size-20': !editForm } ">
       <md-card>
 
         <md-card-header>
           <div class="md-title">Preview</div>
         </md-card-header>
 
+        <md-card-actions>
+          <md-button class="md-raised" @click="exportSpellModificationDialog = true">Export</md-button>
+          <md-button class="md-raised" @click="editForm = !editForm">Edit</md-button>
+        </md-card-actions>
+
         <md-card-content>
-          <spell-card v-if="selectedSpell" :spell="selectedSpell" :theme="selectedFilters.clazz.selection[0]"/>
+
+          <div class="md-layout md-gutter">
+            <div class="md-layout-item md-size-50 md-small-size-50" v-if="editForm">
+              <md-field>
+                <label>Description (markdown)</label>
+                <md-textarea v-model="selectedSpellMarkdown" @input="update"/>
+                <span class="md-helper-text">
+              Use <a target="_blank"
+                     href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> to style text blocks
+            </span>
+              </md-field>
+            </div>
+
+            <div class="md-layout-item md-size-50 md-small-size-50">
+              <spell-card v-if="selectedSpell" :spell="selectedSpell" :theme="selectedFilters.clazz.selection[0]"/>
+            </div>
+
+          </div>
+
+
         </md-card-content>
       </md-card>
     </div>
 
-    <div class="md-layout-item md-size-30">
+    <div class="md-layout-item md-size-30" v-if="!editForm">
       <md-card>
 
         <md-card-header>
@@ -190,7 +234,8 @@
     }
     return items
   }
-  import SpellRepository from '../assets/cardz-spell-repository.json'
+  import SpellRepository from '../assets/repositories/dnd-spells-migrated.json'
+  import SpellModifications from '../assets/repositories/dnd-spells--mods.json'
   import SpellCard from './templates/SpellCard/SpellCard'
   import SpellItemRow from "./SpellItemRow";
   export default {
@@ -198,6 +243,7 @@
   components: {SpellItemRow, SpellCard},
   data () {
     return {
+      selectedSpellMarkdown: '',
       selectedFilters: {
         clazz: {
           label: 'Classes',
@@ -242,7 +288,10 @@
       selectedSpell: undefined,
       activeSpellBook: [],
       spellRepository: SpellRepository,
+      spellModifications: SpellModifications,
       search: null,
+      editForm: false,
+      exportSpellModificationDialog: false,
       searchableRepository: [],
       fields: [
         {name: 'level', label: 'Lvl'},
@@ -252,6 +301,16 @@
     }
   },
   computed: {
+    spellModificationJson: function () {
+      let modification = {};
+      if (this.selectedSpell) {
+        modification = {
+          name: this.selectedSpell.name,
+          description: this.selectedSpell.description
+        }
+      }
+      return JSON.stringify(modification);
+    },
     filteredRepository: function () {
       let results = this.searchableRepository;
       let clazzes = this.selectedFilters.clazz.selection;
@@ -274,8 +333,15 @@
     }
   },
   methods: {
+    update: function (event) {
+      this.selectedSpell.description = marked(this.selectedSpellMarkdown, {sanatize: false})
+    },
+    html2markdown: function (event) {
+      this.selectedSpellMarkdown = new TurndownService().turndown(this.selectedSpell.description);
+    },
     preview: function (item, event) {
-      this.selectedSpell = item
+      this.selectedSpell = item;
+      this.html2markdown(event);
     },
     learnSpell: function (spellToLearn, event) {
       let duplicatedSpells = this.activeSpellBook.filter(function (learnedSpell) {
@@ -294,7 +360,17 @@
     }
   },
     created() {
-      this.searchableRepository = this.spellRepository
+      let folded = this.spellRepository;
+      let mods = this.spellModifications;
+      mods.forEach((mod) => {
+        folded.forEach((fold) => {
+          if (fold.name == mod.name) {
+            console.info('Modify ' + fold.name);
+            fold.description = mod.description;
+          }
+        });
+      });
+      this.searchableRepository = folded;
     }
 }
 </script>

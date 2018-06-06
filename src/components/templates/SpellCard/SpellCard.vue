@@ -1,8 +1,8 @@
 <template>
   <div class="cz-print">
-    <div class="card card-bg" v-bind:class="bgClass" v-bind:style="customStyle">
-      <spell-card-title :name="spell.name"></spell-card-title>
-      <spell-card-level :level="spell.level"></spell-card-level>
+    <div class="card card-bg" v-bind:class="bgClass" v-bind:style="backgroundImage">
+      <spell-card-title :name="spell.name" :flavour="flavour"></spell-card-title>
+      <spell-card-level :level="spell.level" :flavour="flavour"></spell-card-level>
       <span v-if="spell.flags.includes('Ritual')" class="spell-meta__ritual" hidden>
         <font-awesome-layers class="fa-2x">
           <font-awesome-icon icon="square" :transform="{ rotate: 45 }" style="color: black;opacity:0.75;"/>
@@ -34,12 +34,14 @@
         :class="descriptionStyle"
         :description="spell.description"
         :overcast="spell.descriptionOvercast"
+        :flavour="flavour"
       />
       <spell-card-components
-        v-bind:has-verbal="hasVerbal"
-        v-bind:has-somatic="hasSomatic"
-        v-bind:has-material="hasMaterial"
-        v-bind:material-text="spell.materialText"
+        :has-verbal="hasVerbal"
+        :has-somatic="hasSomatic"
+        :has-material="hasMaterial"
+        :material-text="spell.materialText"
+        :flavour="flavour"
       ></spell-card-components>
       <card-copyright v-if="image && image.artist" position="bottom" theme="light">{{ image.artist }}</card-copyright>
     </div>
@@ -57,10 +59,10 @@
   export default {
   name: 'SpellCard',
     components: {
-      CardCopyright,
       FontAwesomeIcon,
       FontAwesomeLayers,
       FontAwesomeLayersText,
+      CardCopyright,
       SpellCardMeta,
       SpellCardTitle,
       SpellCardDescription,
@@ -71,12 +73,11 @@
     spell: {type: Object, required: true},
     image: {
       type: Object, default: function () {
-        return {}
+        return {src: require('../../../assets/img/artworks/artwork-arcane-trickster.jpg')}
       }
     },
-    theme: {type: String, required: false, default: 'mesmer'},
-    customTheme: {type: String, default: ''},
-    customDimension: {type: String, default: 'magic'}
+    flavour: {type: String, default: 'light'},
+    dimensions: {type: String, default: 'dragonsleevesfit'}
   },
   data () {
     return {
@@ -85,9 +86,9 @@
   },
   computed: {
     descriptionStyle: function () {
-      return 'description-container--' + this.customDimension
+      return 'description-container--' + this.dimensions
     },
-    customStyle: function () {
+    backgroundImage: function () {
       if (this.image && this.image.src) {
         return 'background-image: url("' + this.image.src + '")'
       }
@@ -96,7 +97,7 @@
     bgClass: function () {
       return [
         'card-bg-' + this.theme,
-        'card-dimensions--' + this.customDimension
+        'card-dimensions--' + this.dimensions
       ]
     },
     hasVerbal: function () {

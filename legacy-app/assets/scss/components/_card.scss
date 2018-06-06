@@ -60,7 +60,7 @@
 
 .card{
 
-  & .card-header-title{
+  & .container {
     @include bg-box-white;
     @include box-shadow-bottom-only;
     display: table;
