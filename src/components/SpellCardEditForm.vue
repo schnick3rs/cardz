@@ -9,7 +9,7 @@
     </div>
 
     <div class="md-layout-item md-size-30">
-      <label class="input-field__label input-field-radio__label">flavour.label</label>
+      <label>{{ flavour.label }}</label>
       <div>
         <div v-for="item in flavour.options" v-bind:key="item.key" style="display: inline; margin-left:2mm;">
           <md-radio class="md-primary" v-model="card._flavour" :value="item.label">

@@ -38,7 +38,7 @@
 
   .content {
     font-family: 'Roboto', sans-serif;
-    display: inline-block;
+    display: block;
     margin: 1mm;
   }
 
@@ -61,6 +61,7 @@
 
   .content >>> hr {
     border: 0;
+    width: 100%;
     height: 1px;
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
     margin-top: 1mm;

@@ -16,7 +16,7 @@
       </md-dialog-actions>
     </md-dialog>
 
-    <form class="md-layout-item md-size-25 cz--hide-for-print" @submit.prevent="addCard(character)">
+    <form class="md-layout-item md-size-40 cz--hide-for-print" @submit.prevent="addCard(character)">
       <md-card class="md-elevation-6">
         <md-card-content class="input-form">
 
@@ -88,7 +88,7 @@
     </form>
 
     <section class="md-layout-item card-holder">
-      <CharacterSheet :character="character"></CharacterSheet>
+      <CharacterSheet :character="character" style="zoom: 0.75;"></CharacterSheet>
     </section>
 
     <form class="md-layout-item md-size-15">

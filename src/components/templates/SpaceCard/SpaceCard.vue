@@ -2,12 +2,18 @@
 
   <div class="cz-print">
 
-    <div class="card card-dimensions--magic card-bg"
-         :class="[ card._dimension ]"
-         :style="backgroundImage"
+    <cz-card-frame
+      class="card card-bg"
+      :style="backgroundImage"
+      :dimensions="card._dimension"
     >
 
-      <SpaceCardTitle v-if="card.title" :title="card.title" :subtitle="card.subtitle" v-bind:flavour="flavour"/>
+      <space-card-title
+        v-if="card.title"
+        :title="card.title"
+        :subtitle="card.subtitle"
+        :flavour="flavour"
+      />
 
       <cartz-value-container
         v-if="card.value"
@@ -17,14 +23,14 @@
         position="center"
       />
 
-      <CzGlowingTextBand
-        class="card__text-band"
+      <cz-glowing-text-band
         v-if="card.description"
+        class="description-band"
         :html="card.description"
         :glowColor="card._flavour"
-      ></CzGlowingTextBand>
+      />
 
-    </div>
+    </cz-card-frame>
 
   </div>
 
@@ -34,9 +40,10 @@
   import SpaceCardTitle from './SpaceCardTitle';
   import CzGlowingTextBand from "../CardElements/CzGlowingTextBand";
   import CartzValueContainer from "../CardElements/CartzValueContainer";
+  import CzCardFrame from "../CardElements/CzCardFrame";
   export default {
     name: 'SpaceCard',
-    components: {CartzValueContainer, CzGlowingTextBand, SpaceCardTitle},
+    components: {CzCardFrame, CartzValueContainer, CzGlowingTextBand, SpaceCardTitle},
     props: {
       card: {type: Object}
     },
@@ -65,47 +72,13 @@
     font-weight: 400;
   }
 
-  .card {
-    border-color: red;
-    border: 0.3mm;
-    border-style: dashed;
-
-    overflow: hidden;
-    position: relative;
-  }
-
-  .card-dimensions--magic {
-    height: 88mm;
-    width: 63mm;
-  }
-
-  .card.zombicide-item {
-    height: 63mm;
-    width: 41mm;
-  }
-
-  .card.dragonsleeve {
-    height: 91mm;
-    width: 63mm;
-  }
-
-  .card.magic {
-    height: 88mm;
-    width: 63mm;
-  }
-
-  .card.magic-landscape {
-    height: 63mm;
-    width: 88mm;
-  }
-
   .card-bg {
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
   }
 
-  .card__text-band {
+  .description-band {
     position: absolute;
     bottom: 0;
     margin-bottom: 3mm;

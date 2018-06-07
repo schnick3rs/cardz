@@ -2,15 +2,15 @@
   <div class="container">
     <ul class="container__list">
 
-      <li class="list-item verbal light" :class="{ collapsed: !hasVerbal }">
+      <li class="list-item verbal" :class="[ flavour, hasVerbal ? '' : 'collapsed' ]">
         <span><font-awesome-icon icon="comment-dots"/></span>
       </li>
 
-      <li class="list-item somatic" v-bind:class="{ collapsed: !hasSomatic, flavour: true }">
+      <li class="list-item somatic" :class="[ flavour, hasSomatic ? '' : 'collapsed' ]">
         <span><font-awesome-icon icon="hand-paper"/></span>
       </li>
 
-      <li class="list-item material" v-bind:class="{ collapsed: !hasMaterial, flavour: true }">
+      <li class="list-item material" :class="[ flavour, hasMaterial ? '' : 'collapsed' ]">
         <span><font-awesome-icon icon="cogs"/></span>
       </li>
 
@@ -33,10 +33,6 @@
     materialText: { type: String, required: false },
     materialCost: {type: String, required: false},
     flavour: {type: String, default: 'light'}
-  },
-  data () {
-    return {
-    }
   }
 }
 </script>

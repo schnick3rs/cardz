@@ -19,24 +19,20 @@
 
             </div>
 
-            <div class="md-layout-item md-size-50">
+            <div class="md-layout-item md-size-80">
 
-              <div class="input-field input-field-radio">
-                <label class="input-field__label input-field-radio__label">Color Flavour</label>
+              <label>{{ flavours.label }}</label>
                 <div>
-                  <div v-for="flavour in fields.flavours" v-bind:key="flavour.id"
-                       style="display: inline; margin-left:2mm;">
-                    <label style="font-size: xx-small;" v-bind:style="{ color: flavour.color }">{{ flavour.label
-                      }}</label>
-                    <input type="radio" v-bind:value="flavour.value" v-model="card._flavour"
-                           style="margin: 0;padding: 0;vertical-align: middle;"/>
+                  <div v-for="item in flavours.options" v-bind:key="item.key" style="display: inline; margin-left:2mm;">
+                    <md-radio class="md-primary" v-model="card._flavour" :value="item.label">
+                      <small :style="{ color: item.color }">{{ item.label }}</small>
+                    </md-radio>
                   </div>
                 </div>
-              </div>
 
             </div>
 
-            <div class="md-layout-item md-size-50">
+            <div class="md-layout-item md-size-40">
 
               <md-field>
                 <label>{{ dimensions.label }}</label>
@@ -177,13 +173,15 @@
             zombicideItem: {label: 'Zimbicide ', value: 'zombicide-item'}
           }
         },
-        fields: {
-          flavours: [
-            {label: 'Green', value: 'forestgreen', color: 'forestgreen'},
-            {label: 'Red', value: 'orangered', color: 'orangered'},
-            {label: 'Blue', value: 'dodgerblue', color: 'blue'},
-            {label: 'Yellow', value: 'yellow', color: 'yellow'}
-          ]
+        flavours: {
+          label: 'Color Flavour',
+          selected: 'red',
+          options: {
+            green: {label: 'Green', value: 'forestgreen', color: 'forestgreen'},
+            red: {label: 'Red', value: 'orangered', color: 'orangered'},
+            blue: {label: 'Blue', value: 'dodgerblue', color: 'blue'},
+            yellow: {label: 'Yellow', value: 'yellow', color: 'yellow'}
+          }
         }
       }
     },

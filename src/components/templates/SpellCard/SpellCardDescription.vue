@@ -1,7 +1,7 @@
 <template>
   <div class="container shadow" v-bind:class="[ flavour ]">
     <div class="container-text" v-html="description"></div>
-    <hr v-if="overcast" class="sexy_line"/>
+    <hr v-if="overcast" :class="[ flavour ]"/>
     <div class="container-text container-text--overcast" v-if="overcast" v-html="overcast"></div>
   </div>
 </template>
@@ -34,13 +34,21 @@ export default {
   box-shadow: 0px 5px 2mm 0mm #4c4c4c;
 }
 
-  hr.sexy_line {
+  hr {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-    margin-top: -0.5mm;
-    margin-bottom: -0.5mm;
+    margin-top: -0.0mm;
+    margin-bottom: -0.0mm;
   }
+
+  .container.light hr {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+
+  .container.dark hr {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  }
+
   .container-text {
     font-family: 'Roboto', sans-serif;
   display: inline-block;
@@ -55,6 +63,20 @@ export default {
     margin-bottom: 0.8mm;
   }
 
+  .container .container-text >>> hr {
+    border: 0;
+    height: 1px;
+    margin-top: 0.5mm;
+    margin-bottom: 0.5mm;
+  }
+
+  .container.light .container-text >>> hr {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  }
+
+  .container.dark .container-text >>> hr {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+  }
   .container-text >>> li {
     line-height: 3.5mm;
   }

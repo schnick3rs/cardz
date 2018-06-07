@@ -1,9 +1,13 @@
 <template>
   <div class="cz-printable-item">
-    <div class="printable-item printable-item--sci-fi printable-item--a5-landscape character-sheet">
-      <div>
-        <div class="character-sheet__background character-sheet__background--war" v-bind:class="character._flavour"/>
-      </div>
+
+    <cz-card-frame
+      class="printable-item--sci-fi character-sheet "
+      dimensions="din-a5-landscape"
+      :backgroundImage="backgroundImages[character._flavour]"
+    >
+
+      <div class="character-sheet__background character-sheet__background--war" v-bind:class="character._flavour"/>
 
       <div>
         <CharacterSheetName :name="character.name" :profession="character.profession"></CharacterSheetName>
@@ -42,8 +46,10 @@
         class="character-sheet__description"
       />
 
-    </div>
+    </cz-card-frame>
+
   </div>
+
 </template>
 
 <script>
@@ -51,11 +57,23 @@
   import CharacterSheetName from "./CharacterSheetName";
   import CharacterSheetDescription from "./CharacterSheetDescription";
   import CharacterSheetSkillHolder from "./CharacterSheetSkillHolder";
+  import CzCardFrame from "../CardElements/CzCardFrame";
   export default {
     name: "CharacterSheet",
-    components: {CharacterSheetSkillHolder, CharacterSheetDescription, CharacterSheetName, CharacterSheetPortrait},
+    components: {
+      CzCardFrame,
+      CharacterSheetSkillHolder, CharacterSheetDescription, CharacterSheetName, CharacterSheetPortrait
+    },
     props: {
       character: {type: Object, required: true}
+    },
+    data() {
+      return {
+        backgroundImages: {
+          doom: 'https://pre00.deviantart.net/af57/th/pre/i/2014/266/9/6/doctor_doom_splat_colors_by_slypstream-d809r5v.png',
+          imperialGuard: 'https://78.media.tumblr.com/82938fb0efc7203f68e6c6d3237bbdd1/tumblr_oh3fwsc9Hg1vjjcaco1_1280.jpg'
+        }
+      }
     },
     created: function () {
       if (this.character === undefined) {
@@ -71,15 +89,6 @@
 </script>
 
 <style scoped>
-  .printable-item {
-    border-color: red;
-    border: 0.3mm;
-    border-style: dashed;
-
-    overflow: hidden;
-    position: relative;
-  }
-
   .printable-item--sci-fi {
     font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
     font-size: 2.5mm;
@@ -88,22 +97,7 @@
     font-weight: 400;
   }
 
-  .printable-item--a5-landscape {
-    /*height: 148.5mm;*/
-    height: 148mm; /* fits on a single page*/
-    width: 210mm;
-    font-size: 3.5mm;
-  }
-
   .character-sheet__background {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 
   .character-sheet__background.inquisition {

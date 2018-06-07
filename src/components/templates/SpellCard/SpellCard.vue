@@ -3,18 +3,6 @@
     <div class="card card-bg" v-bind:class="bgClass" v-bind:style="backgroundImage">
       <spell-card-title :name="spell.name" :flavour="flavour"></spell-card-title>
       <spell-card-level :level="spell.level" :flavour="flavour"></spell-card-level>
-      <span v-if="spell.flags.includes('Ritual')" class="spell-meta__ritual" hidden>
-        <font-awesome-layers class="fa-2x">
-          <font-awesome-icon icon="square" :transform="{ rotate: 45 }" style="color: black;opacity:0.75;"/>
-          <font-awesome-icon icon="book" transform="shrink-9" style="color: white;" />
-        </font-awesome-layers>
-      </span>
-      <span v-if="spell.flags.includes('Concentration')" class="spell-meta__concentration" hidden>
-        <font-awesome-layers class="fa-2x">
-          <font-awesome-icon icon="square" :transform="{ rotate: 45 }" style="color: black;opacity:0.75;"/>
-          <font-awesome-layers-text value="C" transform="shrink-9" style="color: white;" />
-        </font-awesome-layers>
-      </span>
       <div>
         <spell-card-meta
           style="float: left;"
