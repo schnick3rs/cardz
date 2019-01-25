@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Chain-Cleaver",
+    "type": "Weapon",
+    "occurrence": "uncommon",
+    "attunement": false,
+    "description": "<p></p>",
+    "weapon": {
+      "name": "Handaxe",
+      "damage": {
+        "string": "1d6 slashing",
+        "dice": "1d6",
+        "type": "slashing"
+      },
+      "properties": [
+        "",
+        "loud",
+        "streng"
+      ]
+    },
+    "weight": {
+      "value": 65,
+      "unit": "lb."
+    }
+  }
+]

@@ -1,7 +1,7 @@
 <template>
   <div class="md-layout">
 
-    <md-dialog :md-active.sync="selectThemeDialog" style="min-width: 80%;">
+    <md-dialog :md-active.sync="selectThemeDialog">
 
       <md-dialog-title>Select Background image</md-dialog-title>
 
@@ -28,11 +28,9 @@
 
     </md-dialog>
 
-    <div class="toolbar md-layout-item md-size-30">
+    <div class="md-layout-item md-size-50 toolbar">
 
-      <form novalidate class="md-layout" @submit.prevent="loadFromJson">
-
-        <md-card class="md-layout-item md-size-100">
+      <md-card>
 
           <md-card-content>
 
@@ -75,12 +73,10 @@
           </md-card-content>
 
           <md-card-actions>
-            <md-button type="submit" class="md-primary">Render Cards</md-button>
+            <md-button class="md-primary" @click="loadFromJson">Render Cards</md-button>
           </md-card-actions>
 
         </md-card>
-
-      </form>
 
     </div>
 
@@ -90,10 +86,11 @@
         v-for="item in currentRepository"
         :key="item.name"
         :spell="item"
-        :image="themes.selected.image"
+        :image="themes.selected"
         :theme="selectedTheme"
         :customTheme="themes.selected.src"
-        dimensions="dimensions.selected"
+        :dimensions="dimensions.selected"
+        :flavour="dark"
       />
     </div>
 
@@ -102,6 +99,7 @@
 
 <script>
   import SpellCard from '../templates/SpellCard/SpellCard'
+
   export default {
   name: 'SpellPrinter',
     components: {SpellCard},
@@ -114,11 +112,10 @@
       customTheme: '',
       jsonString: '',
       dimensions: {
-        selected: 'dragonsleevesfit',
+        selected: 'dragonsleeve',
         options: {
           magic: 'Magic (63x88mm)',
-          dragonsleevesfit: 'Dragonsleeves MOD (63x90mm)',
-          dragonsleeves: 'Dragonsleeves (63x91mm)'
+          dragonsleeve: 'Dragonsleeves (63x91mm)'
         }
       },
       themes: {
@@ -229,6 +226,11 @@
   @media print {
     .toolbar {
       display: none;
+    }
+
+    .page .page__card {
+      display: block;
+      page-break-inside: avoid;
     }
   }
 

@@ -43,6 +43,7 @@
           {text: 'Builder (dnd)', page: {name: 'spellCardBuilder'}, icon: 'build'},
           {text: 'Builder (futuristic)', page: {name: 'spaceCardBuilder'}, icon: 'build'},
           {text: 'Builder (character A5)', page: {name: 'characterSheetBuilder'}, icon: 'build'},
+          {text: 'Builder (wng monster)', page: {name: 'wngMonsterSheetBuilder'}, icon: 'build'},
           {text: 'Migrate', page: {name: 'migrateSpells'}, icon: 'autorenew'},
           {text: 'Projects', page: {name: 'projectPrinter'}, icon: 'print'}
         ],
@@ -51,6 +52,7 @@
           {text: 'DnD', page: {name: 'spellCardBuilder'}, icon: 'build'},
           {text: 'Card', page: {name: 'spaceCardBuilder'}, icon: 'build'},
           {text: 'NSC', page: {name: 'characterSheetBuilder'}, icon: 'build'},
+          {text: 'W&G Monster', page: {name: 'wngMonsterSheetBuilder'}, icon: 'build'},
           {text: 'Project', page: {name: 'projectPrinter'}, icon: 'print'},
           {text: 'Repository', page: {name: 'migrateSpells'}, icon: 'autorenew'}
         ]

@@ -1,7 +1,12 @@
 <template>
-  <div class="card" :class="[ dimensions ]">
-    <div class="background" :style="backgroundStyle"></div>
+  <div class="card cutter" :class="[ dimensions ]">
+    <div class="background" :style="backgroundStyle">
+    </div>
+    <img class="background-image" :src="backgroundImage" style="display:none;"/>
+
+    <div style="position: absolute; top:0; bottom:0; left:0; right:0;">
     <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -16,9 +21,9 @@
     computed: {
       backgroundStyle: function () {
         return {
-          backgroundImage: 'url("' + this.backgroundImage + '")',
-          opacity: 0.5,
-          '-webkit-Filter': 'sepia(100%)'
+          backgroundImage: 'url("' + this.backgroundImage + '")'
+          /*          opacity: 0.5,
+                    '-webkit-Filter': 'sepia(100%)'*/
         }
       }
     }
@@ -62,6 +67,12 @@
     width: 210mm;
   }
 
+  /* find correct dimensions */
+  .din-a6-landscape {
+    height: 74mm;
+    width: 105mm;
+  }
+
   .magic {
     height: 88mm;
     width: 63mm;
@@ -77,12 +88,38 @@
     width: 63mm;
   }
 
+  .background-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0.5;
+
+  }
+
   .background {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+  }
+
+  .background {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    opacity: 0.5;
+
+    background-color: unset;
+    color: unset;
+
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

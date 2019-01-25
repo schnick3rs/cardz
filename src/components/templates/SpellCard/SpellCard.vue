@@ -1,6 +1,13 @@
 <template>
+
   <div class="cz-print">
-    <div class="card card-bg" v-bind:class="bgClass" v-bind:style="backgroundImage">
+
+    <cz-card-frame
+      :dimensions="dimensions"
+      :background-image="backgroundImage"
+      class="card card-bg"
+    >
+
       <spell-card-title :name="spell.name" :flavour="flavour"></spell-card-title>
       <spell-card-level :level="spell.level" :flavour="flavour"></spell-card-level>
       <div>
@@ -32,8 +39,11 @@
         :flavour="flavour"
       ></spell-card-components>
       <card-copyright v-if="image && image.artist" position="bottom" theme="light">{{ image.artist }}</card-copyright>
-    </div>
+
+    </cz-card-frame>
+
   </div>
+
 </template>
 
 <script>
@@ -44,9 +54,12 @@
   import SpellCardTitle from './SpellCardTitle'
   import SpellCardMeta from './SpellCardMeta'
   import CardCopyright from "../CardElements/CardCopyright";
+  import CzCardFrame from "../CardElements/CzCardFrame";
+
   export default {
   name: 'SpellCard',
     components: {
+      CzCardFrame,
       FontAwesomeIcon,
       FontAwesomeLayers,
       FontAwesomeLayersText,
@@ -65,7 +78,7 @@
       }
     },
     flavour: {type: String, default: 'light'},
-    dimensions: {type: String, default: 'dragonsleevesfit'}
+    dimensions: {type: String, default: 'dragonsleeve'}
   },
   data () {
     return {
@@ -78,15 +91,9 @@
     },
     backgroundImage: function () {
       if (this.image && this.image.src) {
-        return 'background-image: url("' + this.image.src + '")'
+        return this.image.src
       }
       return ''
-    },
-    bgClass: function () {
-      return [
-        'card-bg-' + this.theme,
-        'card-dimensions--' + this.dimensions
-      ]
     },
     hasVerbal: function () {
       return this.spell.components.includes('Verbal')
@@ -110,35 +117,9 @@
   font-variant: normal;
   font-weight: 400;
 }
-.card {
-  border-color: red;
-  border-width: 0;
-  border-bottom-width: 0.3mm;
-  border-right-width: 0.3mm;
-  border-style: dashed;
 
-  overflow: hidden;
-  position: relative;
-}
-.card-dimensions--magic {
-  height: 88mm;
-  width: 63mm;
-}
-
-.card-dimensions--dragonsleevesfit {
-  height: 90mm;
-  width: 63mm;
-}
-
-.card-dimensions--dragonsleeves {
-  height: 91mm;
-  width: 63mm;
-}
-
-.card-bg {
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+.card > * {
+  z-index: 2;
 }
 .theme-config {
   border-color: lightgrey;
@@ -164,22 +145,12 @@
   bottom: 10mm;
 }
 
-.description-container--dragonsleevesfit {
-  max-height: 61mm !important;
-  min-height: 61mm !important;
+.description-container--dragonsleeve {
+  max-height: 62mm !important;
+  min-height: 62mm !important;
 }
 
 .description-container--fixed {
   min-height: 58mm;
-}
-.spell-meta__ritual {
-  position: absolute;
-  left: 27.0mm;
-  top: 8mm;
-}
-.spell-meta__concentration {
-  position: absolute;
-  right: 21mm;
-  top: 8mm;
 }
 </style>
