@@ -146,6 +146,7 @@
               url: ''
             }
           },
+          {label: 'Bard', value: 'bard', src: require('../../assets/img/artworks/artwork-bard.jpg')},
           {label: 'Wizard', value: 'wizard', src: require('../../assets/img/artworks/artwork-wizard.jpg')},
           {
             label: 'Wizard',

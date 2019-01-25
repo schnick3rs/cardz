@@ -6,6 +6,7 @@
       :dimensions="dimensions"
       :background-image="backgroundImage"
       class="card card-bg"
+      :opacity="0.75"
     >
 
       <spell-card-title :name="spell.name" :flavour="flavour"></spell-card-title>
@@ -121,6 +122,13 @@
 .card > * {
   z-index: 2;
 }
+
+.cutter {
+  border-color: red;
+  border-width: 0.3mm;
+  border-style: dashed;
+}
+
 .theme-config {
   border-color: lightgrey;
   border: 1px;

@@ -238,6 +238,7 @@
   import SpellModifications from '../assets/repositories/dnd-spells--mods.json'
   import SpellCard from './templates/SpellCard/SpellCard'
   import SpellItemRow from "./SpellItemRow";
+
   export default {
   name: 'SpellSearch',
   components: {SpellItemRow, SpellCard},
@@ -249,6 +250,7 @@
           label: 'Classes',
           selection: [],
           options: {
+            bard: 'Bard',
             druid: 'Druid',
             wizard: 'Wizard',
             sorcerer: 'Sorcerer',
@@ -367,6 +369,9 @@
           if (fold.name == mod.name) {
             console.info('Modify ' + fold.name);
             fold.description = mod.description;
+            if (mod.descriptionOvercast) {
+              fold.descriptionOvercast = mod.descriptionOvercast;
+            }
           }
         });
       });

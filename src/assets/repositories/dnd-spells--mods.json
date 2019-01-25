@@ -18,5 +18,10 @@
   {
     "name": "Animate Dead",
     "description": "<p>Choose a pile of bones (skeleton) or a corpse (zombie) of a Medium or Small humanoid, raising them as an undead servant.</p>\n<p>As a <strong>bonus action</strong>, you can mentally command any (or all, using the same command) creature you made with this spell if it&#39;s within 60&#39; of you. You decide what action the creature will take and where it will move during their next turn, or you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.</p>\n<p>The creature is under your control for 24 hours, after which it stops obeying any command you’ve given it. To maintain control of the creature for another 24 hours, you must cast this spell on the creature again before the current 24-hour period ends. This use of the spell reasserts your control over up to four creatures you have animated with this spell, rather than animating a new one.</p>"
+  },
+  {
+    "name": "Command",
+    "description": "<p>You speak a one-word command to a creature you can see within range. The target must succeed on a <strong>wisdom saving throw</strong> or follow the command on its next turn. The spell has no effect if the target is undead, if it doesn’t understand your language, or if your command is directly harmful to it.</p>\n<p><strong>Approach.</strong> Moves toward you, ending its turn if it moves within 5 feet of you.</p>\n<p><strong>Drop</strong> Drops whatever it&#39;s holding and ends it&#39;s turn.</p>\n<p><strong>Flee.</strong> Spends its turn moving away from you.</p>\n<p><strong>Grovel.</strong> Falls prone and it&#39;s turn ends.</p>\n<p><strong>Halt.</strong> Doesn’t move or take actions. A flying creature moves only so much, that it does not crash.</p>\n",
+    "descriptionOvercast": "<p>Affect one additional target for each spell slot level overcast. All Targets must be within 30'.</p>"
   }
 ]

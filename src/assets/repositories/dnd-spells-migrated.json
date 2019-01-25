@@ -630,7 +630,7 @@
     "class": [
       "Bard",
       "Cleric",
-      "Paladin"
+      "Oath of Vengeance"
     ],
     "source": "phb 216"
   },
@@ -3157,7 +3157,7 @@
     ],
     "descriptionOvercast": "<p>If you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6 for each slot level above 1st.</p>",
     "class": [
-      "Paladin",
+      "Oath of Ancient",
       "Ranger"
     ],
     "source": "phb 237"
@@ -4918,7 +4918,7 @@
     ],
     "descriptionOvercast": "<p>When you cast this spell using a spell slot of 3rd or 4th level, you can maintain your concentration on the spell for up to 8 hours. When you use a spell slot of 5th level or higher, you can maintain your concentration on the spell for up to 24 hours.</p>",
     "class": [
-      "Paladin",
+      "Oath of Vengeance",
       "Ranger"
     ],
     "source": "phb 251"
@@ -7628,8 +7628,7 @@
     ],
     "materialText": "A small silver mirror.",
     "class": [
-      "Cleric",
-      "Paladin"
+      "Cleric"
     ],
     "source": "phb 272"
   },
@@ -8211,7 +8210,7 @@
       "Bard",
       "Cleric",
       "Druid",
-      "Paladin",
+      "Oath of Ancients",
       "Ranger",
       "Ritual Caster"
     ],

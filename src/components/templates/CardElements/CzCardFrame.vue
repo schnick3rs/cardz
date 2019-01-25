@@ -2,10 +2,9 @@
   <div class="card cutter" :class="[ dimensions ]">
     <div class="background" :style="backgroundStyle">
     </div>
-    <img class="background-image" :src="backgroundImage" style="display:none;"/>
 
     <div style="position: absolute; top:0; bottom:0; left:0; right:0;">
-    <slot></slot>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -16,14 +15,15 @@
     props: {
       dimensions: {type: String, required: true},
       lines: {type: Array},
-      backgroundImage: {type: String, default: ''}
+      backgroundImage: {type: String, default: ''},
+      opacity: {type: Number, default: 0.5}
     },
     computed: {
       backgroundStyle: function () {
         return {
-          backgroundImage: 'url("' + this.backgroundImage + '")'
-          /*          opacity: 0.5,
-                    '-webkit-Filter': 'sepia(100%)'*/
+          backgroundImage: 'url("' + this.backgroundImage + '")',
+          opacity: this.opacity
+          /*'-webkit-Filter': 'sepia(100%)'*/
         }
       }
     }
@@ -38,7 +38,7 @@
 
   .cutter {
     border-color: red;
-    border: 0.3mm;
+    border-width: 0.3mm;
     border-style: dashed;
   }
 
@@ -115,7 +115,7 @@
     left: 0;
     right: 0;
 
-    opacity: 0.5;
+    /*opacity: 0.75;*/
 
     background-color: unset;
     color: unset;

@@ -5,13 +5,17 @@
       class="printable-item--sci-fi character-sheet"
       dimensions="din-a6-landscape"
       :backgroundImage="backgroundImages[character._flavour]"
+      :opacity="0.5"
     >
 
       <section class="card-page card-page--left">
 
         <div>
-          <character-sheet-name :name="character.title"
-                                :profession="character.classification['3']"></character-sheet-name>
+          <character-sheet-name
+            :name="character.title"
+            :profession="character.classification['3']"
+            style="position: unset;"
+          />
         </div>
 
         <div id="traits">
@@ -27,7 +31,7 @@
         <div id="actions" class="actions">
           <div class="actions__container">
             <div class="actions__action" v-for="action in character.actions" v-bind:key="action.key" :id="action.key">
-              <h3 class="actions__action-label" v-html="action.label"></h3>
+              <span class="actions__action-label" v-html="action.label"></span>
               <div class="actions_action-value-holder">
                 <span class="actions__action-value" v-for="entry in action.table">{{entry}}</span>
               </div>
@@ -143,12 +147,16 @@
   }
 
   .actions__action {
-    background-image: linear-gradient(to right, rgba(255, 0, 0, 0.25), rgba(255, 0, 0, 0));
+    color: white;
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 0.50), rgba(255, 0, 0, 0));
     padding: 0 5px;
+    margin: 5px 0;
   }
 
   .actions__action-label {
     text-decoration: underline;
+    font-weight: bold;
+    font-size: larger;
   }
 
   .actions__action-label em {
