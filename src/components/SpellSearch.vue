@@ -40,6 +40,17 @@
             </div>
             <div class="md-layout-item md-small-size-100">
               <md-field>
+                <label>{{ selectedFilters.subclazz.label }}</label>
+                <md-select v-model="selectedFilters.subclazz.selection" md-dense multiple>
+                  <md-option v-for="(value, key) in selectedFilters.subclazz.options" :key="key" v-bind:value="key">{{
+                    value }}
+                  </md-option>
+                </md-select>
+              </md-field>
+            </div>
+
+            <div class="md-layout-item md-small-size-100">
+              <md-field>
                 <label>{{ selectedFilters.level.label }}</label>
                 <md-select v-model="selectedFilters.level.selection" md-dense multiple>
                   <md-option v-for="(value, key) in selectedFilters.level.options" :key="key" v-bind:value="key">{{
@@ -259,6 +270,13 @@
             paladin: 'Paladin'
           }
         },
+        subclazz: {
+          label: 'Subclasses',
+          selection: [],
+          options: {
+            'Oath of Ancients': 'Oath of Ancients'
+          }
+        },
         level: {
           label: 'Level',
           selection: [],
@@ -315,10 +333,14 @@
     },
     filteredRepository: function () {
       let results = this.searchableRepository;
+
       let clazzes = this.selectedFilters.clazz.selection;
+      clazzes = clazzes.concat(this.selectedFilters.subclazz.selection);
+
       if (clazzes.length > 0) {
         results = results.filter(item => clazzes.some(v => toLower(item.class.join()).indexOf(toLower(v)) >= 0))
       }
+
       let level = this.selectedFilters.level.selection;
       if (level.length > 0) {
         results = results.filter(item => level.includes(item.level + ''))
