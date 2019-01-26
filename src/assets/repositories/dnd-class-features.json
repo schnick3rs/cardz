@@ -1,0 +1,84 @@
+[
+  {
+    "name": "Second Wind",
+    "clazz": "Fighter",
+    "subclazz": null,
+    "level": 1,
+    "uses": [
+      1
+    ],
+    "rest": "short",
+    "summary": "On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level.",
+    "description": "You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.",
+    "source": {
+      "book": "Players Handbook",
+      "page": 123
+    }
+  },
+  {
+    "name": "Action Surge",
+    "clazz": "Fighter",
+    "subclazz": null,
+    "level": 2,
+    "uses": [
+      2,
+      17
+    ],
+    "rest": "short",
+    "summary": "Once, on your turn, you can take one additional action.",
+    "description": "Starting at 2nd level, you can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action. Once you use this feature, you must finish a short or long rest before you can use it again. Starting at 17th level, you can use it twice before a rest, but only once on the same turn.",
+    "source": {
+      "book": "Players Handbook",
+      "page": 123
+    }
+  },
+  {
+    "name": "Rage",
+    "clazz": "Barbarian",
+    "subclazz": null,
+    "level": 1,
+    "uses": [
+      1,
+      1,
+      3,
+      6,
+      12,
+      17
+    ],
+    "rest": "long",
+    "summary": "",
+    "description": "On your turn, you can enter a rage as a bonus action.",
+    "source": {
+      "book": "Players Handbook",
+      "page": 123
+    }
+  },
+  {
+    "name": "Bardic Inspiration",
+    "clazz": "Bard",
+    "subclazz": null,
+    "level": 1,
+    "uses": "Charisma",
+    "rest": "long",
+    "summary": "",
+    "description": "You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.",
+    "source": {
+      "book": "Players Handbook",
+      "page": 123
+    }
+  },
+  {
+    "name": "Song of Rest",
+    "clazz": "Bard",
+    "subclazz": null,
+    "level": 2,
+    "uses": "Charisma",
+    "rest": "short",
+    "summary": "",
+    "description": "You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.",
+    "source": {
+      "book": "Players Handbook",
+      "page": 123
+    }
+  }
+]
