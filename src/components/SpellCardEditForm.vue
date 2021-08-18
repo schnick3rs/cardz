@@ -92,77 +92,77 @@
 </template>
 
 <script>
-  const html2markdown = (text) => {
-    return new TurndownService().turndown(text);
-  };
-  const markdown2Html = (text) => {
-    return marked(text, {sanatize: false})
-  };
-  import SpellCard from "./templates/SpellCard/SpellCard";
-  export default {
-    name: "CardBuilder",
-    components: {SpellCard},
-    props: {
-      card: {type: Object, required: true}
-    },
-    data() {
-      return {
-        markdown: {
-          description: '',
-          overcast: ''
-        },
-        flavour: {
-          label: 'Flavour',
-          selected: 'light',
-          options: {
-            light: {label: 'light', style: {color: 'black', backgroundColor: 'white'}},
-            dark: {label: 'dark', style: {color: 'white', backgroundColor: 'black'}}
-          }
-        },
-        flags: {
-          options: {
-            ritual: {label: 'Ritual'},
-            concentration: {label: 'Concentration'},
-          }
-        },
-        components: {
-          label: 'Components',
-          selected: [],
-          options: {
-            verbal: {label: 'Verbal'},
-            somatic: {label: 'Somatic'},
-            material: {label: 'Material'}
-          }
+import SpellCard from './templates/SpellCard/SpellCard'
+const html2markdown = (text) => {
+  return new TurndownService().turndown(text)
+}
+const markdown2Html = (text) => {
+  return marked(text, {sanatize: false})
+}
+export default {
+  name: 'CardBuilder',
+  components: {SpellCard},
+  props: {
+    card: {type: Object, required: true}
+  },
+  data () {
+    return {
+      markdown: {
+        description: '',
+        overcast: ''
+      },
+      flavour: {
+        label: 'Flavour',
+        selected: 'light',
+        options: {
+          light: {label: 'light', style: {color: 'black', backgroundColor: 'white'}},
+          dark: {label: 'dark', style: {color: 'white', backgroundColor: 'black'}}
+        }
+      },
+      flags: {
+        options: {
+          ritual: {label: 'Ritual'},
+          concentration: {label: 'Concentration'}
+        }
+      },
+      components: {
+        label: 'Components',
+        selected: [],
+        options: {
+          verbal: {label: 'Verbal'},
+          somatic: {label: 'Somatic'},
+          material: {label: 'Material'}
         }
       }
-    },
-    created: function () {
+    }
+  },
+  created: function () {
+    this.markdown.description = html2markdown(this.card.description)
+    this.markdown.overcast = html2markdown(this.card.descriptionOvercast)
+  },
+  watch: {
+    card: function (newItem, oldItem) {
+      console.log('new spell (' + newItem.name + ') loaded.')
+      this.updateMarkdown()
+    }
+  },
+  methods: {
+    updateMarkdown: function () {
       this.markdown.description = html2markdown(this.card.description)
-      this.markdown.overcast = html2markdown(this.card.descriptionOvercast)
-    },
-    watch: {
-      card: function (newItem, oldItem) {
-        console.log('new spell (' + newItem.name + ') loaded.');
-        this.updateMarkdown();
+      if (this.card.descriptionOvercast) {
+        this.markdown.overcast = html2markdown(this.card.descriptionOvercast)
+      } else {
+        this.markdown.overcast = ''
       }
     },
-    methods: {
-      updateMarkdown: function () {
-        this.markdown.description = html2markdown(this.card.description)
-        if (this.card.descriptionOvercast) {
-          this.markdown.overcast = html2markdown(this.card.descriptionOvercast)
-        } else {
-          this.markdown.overcast = ''
-        }
-      },
-      updateCardOvercast: function (e) {
-        this.card.descriptionOvercast = markdown2Html(e);
-      },
-      updateCardDescription: function (e) {
-        this.card.description = markdown2Html(e);
-      }
+    updateCardOvercast: function (e) {
+      this.card.descriptionOvercast = markdown2Html(e)
     },
+    updateCardDescription: function (e) {
+      this.card.description = markdown2Html(e)
+    }
   }
+}
 </script>
 
 <style scoped>

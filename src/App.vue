@@ -19,7 +19,6 @@
 
         </div>
 
-
       </md-app-toolbar>
 
       <md-app-content>
@@ -32,37 +31,37 @@
 </template>
 
 <script>
-  export default {
+export default {
   name: 'App',
-    data() {
-      return {
-        menuVisible: false,
-        navItems: [
-          {text: 'Cartz', page: {name: 'home'}, icon: 'home'},
-          {text: 'Search', page: {name: 'spellSearch'}, icon: 'image_search'},
-          {text: 'Builder (dnd)', page: {name: 'spellCardBuilder'}, icon: 'build'},
-          {text: 'Builder (futuristic)', page: {name: 'spaceCardBuilder'}, icon: 'build'},
-          {text: 'Builder (character A5)', page: {name: 'characterSheetBuilder'}, icon: 'build'},
-          {text: 'Builder (wng monster)', page: {name: 'wngMonsterSheetBuilder'}, icon: 'build'},
-          {text: 'Migrate', page: {name: 'migrateSpells'}, icon: 'autorenew'},
-          {text: 'Projects', page: {name: 'projectPrinter'}, icon: 'print'}
-        ],
-        toolbarItems: [
-          {text: 'Deck', page: {name: 'spellSearch'}, icon: 'image_search'},
-          {text: 'DnD', page: {name: 'spellCardBuilder'}, icon: 'build'},
-          {text: 'Card', page: {name: 'spaceCardBuilder'}, icon: 'build'},
-          {text: 'NSC', page: {name: 'characterSheetBuilder'}, icon: 'build'},
-          {text: 'W&G Monster', page: {name: 'wngMonsterSheetBuilder'}, icon: 'build'},
-          {text: 'Project', page: {name: 'projectPrinter'}, icon: 'print'},
-          {text: 'Repository', page: {name: 'migrateSpells'}, icon: 'autorenew'}
-        ]
-      }
-    },
-    methods: {
-      toggleMenu() {
-        this.menuVisible = !this.menuVisible
-      }
+  data () {
+    return {
+      menuVisible: false,
+      navItems: [
+        {text: 'Cartz', page: {name: 'home'}, icon: 'home'},
+        {text: 'Search', page: {name: 'spellSearch'}, icon: 'image_search'},
+        {text: 'Builder (dnd)', page: {name: 'spellCardBuilder'}, icon: 'build'},
+        {text: 'Builder (futuristic)', page: {name: 'spaceCardBuilder'}, icon: 'build'},
+        {text: 'Builder (character A5)', page: {name: 'characterSheetBuilder'}, icon: 'build'},
+        {text: 'Builder (wng monster)', page: {name: 'wngMonsterSheetBuilder'}, icon: 'build'},
+        {text: 'Migrate', page: {name: 'migrateSpells'}, icon: 'autorenew'},
+        {text: 'Projects', page: {name: 'projectPrinter'}, icon: 'print'}
+      ],
+      toolbarItems: [
+        {text: 'Deck', page: {name: 'spellSearch'}, icon: 'image_search'},
+        {text: 'DnD', page: {name: 'spellCardBuilder'}, icon: 'build'},
+        {text: 'Card', page: {name: 'spaceCardBuilder'}, icon: 'build'},
+        {text: 'NSC', page: {name: 'characterSheetBuilder'}, icon: 'build'},
+        {text: 'W&G Monster', page: {name: 'wngMonsterSheetBuilder'}, icon: 'build'},
+        {text: 'Project', page: {name: 'projectPrinter'}, icon: 'print'},
+        {text: 'Repository', page: {name: 'migrateSpells'}, icon: 'autorenew'}
+      ]
     }
+  },
+  methods: {
+    toggleMenu () {
+      this.menuVisible = !this.menuVisible
+    }
+  }
 }
 </script>
 

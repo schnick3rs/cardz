@@ -49,46 +49,46 @@
 </template>
 
 <script>
-  import SpellRepository from '../../assets/repositories/dnd-spells-migrated.json'
-  import SpellModifications from '../../assets/repositories/dnd-spells--mods.json'
-  import SpellCard from "../templates/SpellCard/SpellCard";
-  import SpellCardEditForm from "../SpellCardEditForm"
-  export default {
-    name: "CardBuilder",
-    components: {SpellCardEditForm, SpellCard, SpellRepository, SpellModifications},
-    data() {
-      return {
-        card: undefined,
-        spellRepository: SpellRepository,
-        spellModifications: SpellModifications,
-        exportSpellModificationDialog: false
-      }
-    },
-    computed: {
-      spellModificationJson: function () {
-        let modification = {};
-        if (this.card) {
-          modification = {
-            name: this.card.name,
-            description: this.card.description,
-            descriptionOvercast: this.card.descriptionOvercast
-          }
+import SpellRepository from '../../assets/repositories/dnd-spells-migrated.json'
+import SpellModifications from '../../assets/repositories/dnd-spells--mods.json'
+import SpellCard from '../templates/SpellCard/SpellCard'
+import SpellCardEditForm from '../SpellCardEditForm'
+export default {
+  name: 'CardBuilder',
+  components: {SpellCardEditForm, SpellCard, SpellRepository, SpellModifications},
+  data () {
+    return {
+      card: undefined,
+      spellRepository: SpellRepository,
+      spellModifications: SpellModifications,
+      exportSpellModificationDialog: false
+    }
+  },
+  computed: {
+    spellModificationJson: function () {
+      let modification = {}
+      if (this.card) {
+        modification = {
+          name: this.card.name,
+          description: this.card.description,
+          descriptionOvercast: this.card.descriptionOvercast
         }
-        return JSON.stringify(modification);
       }
+      return JSON.stringify(modification)
+    }
+  },
+  created () {
+    this.card = this.randomSpell()
+  },
+  methods: {
+    randomSpell: function () {
+      return this.spellRepository[Math.floor(Math.random() * this.spellRepository.length)]
     },
-    created() {
-      this.card = this.randomSpell();
-    },
-    methods: {
-      randomSpell: function () {
-        return this.spellRepository[Math.floor(Math.random() * this.spellRepository.length)];
-      },
-      update: function () {
-        this.card = this.randomSpell();
-      }
-    },
+    update: function () {
+      this.card = this.randomSpell()
+    }
   }
+}
 </script>
 
 <style scoped>

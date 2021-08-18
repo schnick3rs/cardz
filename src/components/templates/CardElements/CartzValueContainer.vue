@@ -6,36 +6,36 @@
 </template>
 
 <script>
-  export default {
-    name: "CartzValueContainer",
-    props: {
-      value: Number,
-      flavour: String,
-      icon: String,
-      position: {type: String, default: 'center'}
-    },
-    data() {
-      return {
-        mailedFist: require('../../../assets/img/mailed-fist.png'),
+export default {
+  name: 'CartzValueContainer',
+  props: {
+    value: Number,
+    flavour: String,
+    icon: String,
+    position: {type: String, default: 'center'}
+  },
+  data () {
+    return {
+      mailedFist: require('../../../assets/img/mailed-fist.png')
+    }
+  },
+  computed: {
+    background: function () {
+      let icon = this.icon
+      if (icon) {
+        return 'background-image: url("' + this.mailedFist + '")'
       }
+      return ''
     },
-    computed: {
-      background: function () {
-        let icon = this.icon
-        if (icon) {
-          return 'background-image: url("' + this.mailedFist + '")'
-        }
-        return ''
-      },
-      textShadow: function () {
-        let color = this.flavour;
-        let s = 3;
-        return {
-          textShadow: '-' + s + 'px -' + s + 'px 0 ' + color + ', ' + s + 'px -' + s + 'px 0 ' + color + ', -' + s + 'px ' + s + 'px 0 ' + color + ', ' + s + 'px ' + s + 'px 0 ' + color
-        }
+    textShadow: function () {
+      let color = this.flavour
+      let s = 3
+      return {
+        textShadow: '-' + s + 'px -' + s + 'px 0 ' + color + ', ' + s + 'px -' + s + 'px 0 ' + color + ', -' + s + 'px ' + s + 'px 0 ' + color + ', ' + s + 'px ' + s + 'px 0 ' + color
       }
     }
   }
+}
 </script>
 
 <style scoped>

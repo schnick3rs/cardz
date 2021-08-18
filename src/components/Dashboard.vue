@@ -20,8 +20,8 @@
 </template>
 
 <script>
-  import NavigationSection from "./NavigationSection";
-  export default {
+import NavigationSection from './NavigationSection'
+export default {
   name: 'Dashboard',
   components: {NavigationSection}
 }

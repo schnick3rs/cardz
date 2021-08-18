@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  import SpellsJson from '../assets/spell-repository.json'
-  import SpellsModJson from '../assets/repositories/dnd-spells--mods.json'
-  export default {
+import SpellsJson from '../assets/spell-repository.json'
+import SpellsModJson from '../assets/repositories/dnd-spells--mods.json'
+export default {
   name: 'MigrateSpells',
   data () {
     return {

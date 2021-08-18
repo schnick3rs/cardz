@@ -47,62 +47,62 @@
 </template>
 
 <script>
-  import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
-  import SpellCardComponents from './SpellCardComponents'
-  import SpellCardDescription from './SpellCardDescription'
-  import SpellCardLevel from './SpellCardLevel'
-  import SpellCardTitle from './SpellCardTitle'
-  import SpellCardMeta from './SpellCardMeta'
-  export default {
-    name: 'SpellCard',
-    components: {
-      FontAwesomeIcon,
-      FontAwesomeLayers,
-      FontAwesomeLayersText,
-      SpellCardMeta,
-      SpellCardTitle,
-      SpellCardDescription,
-      SpellCardComponents,
-      SpellCardLevel
+import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
+import SpellCardComponents from './SpellCardComponents'
+import SpellCardDescription from './SpellCardDescription'
+import SpellCardLevel from './SpellCardLevel'
+import SpellCardTitle from './SpellCardTitle'
+import SpellCardMeta from './SpellCardMeta'
+export default {
+  name: 'SpellCard',
+  components: {
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+    FontAwesomeLayersText,
+    SpellCardMeta,
+    SpellCardTitle,
+    SpellCardDescription,
+    SpellCardComponents,
+    SpellCardLevel
+  },
+  props: {
+    spell: {type: Object, required: true},
+    theme: {type: String, required: false, default: 'mesmer'},
+    customTheme: {type: String, default: ''},
+    dimensions: {type: String, default: 'magic'}
+  },
+  data () {
+    return {
+      spellComponents: ['Verbal', 'Somatic', 'Material']
+    }
+  },
+  computed: {
+    descriptionStyle: function () {
+      return 'description-container--' + this.dimensions
     },
-    props: {
-      spell: {type: Object, required: true},
-      theme: {type: String, required: false, default: 'mesmer'},
-      customTheme: {type: String, default: ''},
-      dimensions: {type: String, default: 'magic'}
-    },
-    data() {
-      return {
-        spellComponents: ['Verbal', 'Somatic', 'Material']
+    backgroundImage: function () {
+      if (this.customTheme.length > 0) {
+        return 'background-image: url("' + this.customTheme + '")'
       }
+      return ''
     },
-    computed: {
-      descriptionStyle: function () {
-        return 'description-container--' + this.dimensions
-      },
-      backgroundImage: function () {
-        if (this.customTheme.length > 0) {
-          return 'background-image: url("' + this.customTheme + '")'
-        }
-        return ''
-      },
-      bgClass: function () {
-        return [
-          'card-bg-' + this.theme,
-          'card-dimensions--' + this.dimensions
-        ]
-      },
-      hasVerbal: function () {
-        return this.spell.components.includes('Verbal')
-      },
-      hasSomatic: function () {
-        return this.spell.components.includes('Somatic')
-      },
-      hasMaterial: function () {
-        return this.spell.components.includes('Material')
-      }
+    bgClass: function () {
+      return [
+        'card-bg-' + this.theme,
+        'card-dimensions--' + this.dimensions
+      ]
+    },
+    hasVerbal: function () {
+      return this.spell.components.includes('Verbal')
+    },
+    hasSomatic: function () {
+      return this.spell.components.includes('Somatic')
+    },
+    hasMaterial: function () {
+      return this.spell.components.includes('Material')
     }
   }
+}
 </script>
 
 <style scoped>

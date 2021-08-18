@@ -125,119 +125,122 @@
 </template>
 
 <script>
-  import WngMonsterSheet from '../templates/WrathAndGloryMonsterSheet/WngMonsterSheet';
+import WngMonsterSheet from '../templates/WrathAndGloryMonsterSheet/WngMonsterSheet'
 
-  export default {
-    name: 'WngMonsterSheetBuilder',
-    components: {WngMonsterSheet},
-    data() {
-      return {
-        exportJsonDialog: false,
-        markdown: 'Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.',
-        inputs: {
-          title: {
-            id: 'inputTitle',
-            label: 'Title'
-          }
+export default {
+  name: 'WngMonsterSheetBuilder',
+  components: {WngMonsterSheet},
+  data () {
+    return {
+      exportJsonDialog: false,
+      markdown: 'Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.',
+      inputs: {
+        title: {
+          id: 'inputTitle',
+          label: 'Title'
+        }
+      },
+      character: {
+        _theme: '40k',
+        _faction: 'chaos',
+        _flavour: 'chaos_cultists',
+        portrait: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
+        title: 'Chaos Kultist',
+        quote: 'I will follow a Corpse-God no more. I am free.',
+        classification: {
+          1: 'Troops',
+          2: 'Troops',
+          3: 'Troops',
+          4: 'Troops',
+          5: 'Troops'
         },
-        character: {
-          _theme: '40k',
-          _faction: 'chaos',
-          _flavour: 'chaos_cultists',
-          portrait: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
-          title: 'Chaos Kultist',
-          quote: 'I will follow a Corpse-God no more. I am free.',
-          classification: {
-            1: 'Troops',
-            2: 'Troops',
-            3: 'Troops',
-            4: 'Troops',
-            5: 'Troops'
+        isChampion: false,
+        attributes: [
+          {code: 'St', label: 'Strength', value: 3},
+          {code: 'Ag', label: 'Agility', value: 2},
+          {code: 'To', label: 'Toughness', value: 2}
+        ],
+        traits: {
+          defense: {code: 'De', label: 'Defense', value: 6},
+          resilience: {code: 'Re', label: 'Resilience', value: 8},
+          armour: {code: 'Ar', label: 'armour', value: 3},
+          soak: {code: 'Ar', label: 'Soak', value: 3},
+          shock: {code: 'Sh', label: 'Shock', value: 2},
+          wounds: {code: 'Wo', label: 'Wounds', value: 2}
+        },
+        skills: [
+          {code: 'De', label: 'Deception', value: 5},
+          {code: 'St', label: 'Stealth', value: 5},
+          {code: 'Ws', label: 'Weapon Skill', value: 5},
+          {code: 'Def', label: 'Default', value: 3}
+        ],
+        actions: [
+          {
+            key: 'range-attack',
+            label: 'Auto<em>pistol</em>',
+            table: {dice: 'BS: 3', range: '20m', damage: '7+1ED', salvo: 'salvo:2'},
+            mods: []
           },
-          isChampion: false,
-          attributes: [
-            {code: 'St', label: 'Strength', value: 3},
-            {code: 'Ag', label: 'Agility', value: 2},
-            {code: 'To', label: 'Toughness', value: 2},
-          ],
-          traits: {
-            defense: {code: 'De', label: 'Defense', value: 6},
-            resilience: {code: 'Re', label: 'Resilience', value: 8},
-            armour: {code: 'Ar', label: 'armour', value: 3},
-            soak: {code: 'Ar', label: 'Soak', value: 3},
-            shock: {code: 'Sh', label: 'Shock', value: 2},
-            wounds: {code: 'Wo', label: 'Wounds', value: 2}
-          },
-          skills: [
-            {code: 'De', label: 'Deception', value: 5},
-            {code: 'St', label: 'Stealth', value: 5},
-            {code: 'Ws', label: 'Weapon Skill', value: 5},
-            {code: 'Def', label: 'Default', value: 3}
-          ],
-          actions: [
-            {
-              key: 'range-attack',
-              label: 'Auto<em>pistol</em>',
-              table: {dice: 'BS: 3', range: '20m', damage: '7+1ED', salvo: 'salvo:2'},
-              mods: []
-            },
-            {
-              key: 'melee-attack', label: 'Knife', table: {dice: 'WS:5', damage: '5+1ED'}, mods:
+          {
+            key: 'melee-attack',
+            label: 'Knife',
+            table: {dice: 'WS:5', damage: '5+1ED'},
+            mods:
                 [{
                   title: 'Shoot and Stab',
                   short: 'May Multi-Attack with pistol and knife without penalty.',
                   attachTo: 'melee-attack'
                 }]
-            }
-          ],
-          abilities: [
-            {
-              title: 'Shoot and Stab',
-              short: 'Any time a cultist is slain by a critical hit, gain 1 <em>ruin</em>.',
-              attachTo: 'traits'
-            },
-            {
-              title: 'Shoot and Stab',
-              short: 'May Multi-Attack with pistol and knife without penalty.',
-              attachTo: 'melee-attack'
-            }
-          ],
-          size: 'Average',
-          keywords: ['Human', 'Heretic', 'Chaos']
-        },
-        draftRepository: [],
-        fields: {
-          flavours: [
-            {label: 'Imperial Guard', value: 'imperial-guard', color: 'forestgreen'},
-            {label: 'Doom', value: 'doom', color: 'forestgreen'},
-            {label: 'Navis Nobilite', value: 'navis-nobilite', color: 'blue'},
-            {label: 'Mechanicus', value: 'adeptus-mechanicus', color: 'orangered'},
-            {label: 'Adeptus Astartes', value: 'adeptus-astartes', color: 'blue'},
-            {label: 'Inquisition', value: 'inquisition', color: 'black'}
-          ],
-          attributes: [
-            {code: 'Kg', label: 'Kampfgeschick', value: '',}
-          ]
-        }
-      }
-    },
-    computed: {
-      itemJson: function () {
-        return JSON.stringify(this.character)
-      }
-    },
-    methods: {
-      update: function (event) {
-        this.character.description = marked(this.markdown, {sanatize: false})
+          }
+        ],
+        abilities: [
+          {
+            title: 'Shoot and Stab',
+            short: 'Any time a cultist is slain by a critical hit, gain 1 <em>ruin</em>.',
+            attachTo: 'traits'
+          },
+          {
+            title: 'Shoot and Stab',
+            short: 'May Multi-Attack with pistol and knife without penalty.',
+            attachTo: 'melee-attack'
+          }
+        ],
+        size: 'Average',
+        keywords: ['Human', 'Heretic', 'Chaos']
       },
-      addCard: function (item) {
-        this.draftRepository.push(JSON.parse(JSON.stringify(item)))
-      },
-      removeItem: function (item) {
-        this.draftRepository.splice(item, 1)
+      draftRepository: [],
+      fields: {
+        flavours: [
+          {label: 'Imperial Guard', value: 'imperial-guard', color: 'forestgreen'},
+          {label: 'Doom', value: 'doom', color: 'forestgreen'},
+          {label: 'Navis Nobilite', value: 'navis-nobilite', color: 'blue'},
+          {label: 'Mechanicus', value: 'adeptus-mechanicus', color: 'orangered'},
+          {label: 'Adeptus Astartes', value: 'adeptus-astartes', color: 'blue'},
+          {label: 'Inquisition', value: 'inquisition', color: 'black'}
+        ],
+        attributes: [
+          {code: 'Kg', label: 'Kampfgeschick', value: ''}
+        ]
       }
     }
+  },
+  computed: {
+    itemJson: function () {
+      return JSON.stringify(this.character)
+    }
+  },
+  methods: {
+    update: function (event) {
+      this.character.description = marked(this.markdown, {sanatize: false})
+    },
+    addCard: function (item) {
+      this.draftRepository.push(JSON.parse(JSON.stringify(item)))
+    },
+    removeItem: function (item) {
+      this.draftRepository.splice(item, 1)
+    }
   }
+}
 </script>
 
 <style scoped>

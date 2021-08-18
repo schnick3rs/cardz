@@ -22,8 +22,8 @@
 </template>
 
 <script>
-  import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
-  export default {
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+export default {
   name: 'SpellCardComponents',
   components: { FontAwesomeIcon },
   props: {
@@ -132,7 +132,6 @@
     box-shadow: 0px 5px 2mm 0mm #4c4c4c;
   }
 
-
   .material-text-container__text {
     padding-left: 16.5mm;
   display: table-cell;
@@ -154,4 +153,3 @@
     margin-bottom: 1.5mm;
   }
 </style>
-

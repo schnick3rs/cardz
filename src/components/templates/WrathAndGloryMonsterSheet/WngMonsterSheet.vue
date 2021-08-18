@@ -56,9 +56,7 @@
 
       </section>
 
-
       <div class="characteristic-section">
-
 
       </div>
     </cz-card-frame>
@@ -68,42 +66,42 @@
 </template>
 
 <script>
-  import CharacterSheetName from "../CharacterSheet/CharacterSheetName";
-  import CzCardFrame from "../CardElements/CzCardFrame";
-  import SpaceCardTitle from "../SpaceCard/SpaceCardTitle";
-  import CartzValueContainer from "../CardElements/CartzValueContainer";
+import CharacterSheetName from '../CharacterSheet/CharacterSheetName'
+import CzCardFrame from '../CardElements/CzCardFrame'
+import SpaceCardTitle from '../SpaceCard/SpaceCardTitle'
+import CartzValueContainer from '../CardElements/CartzValueContainer'
 
-  export default {
-    name: "WngMonsterSheet",
-    components: {
-      CartzValueContainer,
-      SpaceCardTitle,
-      CzCardFrame,
-      CharacterSheetName
-    },
-    props: {
-      character: {type: Object, required: true}
-    },
-    data() {
-      return {
-        backgroundImages: {
-          doom: 'https://pre00.deviantart.net/af57/th/pre/i/2014/266/9/6/doctor_doom_splat_colors_by_slypstream-d809r5v.png',
-          imperialGuard: 'https://78.media.tumblr.com/82938fb0efc7203f68e6c6d3237bbdd1/tumblr_oh3fwsc9Hg1vjjcaco1_1280.jpg',
-          chaos_cultists: 'https://spikeybits.com/wp-content/uploads/2018/03/culty.jpg'
-        }
+export default {
+  name: 'WngMonsterSheet',
+  components: {
+    CartzValueContainer,
+    SpaceCardTitle,
+    CzCardFrame,
+    CharacterSheetName
+  },
+  props: {
+    character: {type: Object, required: true}
+  },
+  data () {
+    return {
+      backgroundImages: {
+        doom: 'https://pre00.deviantart.net/af57/th/pre/i/2014/266/9/6/doctor_doom_splat_colors_by_slypstream-d809r5v.png',
+        imperialGuard: 'https://78.media.tumblr.com/82938fb0efc7203f68e6c6d3237bbdd1/tumblr_oh3fwsc9Hg1vjjcaco1_1280.jpg',
+        chaos_cultists: 'https://spikeybits.com/wp-content/uploads/2018/03/culty.jpg'
       }
-    },
-    created: function () {
-      if (this.character === undefined) {
-        this.character = {
-          _theme: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
-          portrait: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
-          name: 'Col. Armus Strok',
-          profession: 'PVS Commander in Chief',
-        }
+    }
+  },
+  created: function () {
+    if (this.character === undefined) {
+      this.character = {
+        _theme: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
+        portrait: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
+        name: 'Col. Armus Strok',
+        profession: 'PVS Commander in Chief'
       }
     }
   }
+}
 </script>
 
 <style scoped>

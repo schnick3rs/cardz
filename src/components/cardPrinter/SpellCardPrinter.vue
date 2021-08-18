@@ -70,7 +70,6 @@
             </div>
           </div>
 
-
         </md-card-content>
 
         <md-card-actions>
@@ -104,7 +103,7 @@ import SpellCard from '../templates/SpellCard/SpellCard'
 export default {
   name: 'SpellPrinter',
   components: {SpellCard},
-  data() {
+  data () {
     return {
       selectThemeDialog: false,
       dimensionsDragonsleeves: false,
@@ -134,7 +133,7 @@ export default {
               artist: 'Ivona Denovic',
               url: 'https://www.artstation.com/artwork/9XKeW'
             },
-            src: require('../../assets/img/artworks/artwork-druid.jpg'),
+            src: require('../../assets/img/artworks/artwork-druid.jpg')
           },
           {
             label: 'Druid (gw2)',
@@ -221,7 +220,7 @@ export default {
             image: {
               src: require('../../assets/img/artworks/artwork-arcane-trickster.jpg'),
               artist: '',
-              url: '',
+              url: ''
             },
             src: require('../../assets/img/artworks/artwork-arcane-trickster.jpg')
           }

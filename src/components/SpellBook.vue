@@ -7,9 +7,9 @@
 </template>
 
 <script>
-  import SpellCard from './templates/SpellCard/SpellCard'
-  import SpellRepository from '../assets/repositories/dnd-spells-migrated.json'
-  export default {
+import SpellCard from './templates/SpellCard/SpellCard'
+import SpellRepository from '../assets/repositories/dnd-spells-migrated.json'
+export default {
   name: 'SpellBook',
   components: {SpellCard},
   data () {

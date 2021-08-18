@@ -7,13 +7,13 @@
 </template>
 
 <script>
-  export default {
-    name: "CharacterSheetDescription",
-    props: {
-      description: {type: String, default: ''},
-      flavour: {type: String, default: ''}
-    }
+export default {
+  name: 'CharacterSheetDescription',
+  props: {
+    description: {type: String, default: ''},
+    flavour: {type: String, default: ''}
   }
+}
 </script>
 
 <style scoped>

@@ -42,7 +42,7 @@ export default {
         { text: 'Warlock', value: 'mesmer' },
         { text: 'Druid', value: 'druid' },
         { text: 'paladin', value: 'paladin' }
-      ],
+      ]
     }
   }
 }

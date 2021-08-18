@@ -13,7 +13,7 @@
 <script>
 export default {
   name: 'NavigationSection',
-  data() {
+  data () {
     return {
       navItems: [
         { text: 'Home', page: { name: 'home' } },

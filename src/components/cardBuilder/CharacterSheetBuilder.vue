@@ -125,73 +125,73 @@
 </template>
 
 <script>
-  import CharacterSheet from '../templates/CharacterSheet/CharacterSheet';
-  export default {
-    name: 'CardBuilder',
-    components: {CharacterSheet},
-    data() {
-      return {
-        exportJsonDialog: false,
-        markdown: 'Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.',
-        inputs: {
-          title: {
-            id: 'inputTitle',
-            label: 'Title'
-          }
-        },
-        character: {
-          _flavour: 'imperial-guard',
-          _theme: '40k',
-          portrait: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
-          name: 'Tailo \'der Grimmige\' Huskins',
-          profession: 'Captain des 4ten Untertogen Regiments',
-          description: '<p>Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.</p>',
-          attributes: [
-            {code: 'KG', label: 'Kampfgeschick', value: ''},
-            {code: 'BF', label: 'Ballistische Fertigkeit', value: ''},
-            {code: 'ST', label: 'Stärke', value: ''},
-            {code: 'WI', label: 'Widerstand', value: ''},
-            {code: 'GE', label: 'Gewandheit', value: ''},
-            {code: 'IN', label: 'Intelligenz', value: ''},
-            {code: 'WA', label: 'Wahrnehmung', value: ''},
-            {code: 'WK', label: 'Willenskraft', value: ''},
-            {code: 'CH', label: 'Charisma', value: ''}
-          ],
-          skills: []
-        },
-        draftRepository: [],
-        fields: {
-          flavours: [
-            {label: 'Imperial Guard', value: 'imperial-guard', color: 'forestgreen'},
-            {label: 'Doom', value: 'doom', color: 'forestgreen'},
-            {label: 'Navis Nobilite', value: 'navis-nobilite', color: 'blue'},
-            {label: 'Mechanicus', value: 'adeptus-mechanicus', color: 'orangered'},
-            {label: 'Adeptus Astartes', value: 'adeptus-astartes', color: 'blue'},
-            {label: 'Inquisition', value: 'inquisition', color: 'black'}
-          ],
-          attributes: [
-            {code: 'Kg', label: 'Kampfgeschick', value: '',}
-          ]
+import CharacterSheet from '../templates/CharacterSheet/CharacterSheet'
+export default {
+  name: 'CardBuilder',
+  components: {CharacterSheet},
+  data () {
+    return {
+      exportJsonDialog: false,
+      markdown: 'Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.',
+      inputs: {
+        title: {
+          id: 'inputTitle',
+          label: 'Title'
         }
-      }
-    },
-    computed: {
-      itemJson: function () {
-        return JSON.stringify(this.character)
-      }
-    },
-    methods: {
-      update: function (event) {
-        this.character.description = marked(this.markdown, {sanatize: false})
       },
-      addCard: function (item) {
-        this.draftRepository.push(JSON.parse(JSON.stringify(item)))
+      character: {
+        _flavour: 'imperial-guard',
+        _theme: '40k',
+        portrait: 'https://i.pinimg.com/originals/4d/f3/f5/4df3f5c0c1e4d3e569d50cacb442fe17.jpg',
+        name: 'Tailo \'der Grimmige\' Huskins',
+        profession: 'Captain des 4ten Untertogen Regiments',
+        description: '<p>Ich nehme lieber 20 Kriminelle mit festen Glauben and den Imperator als 1000 verwöhnte Erstgeborenen.</p>',
+        attributes: [
+          {code: 'KG', label: 'Kampfgeschick', value: ''},
+          {code: 'BF', label: 'Ballistische Fertigkeit', value: ''},
+          {code: 'ST', label: 'Stärke', value: ''},
+          {code: 'WI', label: 'Widerstand', value: ''},
+          {code: 'GE', label: 'Gewandheit', value: ''},
+          {code: 'IN', label: 'Intelligenz', value: ''},
+          {code: 'WA', label: 'Wahrnehmung', value: ''},
+          {code: 'WK', label: 'Willenskraft', value: ''},
+          {code: 'CH', label: 'Charisma', value: ''}
+        ],
+        skills: []
       },
-      removeItem: function (item) {
-        this.draftRepository.splice(item, 1)
+      draftRepository: [],
+      fields: {
+        flavours: [
+          {label: 'Imperial Guard', value: 'imperial-guard', color: 'forestgreen'},
+          {label: 'Doom', value: 'doom', color: 'forestgreen'},
+          {label: 'Navis Nobilite', value: 'navis-nobilite', color: 'blue'},
+          {label: 'Mechanicus', value: 'adeptus-mechanicus', color: 'orangered'},
+          {label: 'Adeptus Astartes', value: 'adeptus-astartes', color: 'blue'},
+          {label: 'Inquisition', value: 'inquisition', color: 'black'}
+        ],
+        attributes: [
+          {code: 'Kg', label: 'Kampfgeschick', value: ''}
+        ]
       }
     }
+  },
+  computed: {
+    itemJson: function () {
+      return JSON.stringify(this.character)
+    }
+  },
+  methods: {
+    update: function (event) {
+      this.character.description = marked(this.markdown, {sanatize: false})
+    },
+    addCard: function (item) {
+      this.draftRepository.push(JSON.parse(JSON.stringify(item)))
+    },
+    removeItem: function (item) {
+      this.draftRepository.splice(item, 1)
+    }
   }
+}
 </script>
 
 <style scoped>

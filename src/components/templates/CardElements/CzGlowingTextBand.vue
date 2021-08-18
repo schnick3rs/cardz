@@ -5,26 +5,26 @@
 </template>
 
 <script>
-  export default {
-    name: 'CzGlowingTextBand',
-    props: {
-      html: {type: String, required: true},
-      glowColor: {type: String, default: ''},
-      lightTheme: {type: Boolean, default: false}
-    },
-    computed: {
-      glowingBorder: function () {
-        if (this.glowColor) {
-          return {
-            borderTop: '2px solid ' + this.glowColor,
-            borderBottom: '2px solid ' + this.glowColor,
-            boxShadow: '0 0px 10px 0px ' + this.glowColor
-          }
+export default {
+  name: 'CzGlowingTextBand',
+  props: {
+    html: {type: String, required: true},
+    glowColor: {type: String, default: ''},
+    lightTheme: {type: Boolean, default: false}
+  },
+  computed: {
+    glowingBorder: function () {
+      if (this.glowColor) {
+        return {
+          borderTop: '2px solid ' + this.glowColor,
+          borderBottom: '2px solid ' + this.glowColor,
+          boxShadow: '0 0px 10px 0px ' + this.glowColor
         }
-        return ''
       }
+      return ''
     }
   }
+}
 </script>
 
 <style scoped>

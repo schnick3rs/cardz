@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
-  export default {
+import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
+export default {
   name: 'SpellCardLevel',
   components: { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText },
   props: {

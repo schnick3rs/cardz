@@ -35,29 +35,29 @@
   </div>
 </template>
 <script>
-  import CharacterSheet from "../templates/CharacterSheet/CharacterSheet";
-  export default {
-    name: "ProjectPrinter",
-    components: {CharacterSheet},
-    data() {
-      return {
-        currentRepository: [],
-        jsonString: ''
-      }
-    },
-    methods: {
-      loadFromJson: function (e) {
-        this.currentRepository = JSON.parse(this.jsonString)
-      }
-    },
-    created: function () {
-      let repo = this.$route.params.payload
-      if (repo) {
-        this.currentRepository = repo
-        this.jsonString = JSON.stringify(repo)
-      }
+import CharacterSheet from '../templates/CharacterSheet/CharacterSheet'
+export default {
+  name: 'ProjectPrinter',
+  components: {CharacterSheet},
+  data () {
+    return {
+      currentRepository: [],
+      jsonString: ''
+    }
+  },
+  methods: {
+    loadFromJson: function (e) {
+      this.currentRepository = JSON.parse(this.jsonString)
+    }
+  },
+  created: function () {
+    let repo = this.$route.params.payload
+    if (repo) {
+      this.currentRepository = repo
+      this.jsonString = JSON.stringify(repo)
     }
   }
+}
 </script>
 
 <style scoped>

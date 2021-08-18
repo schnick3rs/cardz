@@ -10,14 +10,14 @@
 </template>
 
 <script>
-  export default {
-    name: "CharacterSheetName",
-    props: {
-      name: {type: String},
-      profession: {type: String},
-      flavour: {type: String, default: ''}
-    }
+export default {
+  name: 'CharacterSheetName',
+  props: {
+    name: {type: String},
+    profession: {type: String},
+    flavour: {type: String, default: ''}
   }
+}
 </script>
 
 <style scoped>

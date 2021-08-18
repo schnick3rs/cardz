@@ -10,24 +10,24 @@
 </template>
 
 <script>
-  export default {
-    name: "CzCardFrame",
-    props: {
-      dimensions: {type: String, required: true},
-      lines: {type: Array},
-      backgroundImage: {type: String, default: ''},
-      opacity: {type: Number, default: 0.5}
-    },
-    computed: {
-      backgroundStyle: function () {
-        return {
-          backgroundImage: 'url("' + this.backgroundImage + '")',
-          opacity: this.opacity
-          /*'-webkit-Filter': 'sepia(100%)'*/
-        }
+export default {
+  name: 'CzCardFrame',
+  props: {
+    dimensions: {type: String, required: true},
+    lines: {type: Array},
+    backgroundImage: {type: String, default: ''},
+    opacity: {type: Number, default: 0.5}
+  },
+  computed: {
+    backgroundStyle: function () {
+      return {
+        backgroundImage: 'url("' + this.backgroundImage + '")',
+        opacity: this.opacity
+        /* '-webkit-Filter': 'sepia(100%)' */
       }
     }
   }
+}
 </script>
 
 <style scoped>

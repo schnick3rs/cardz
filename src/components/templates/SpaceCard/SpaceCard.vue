@@ -37,30 +37,30 @@
 </template>
 
 <script>
-  import SpaceCardTitle from './SpaceCardTitle';
-  import CzGlowingTextBand from "../CardElements/CzGlowingTextBand";
-  import CartzValueContainer from "../CardElements/CartzValueContainer";
-  import CzCardFrame from "../CardElements/CzCardFrame";
-  export default {
-    name: 'SpaceCard',
-    components: {CzCardFrame, CartzValueContainer, CzGlowingTextBand, SpaceCardTitle},
-    props: {
-      card: {type: Object}
-    },
-    computed: {
-      backgroundImage: function () {
-        let style = {};
-        let theme = this.card['_theme']
-        if (theme && theme.length > 0) {
-          style['background-image'] = 'url("' + theme + '")';
-        }
-        return style;
-      },
-      flavour: function () {
-        return this.card['_flavour']
+import SpaceCardTitle from './SpaceCardTitle'
+import CzGlowingTextBand from '../CardElements/CzGlowingTextBand'
+import CartzValueContainer from '../CardElements/CartzValueContainer'
+import CzCardFrame from '../CardElements/CzCardFrame'
+export default {
+  name: 'SpaceCard',
+  components: {CzCardFrame, CartzValueContainer, CzGlowingTextBand, SpaceCardTitle},
+  props: {
+    card: {type: Object}
+  },
+  computed: {
+    backgroundImage: function () {
+      let style = {}
+      let theme = this.card['_theme']
+      if (theme && theme.length > 0) {
+        style['background-image'] = 'url("' + theme + '")'
       }
+      return style
+    },
+    flavour: function () {
+      return this.card['_flavour']
     }
   }
+}
 </script>
 
 <style scoped>

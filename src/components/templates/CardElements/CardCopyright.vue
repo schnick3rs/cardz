@@ -7,14 +7,14 @@
 </template>
 
 <script>
-  export default {
-    name: "CardCopyright",
-    props: {
-      position: {type: String, default: "bottom"},
-      theme: {type: String, default: "light"},
-      size: {type: String, default: "normal"}
-    }
+export default {
+  name: 'CardCopyright',
+  props: {
+    position: {type: String, default: 'bottom'},
+    theme: {type: String, default: 'light'},
+    size: {type: String, default: 'normal'}
   }
+}
 </script>
 
 <style scoped>

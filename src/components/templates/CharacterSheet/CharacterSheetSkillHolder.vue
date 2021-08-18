@@ -4,7 +4,7 @@
       <span class="skill-holder__label">{{ item.label }}</span>
       <span>{{ item.value }}</span>
     </div>
-    <div v-for="n in 12">
+    <div v-for="n in 12" :key="n">
       <span class="skill__field--placeholder skill__name--placeholder"></span>
       <span class="skill__field--placeholder skill__value--placeholder"></span>
     </div>
@@ -12,13 +12,19 @@
 </template>
 
 <script>
-  export default {
-    name: "CharacterSheetSkillHolder",
-    props: {
-      skills: {type: Array, default: ''},
-      slots: {type: Number, default: 6}
+export default {
+  name: 'CharacterSheetSkillHolder',
+  props: {
+    skills: {
+      type: Array,
+      default: () => []
+    },
+    slots: {
+      type: Number,
+      default: 6
     }
   }
+}
 </script>
 
 <style scoped>

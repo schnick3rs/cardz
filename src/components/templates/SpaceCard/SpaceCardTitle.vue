@@ -10,25 +10,25 @@
 </template>
 
 <script>
-  export default {
-    name: 'SpaceCardTitle',
-    props: {
-      title: {type: String, required: true},
-      subtitle: {type: String, required: false},
-      flavour: {type: String, required: false, default: ''}
-    },
-    computed: {
-      glowingBorder: function () {
-        if (this.flavour) {
-          return {
-            borderColor: this.flavour,
-            boxShadow: '0 0px 10px 0px ' + this.flavour
-          }
-          return ''
+export default {
+  name: 'SpaceCardTitle',
+  props: {
+    title: {type: String, required: true},
+    subtitle: {type: String, required: false},
+    flavour: {type: String, required: false, default: ''}
+  },
+  computed: {
+    glowingBorder: function () {
+      if (this.flavour) {
+        return {
+          borderColor: this.flavour,
+          boxShadow: '0 0px 10px 0px ' + this.flavour
         }
+        return ''
       }
     }
   }
+}
 </script>
 
 <style scoped>

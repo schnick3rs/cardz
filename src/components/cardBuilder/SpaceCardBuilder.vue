@@ -56,7 +56,6 @@
 
             <div class="md-layout-item md-size-100">
 
-
               <md-field>
                 <label>Subtitle</label>
                 <md-input v-model="card.subtitle"/>
@@ -65,7 +64,6 @@
             </div>
 
             <div class="md-layout-item md-size-100">
-
 
               <md-field>
                 <label>Card value</label>
@@ -136,76 +134,76 @@
 </template>
 
 <script>
-  import SpaceCard from "../templates/SpaceCard/SpaceCard";
-  export default {
-    name: "CardBuilder",
-    components: {SpaceCard},
-    data() {
-      return {
-        markdown: 'Oh Boy',
-        inputs: {
-          title: {
-            id: 'inputTitle',
-            label: 'Title'
-          }
+import SpaceCard from '../templates/SpaceCard/SpaceCard'
+export default {
+  name: 'CardBuilder',
+  components: {SpaceCard},
+  data () {
+    return {
+      markdown: 'Oh Boy',
+      inputs: {
+        title: {
+          id: 'inputTitle',
+          label: 'Title'
+        }
+      },
+      card: {
+        title: 'Monstreous Ambush',
+        subtitle: 'Event',
+        description: '<p>Oh boy.</p>',
+        value: '',
+        valueMeta: {
+          icon: 'mailed-fist',
+          position: 'center'
         },
-        card: {
-          title: 'Monstreous Ambush',
-          subtitle: 'Event',
-          description: "<p>Oh boy.</p>",
-          value: '',
-          valueMeta: {
-            icon: 'mailed-fist',
-            position: 'center'
-          },
-          _dimension: 'dragonsleeve',
-          _flavour: 'red',
-          _theme: 'https://i.pinimg.com/736x/68/86/c9/6886c95a96ce40c0dce9c49f034c0c60--fantasy-concept-art-fantasy-art.jpg'
-        },
-        draftRepository: [],
-        dimensions: {
-          label: 'Dimension',
-          selected: 'dragonsleeve',
-          options: {
-            magic: {label: 'Magic', value: 'magic'},
-            dragonsleeve: {label: 'Magic (Dragonsleeve)', value: 'dragonsleeve'},
-            magicLandscape: {label: 'Magic (Landscape)', value: 'magic-landscape'},
-            zombicideItem: {label: 'Zimbicide ', value: 'zombicide-item'}
-          }
-        },
-        flavours: {
-          label: 'Color Flavour',
-          selected: 'red',
-          options: {
-            green: {label: 'Green', value: 'forestgreen', color: 'forestgreen'},
-            red: {label: 'Red', value: 'orangered', color: 'orangered'},
-            blue: {label: 'Blue', value: 'dodgerblue', color: 'blue'},
-            yellow: {label: 'Yellow', value: 'yellow', color: 'yellow'}
-          }
+        _dimension: 'dragonsleeve',
+        _flavour: 'red',
+        _theme: 'https://i.pinimg.com/736x/68/86/c9/6886c95a96ce40c0dce9c49f034c0c60--fantasy-concept-art-fantasy-art.jpg'
+      },
+      draftRepository: [],
+      dimensions: {
+        label: 'Dimension',
+        selected: 'dragonsleeve',
+        options: {
+          magic: {label: 'Magic', value: 'magic'},
+          dragonsleeve: {label: 'Magic (Dragonsleeve)', value: 'dragonsleeve'},
+          magicLandscape: {label: 'Magic (Landscape)', value: 'magic-landscape'},
+          zombicideItem: {label: 'Zimbicide ', value: 'zombicide-item'}
+        }
+      },
+      flavours: {
+        label: 'Color Flavour',
+        selected: 'red',
+        options: {
+          green: {label: 'Green', value: 'forestgreen', color: 'forestgreen'},
+          red: {label: 'Red', value: 'orangered', color: 'orangered'},
+          blue: {label: 'Blue', value: 'dodgerblue', color: 'blue'},
+          yellow: {label: 'Yellow', value: 'yellow', color: 'yellow'}
         }
       }
+    }
+  },
+  methods: {
+    update: function (e) {
+      this.markdown = e.target.value
+      this.card.description = marked(this.markdown, {sanatize: false})
     },
-    methods: {
-      update: function (e) {
-        this.markdown = e.target.value
-        this.card.description = marked(this.markdown, {sanatize: false})
-      },
-      copyToClipboard: function (e) {
-        navigator.clipboard.writeText(JSON.stringify(this.card));
-      }
+    copyToClipboard: function (e) {
+      navigator.clipboard.writeText(JSON.stringify(this.card))
+    }
+  },
+  methods: {
+    update: function (event) {
+      this.card.description = marked(this.markdown, {sanatize: false})
     },
-    methods: {
-      update: function (event) {
-        this.card.description = marked(this.markdown, {sanatize: false})
-      },
-      addCard: function (item) {
-        this.draftRepository.push(JSON.parse(JSON.stringify(item)))
-      },
-      removeItem: function (item) {
-        this.draftRepository.splice(item, 1)
-      }
+    addCard: function (item) {
+      this.draftRepository.push(JSON.parse(JSON.stringify(item)))
+    },
+    removeItem: function (item) {
+      this.draftRepository.splice(item, 1)
     }
   }
+}
 </script>
 
 <style scoped>

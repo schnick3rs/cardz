@@ -82,7 +82,6 @@
 
         </md-card-actions>
 
-
       </md-card>
 
       <md-table v-model="filteredRepository" md-sort="level" md-sort-order="asc" md-card>
@@ -172,7 +171,6 @@
 
           </div>
 
-
         </md-card-content>
       </md-card>
     </div>
@@ -231,26 +229,25 @@
 
     </div>
 
-
   </div>
 </template>
 
 <script>
-  const toLower = text => {
-    return text.toString().toLowerCase()
+import SpellRepository from '../assets/repositories/dnd-spells-migrated.json'
+import SpellModifications from '../assets/repositories/dnd-spells--mods.json'
+import SpellCard from './templates/SpellCard/SpellCard'
+import SpellItemRow from './SpellItemRow'
+const toLower = text => {
+  return text.toString().toLowerCase()
+}
+const searchByName = (items, term) => {
+  if (term) {
+    return items.filter(item => toLower(item.name).includes(toLower(term)))
   }
-  const searchByName = (items, term) => {
-    if (term) {
-      return items.filter(item => toLower(item.name).includes(toLower(term)))
-    }
-    return items
-  }
-  import SpellRepository from '../assets/repositories/dnd-spells-migrated.json'
-  import SpellModifications from '../assets/repositories/dnd-spells--mods.json'
-  import SpellCard from './templates/SpellCard/SpellCard'
-  import SpellItemRow from "./SpellItemRow";
+  return items
+}
 
-  export default {
+export default {
   name: 'SpellSearch',
   components: {SpellItemRow, SpellCard},
   data () {
@@ -322,38 +319,38 @@
   },
   computed: {
     spellModificationJson: function () {
-      let modification = {};
+      let modification = {}
       if (this.selectedSpell) {
         modification = {
           name: this.selectedSpell.name,
           description: this.selectedSpell.description
         }
       }
-      return JSON.stringify(modification);
+      return JSON.stringify(modification)
     },
     filteredRepository: function () {
-      let results = this.searchableRepository;
+      let results = this.searchableRepository
 
-      let clazzes = this.selectedFilters.clazz.selection;
-      clazzes = clazzes.concat(this.selectedFilters.subclazz.selection);
+      let clazzes = this.selectedFilters.clazz.selection
+      clazzes = clazzes.concat(this.selectedFilters.subclazz.selection)
 
       if (clazzes.length > 0) {
         results = results.filter(item => clazzes.some(v => toLower(item.class.join()).indexOf(toLower(v)) >= 0))
       }
 
-      let level = this.selectedFilters.level.selection;
+      let level = this.selectedFilters.level.selection
       if (level.length > 0) {
         results = results.filter(item => level.includes(item.level + ''))
       }
-      let sources = this.selectedFilters.source.selection;
+      let sources = this.selectedFilters.source.selection
       if (sources.length > 0) {
         results = results.filter(item => sources.some(v => toLower(item.source).indexOf(toLower(v)) >= 0))
       }
-      let query = this.search;
+      let query = this.search
       if (query) {
         results = searchByName(results, query)
       }
-      return results;
+      return results
     }
   },
   methods: {
@@ -361,11 +358,11 @@
       this.selectedSpell.description = marked(this.selectedSpellMarkdown, {sanatize: false})
     },
     html2markdown: function (event) {
-      this.selectedSpellMarkdown = new TurndownService().turndown(this.selectedSpell.description);
+      this.selectedSpellMarkdown = new TurndownService().turndown(this.selectedSpell.description)
     },
     preview: function (item, event) {
-      this.selectedSpell = item;
-      this.html2markdown(event);
+      this.selectedSpell = item
+      this.html2markdown(event)
     },
     learnSpell: function (spellToLearn, event) {
       let duplicatedSpells = this.activeSpellBook.filter(function (learnedSpell) {
@@ -383,22 +380,22 @@
       this.filteredRepository.forEach(v => this.learnSpell(v))
     }
   },
-    created() {
-      let folded = this.spellRepository;
-      let mods = this.spellModifications;
-      mods.forEach((mod) => {
-        folded.forEach((fold) => {
-          if (fold.name == mod.name) {
-            console.info('Modify ' + fold.name);
-            fold.description = mod.description;
-            if (mod.descriptionOvercast) {
-              fold.descriptionOvercast = mod.descriptionOvercast;
-            }
+  created () {
+    let folded = this.spellRepository
+    let mods = this.spellModifications
+    mods.forEach((mod) => {
+      folded.forEach((fold) => {
+        if (fold.name == mod.name) {
+          console.info('Modify ' + fold.name)
+          fold.description = mod.description
+          if (mod.descriptionOvercast) {
+            fold.descriptionOvercast = mod.descriptionOvercast
           }
-        });
-      });
-      this.searchableRepository = folded;
-    }
+        }
+      })
+    })
+    this.searchableRepository = folded
+  }
 }
 </script>
 

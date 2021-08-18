@@ -10,15 +10,18 @@
 </template>
 
 <script>
-  export default {
-    name: "CharacterSheetPortrait",
-    props: {
-      portrait: {type: String, default: 'http://www.auto-nothaft.de/wp-content/uploads/2013/07/profile-placeholder.gif'}
-    },
-    data() {
-      return {}
+export default {
+  name: 'CharacterSheetPortrait',
+  props: {
+    portrait: {
+      type: String,
+      default: 'http://www.auto-nothaft.de/wp-content/uploads/2013/07/profile-placeholder.gif'
     }
+  },
+  data () {
+    return {}
   }
+}
 </script>
 
 <style scoped>

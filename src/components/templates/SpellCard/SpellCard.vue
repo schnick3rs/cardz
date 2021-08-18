@@ -48,33 +48,34 @@
 </template>
 
 <script>
-  import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
-  import SpellCardComponents from './SpellCardComponents'
-  import SpellCardDescription from './SpellCardDescription'
-  import SpellCardLevel from './SpellCardLevel'
-  import SpellCardTitle from './SpellCardTitle'
-  import SpellCardMeta from './SpellCardMeta'
-  import CardCopyright from "../CardElements/CardCopyright";
-  import CzCardFrame from "../CardElements/CzCardFrame";
+import {FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText} from '@fortawesome/vue-fontawesome'
+import SpellCardComponents from './SpellCardComponents'
+import SpellCardDescription from './SpellCardDescription'
+import SpellCardLevel from './SpellCardLevel'
+import SpellCardTitle from './SpellCardTitle'
+import SpellCardMeta from './SpellCardMeta'
+import CardCopyright from '../CardElements/CardCopyright'
+import CzCardFrame from '../CardElements/CzCardFrame'
 
-  export default {
+export default {
   name: 'SpellCard',
-    components: {
-      CzCardFrame,
-      FontAwesomeIcon,
-      FontAwesomeLayers,
-      FontAwesomeLayersText,
-      CardCopyright,
-      SpellCardMeta,
-      SpellCardTitle,
-      SpellCardDescription,
-      SpellCardComponents,
-      SpellCardLevel
-    },
+  components: {
+    CzCardFrame,
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+    FontAwesomeLayersText,
+    CardCopyright,
+    SpellCardMeta,
+    SpellCardTitle,
+    SpellCardDescription,
+    SpellCardComponents,
+    SpellCardLevel
+  },
   props: {
     spell: {type: Object, required: true},
     image: {
-      type: Object, default: function () {
+      type: Object,
+      default: function () {
         return {src: require('../../../assets/img/artworks/artwork-arcane-trickster.jpg')}
       }
     },

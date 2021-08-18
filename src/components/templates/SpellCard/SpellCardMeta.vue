@@ -11,9 +11,9 @@
 </template>
 
 <script>
-  import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
-  export default {
-    components: {FontAwesomeIcon},
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+export default {
+  components: {FontAwesomeIcon},
   name: 'SpellCardMeta',
   props: {
     label: { type: String },
