@@ -32,51 +32,52 @@
 
       <md-card>
 
-          <md-card-content>
+        <md-card-content>
 
-            <div class="md-layout md-gutter">
+          <div class="md-layout md-gutter">
 
-              <div class="md-layout-item md-size-20">
+            <div class="md-layout-item md-size-20">
 
-                <md-avatar class="md-large">
-                  <img :src="themes.selected.src" @click="selectThemeDialog = true"/>
-                </md-avatar>
+              <md-avatar class="md-large">
+                <img :src="themes.selected.src" @click="selectThemeDialog = true"/>
+              </md-avatar>
 
-              </div>
-
-              <div class="md-layout-item md-size-70" hidden>
-                <md-field>
-                  <label>Custom background image (url)</label>
-                  <md-input v-model="customTheme"></md-input>
-                </md-field>
-              </div>
-
-              <div class="md-layout-item md-size-80">
-                <md-field>
-                  <label>Card dimensions</label>
-                  <md-select v-model="dimensions.selected">
-                    <md-option v-for="(value, key) in dimensions.options" :key="key" v-bind:value="key">{{ value }}
-                    </md-option>
-                  </md-select>
-                </md-field>
-              </div>
-
-              <div class="md-layout-item md-size-100">
-                <md-field>
-                  <label>Insert JSON String</label>
-                  <md-textarea v-model="jsonString"></md-textarea>
-                </md-field>
-              </div>
             </div>
 
+            <div class="md-layout-item md-size-70" hidden>
+              <md-field>
+                <label>Custom background image (url)</label>
+                <md-input v-model="customTheme"></md-input>
+              </md-field>
+            </div>
 
-          </md-card-content>
+            <div class="md-layout-item md-size-80">
+              <md-field>
+                <label>Card dimensions</label>
+                <md-select v-model="dimensions.selected">
+                  <md-option v-for="(value, key) in dimensions.options" :key="key"
+                             v-bind:value="key">{{ value }}
+                  </md-option>
+                </md-select>
+              </md-field>
+            </div>
 
-          <md-card-actions>
-            <md-button class="md-primary" @click="loadFromJson">Render Cards</md-button>
-          </md-card-actions>
+            <div class="md-layout-item md-size-100">
+              <md-field>
+                <label>Insert JSON String</label>
+                <md-textarea v-model="jsonString"></md-textarea>
+              </md-field>
+            </div>
+          </div>
 
-        </md-card>
+
+        </md-card-content>
+
+        <md-card-actions>
+          <md-button class="md-primary" @click="loadFromJson">Render Cards</md-button>
+        </md-card-actions>
+
+      </md-card>
 
     </div>
 
@@ -98,12 +99,12 @@
 </template>
 
 <script>
-  import SpellCard from '../templates/SpellCard/SpellCard'
+import SpellCard from '../templates/SpellCard/SpellCard'
 
-  export default {
+export default {
   name: 'SpellPrinter',
-    components: {SpellCard},
-  data () {
+  components: {SpellCard},
+  data() {
     return {
       selectThemeDialog: false,
       dimensionsDragonsleeves: false,
@@ -119,7 +120,11 @@
         }
       },
       themes: {
-        selected: {label: 'Druid', value: 'druid', src: require('../../assets/img/artworks/artwork-druid.jpg')},
+        selected: {
+          label: 'Druid',
+          value: 'druid',
+          src: require('../../assets/img/artworks/artwork-druid.jpg')
+        },
         options: [
           {
             label: 'Druid',
@@ -131,7 +136,11 @@
             },
             src: require('../../assets/img/artworks/artwork-druid.jpg'),
           },
-          {label: 'Druid (gw2)', value: 'druid-gw2', src: require('../../assets/img/artworks/artwork-druid--gw2.jpg')},
+          {
+            label: 'Druid (gw2)',
+            value: 'druid-gw2',
+            src: require('../../assets/img/artworks/artwork-druid--gw2.jpg')
+          },
           {
             label: 'Druid (Moon)',
             value: 'druid-moon',
@@ -146,8 +155,16 @@
               url: ''
             }
           },
-          {label: 'Bard', value: 'bard', src: require('../../assets/img/artworks/artwork-bard.jpg')},
-          {label: 'Wizard', value: 'wizard', src: require('../../assets/img/artworks/artwork-wizard.jpg')},
+          {
+            label: 'Bard',
+            value: 'bard',
+            src: require('../../assets/img/artworks/artwork-bard.jpg')
+          },
+          {
+            label: 'Wizard',
+            value: 'wizard',
+            src: require('../../assets/img/artworks/artwork-wizard.jpg')
+          },
           {
             label: 'Wizard',
             value: 'wizard-necromancer',
@@ -158,7 +175,11 @@
             value: 'wizard-necromancer-2',
             src: require('../../assets/img/artworks/artwork-wizard--necromancer-2.jpg')
           },
-          {label: 'Fighter', value: 'fighter', src: require('../../assets/img/artworks/artwork-fighter.jpg')},
+          {
+            label: 'Fighter',
+            value: 'fighter',
+            src: require('../../assets/img/artworks/artwork-fighter.jpg')
+          },
           {
             label: 'Warlock (Tome)',
             value: 'tomelock',
@@ -208,69 +229,69 @@
       }
     }
   },
-    methods: {
-      loadFromJson: function (e) {
-        this.currentRepository = JSON.parse(this.jsonString)
-      }
-    },
-    created: function () {
-      let repo = this.$route.params.payload
-      if (repo) {
-        this.currentRepository = repo
-        this.jsonString = JSON.stringify(repo)
+  methods: {
+    loadFromJson: function (e) {
+      this.currentRepository = JSON.parse(this.jsonString)
+    }
+  },
+  created: function () {
+    let repo = this.$route.params.payload
+    if (repo) {
+      this.currentRepository = repo
+      this.jsonString = JSON.stringify(repo)
     }
   }
 }
 </script>
 
 <style scoped>
-  @media print {
-    .toolbar {
-      display: none;
-    }
-
-    .page .page__card {
-      display: block;
-      page-break-inside: avoid;
-    }
+@media print {
+  .toolbar {
+    display: none;
   }
 
-  .page {
+  .page .page__card {
+    display: block;
     page-break-inside: avoid;
   }
+}
 
-  .page__card {
+.page {
+  page-break-inside: avoid;
+}
+
+.page__card {
   float: left;
   display: block;
   page-break-inside: avoid;
 }
 
-  .theme-teaser__list-item {
-    height: 128px;
-    width: 128px;
-    border: 2px solid grey;
-    border-radius: 5px;
-    padding: 2px;
-    margin: 2px;
-    display: inline-grid;
-    cursor: pointer;
-    -webkit-filter: grayscale(100%);
-  }
+.theme-teaser__list-item {
+  height: 128px;
+  width: 128px;
+  border: 2px solid grey;
+  border-radius: 5px;
+  padding: 2px;
+  margin: 2px;
+  display: inline-grid;
+  cursor: pointer;
+  -webkit-filter: grayscale(100%);
+}
 
-  .theme-teaser__list-item.selected {
-    border-color: forestgreen;
-    cursor: default;
-    -webkit-filter: unset;
-  }
+.theme-teaser__list-item.selected {
+  border-color: forestgreen;
+  cursor: default;
+  -webkit-filter: unset;
+}
 
-  .theme-teaser__list-item:hover {
-    -webkit-filter: unset;
-  }
+.theme-teaser__list-item:hover {
+  -webkit-filter: unset;
+}
 
-  .theme-teaser__list-item-image {
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    height: 100%;
-  }
+.theme-teaser__list-item-image {
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 100%;
+}
 </style>
