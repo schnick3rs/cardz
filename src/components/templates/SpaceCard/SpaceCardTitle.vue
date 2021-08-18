@@ -24,8 +24,8 @@ export default {
           borderColor: this.flavour,
           boxShadow: '0 0px 10px 0px ' + this.flavour
         }
-        return ''
       }
+      return ''
     }
   }
 }

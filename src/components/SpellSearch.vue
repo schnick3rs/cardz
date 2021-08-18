@@ -237,6 +237,9 @@ import SpellRepository from '../assets/repositories/dnd-spells-migrated.json'
 import SpellModifications from '../assets/repositories/dnd-spells--mods.json'
 import SpellCard from './templates/SpellCard/SpellCard'
 import SpellItemRow from './SpellItemRow'
+import marked from 'marked'
+import TurndownService from 'turndown'
+
 const toLower = text => {
   return text.toString().toLowerCase()
 }
@@ -385,7 +388,7 @@ export default {
     let mods = this.spellModifications
     mods.forEach((mod) => {
       folded.forEach((fold) => {
-        if (fold.name == mod.name) {
+        if (fold.name === mod.name) {
           console.info('Modify ' + fold.name)
           fold.description = mod.description
           if (mod.descriptionOvercast) {

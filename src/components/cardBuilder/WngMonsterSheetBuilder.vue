@@ -72,7 +72,7 @@
           <div>
             <table class="input-form__table">
               <tr class="input-form__table-row">
-                <td v-for="(item, index) in character.attributes">
+                <td v-for="(item, index) in character.attributes" :key="index">
                   <md-field>
                     <label>{{ item.code }}</label>
                     <md-input style="width: 35px;" v-model="character.attributes[index].value"></md-input>
@@ -126,6 +126,7 @@
 
 <script>
 import WngMonsterSheet from '../templates/WrathAndGloryMonsterSheet/WngMonsterSheet'
+import marked from 'marked'
 
 export default {
   name: 'WngMonsterSheetBuilder',

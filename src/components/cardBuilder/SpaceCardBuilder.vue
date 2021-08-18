@@ -135,6 +135,8 @@
 
 <script>
 import SpaceCard from '../templates/SpaceCard/SpaceCard'
+import marked from 'marked'
+
 export default {
   name: 'CardBuilder',
   components: {SpaceCard},
@@ -190,11 +192,6 @@ export default {
     },
     copyToClipboard: function (e) {
       navigator.clipboard.writeText(JSON.stringify(this.card))
-    }
-  },
-  methods: {
-    update: function (event) {
-      this.card.description = marked(this.markdown, {sanatize: false})
     },
     addCard: function (item) {
       this.draftRepository.push(JSON.parse(JSON.stringify(item)))

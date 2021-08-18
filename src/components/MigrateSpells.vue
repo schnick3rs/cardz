@@ -17,11 +17,11 @@ export default {
   },
   computed: {
     migratedSpells: function () {
-      var migrate = []
-      for (var i = 0, len = this.spellDataJson.length; i < len; i++) {
-        var daSpell = this.spellDataJson[i]
-        var newSpell = {}
-        var id = window.btoa(i)
+      let migrate = []
+      for (let i = 0, len = this.spellDataJson.length; i < len; i++) {
+        let daSpell = this.spellDataJson[i]
+        let newSpell = {}
+        let id = window.btoa(i)
         newSpell.id = id
 
         newSpell.name = daSpell.name
@@ -60,7 +60,7 @@ export default {
         newSpell.descriptionOvercast = daSpell.higher_level
         newSpell.class = daSpell.class.split(',').map(v => v.trim())
         newSpell.source = daSpell.page
-        var spellMod = this.spellModData.filter(v => v.name == newSpell.name)
+        let spellMod = this.spellModData.filter(v => v.name === newSpell.name)
         if (spellMod.length > 0) {
           newSpell = Object.assign(newSpell, spellMod[0])
         }

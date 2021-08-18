@@ -93,6 +93,9 @@
 
 <script>
 import SpellCard from './templates/SpellCard/SpellCard'
+import marked from 'marked'
+import TurndownService from 'turndown'
+
 const html2markdown = (text) => {
   return new TurndownService().turndown(text)
 }

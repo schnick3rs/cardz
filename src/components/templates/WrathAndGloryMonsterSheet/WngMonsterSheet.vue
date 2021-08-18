@@ -33,17 +33,22 @@
             <div class="actions__action" v-for="action in character.actions" v-bind:key="action.key" :id="action.key">
               <span class="actions__action-label" v-html="action.label"></span>
               <div class="actions_action-value-holder">
-                <span class="actions__action-value" v-for="entry in action.table">{{entry}}</span>
+                <span class="actions__action-value" v-for="(entry, index) in action.table" :key="index">{{entry}}</span>
               </div>
               <div class="actions__modifiers">
-                <p v-for="mod in action.mods">{{mod.short}}</p>
+                <p v-for="(mod, index) in action.mods" :key="index">{{mod.short}}</p>
               </div>
             </div>
           </div>
         </div>
 
         <div id="abilities">
-          <p class="abilities__ability-html-content" v-for="ability in character.abilities" v-html="ability.short"></p>
+          <p
+            class="abilities__ability-html-content"
+            v-for="(ability, index) in character.abilities"
+            :key="index"
+            v-html="ability.short"
+          ></p>
         </div>
 
       </section>
